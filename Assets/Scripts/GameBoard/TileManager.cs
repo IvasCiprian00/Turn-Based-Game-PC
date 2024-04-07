@@ -14,12 +14,13 @@ public class TileManager : MonoBehaviour
 
     private void Start()
     {
-        GenerateGameBoard(6, 9);
+        GenerateGameBoard(6, 10);
+        GameObject.Find("Hero Manager").GetComponent<HeroManager>().SpawnHeroes();
     }
 
     private void GenerateGameBoard(int sizeX, int sizeY)
     {
-        float xPos = -1.04f;
+        float xPos = -1.2f;
         float yPos = 0.65f;
         float positionIncrement = Mathf.Abs(xPos) * 2 / (sizeY - 1);
 
@@ -28,7 +29,7 @@ public class TileManager : MonoBehaviour
 
         for (int i = 0; i < sizeX; i++)
         {
-            xPos = -1.04f;
+            xPos = -1.2f;
 
             for (int j = 0; j < sizeY; j++)
             {
