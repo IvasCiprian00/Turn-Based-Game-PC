@@ -9,16 +9,12 @@ public class TileManager : MonoBehaviour
     public GameObject[,] tiles;
     public GameObject[,] gameBoard;
 
+    private bool _tilesLoaded;
+
     int[] lineDir = { -1, 0, 1, 0 };
     int[] colDir = { 0, 1, 0, -1 };
 
-    private void Start()
-    {
-        GenerateGameBoard(6, 10);
-        GameObject.Find("Hero Manager").GetComponent<HeroManager>().SpawnHeroes();
-    }
-
-    private void GenerateGameBoard(int sizeX, int sizeY)
+    public void GenerateGameBoard(int sizeX, int sizeY)
     {
         float xPos = -1.2f;
         float yPos = 0.65f;
@@ -42,5 +38,8 @@ public class TileManager : MonoBehaviour
             yPos -= positionIncrement;
         }
 
+        _tilesLoaded = true;
     }
+
+    public bool TilesAreLoaded() { return _tilesLoaded; }
 }
