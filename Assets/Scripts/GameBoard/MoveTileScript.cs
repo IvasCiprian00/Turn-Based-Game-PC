@@ -5,8 +5,8 @@ using UnityEngine;
 public class MoveTileScript : MonoBehaviour
 {
     [SerializeField] private TileManager _tileManager;
-    //public GameManager gmManager;
-    //public HeroManager heroManager;
+    [SerializeField] private HeroManager _heroManager;
+    [SerializeField] private TurnManager _turnManager;
     private bool _attackTile;
 
     [SerializeField] private Sprite _attackTileSprite;
@@ -16,9 +16,9 @@ public class MoveTileScript : MonoBehaviour
 
     public void Start()
     {
-        //gmManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        //heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
+        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
     }
 
     public void SetCoords(int x, int y)
@@ -27,33 +27,33 @@ public class MoveTileScript : MonoBehaviour
         _yPos = y;
     }
 
-    /*public void OnMouseUp()
+    public void OnMouseUp()
     {
-        HeroScript hsScript = heroManager.heroesAlive[gmManager.currentHero].GetComponent<HeroScript>();
-        int pastXPos = hsScript.GetXPos();
-        int pastYPos = hsScript.GetYPos();
+        HeroScript heroScript = _heroManager.heroesAlive[_turnManager.GetCurrentHero()].GetComponent<HeroScript>();
+        int pastXPos = heroScript.GetXPos();
+        int pastYPos = heroScript.GetYPos();
 
 
-        if (_attackTile)
+        /*if (_attackTile)
         {
-            int damageDealt = hsScript.GetDamage();
+            int damageDealt = heroScript.GetDamage();
 
-            gmManager.gameBoard[_xPos, _yPos].GetComponent<EnemyScript>().TakeDamage(damageDealt);
+            _tileManager.gameBoard[_xPos, _yPos].GetComponent<EnemyScript>().TakeDamage(damageDealt);
             gmManager.attacksLeft--;
             gmManager.GenerateMoveTiles();
 
             return;
-        }
+        }*/
 
-        gmManager.speedLeft -= Mathf.Abs(_xPos - pastXPos) + Mathf.Abs(_yPos - pastYPos);
+        //gmManager.speedLeft -= Mathf.Abs(_xPos - pastXPos) + Mathf.Abs(_yPos - pastYPos);
 
-        gmManager.gameBoard[pastXPos, pastYPos] = null;
+        _tileManager.gameBoard[pastXPos, pastYPos] = null;
 
-        hsScript.MoveTo(gameObject);
+        heroScript.MoveTo(gameObject);
 
-        gmManager.gameBoard[_xPos, _yPos] = heroManager.heroesAlive[gmManager.currentHero];
-        gmManager.GenerateMoveTiles();
-    }*/
+        _tileManager.gameBoard[_xPos, _yPos] = _heroManager.heroesAlive[_turnManager.GetCurrentHero()];
+        _tileManager.GenerateMoveTiles(heroScript);
+    }
 
     public void ShowCoords()
     {

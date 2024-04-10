@@ -51,7 +51,7 @@ public class HeroScript : MonoBehaviour
         //uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
-    /*public void Update()
+    public void Update()
     {
         if (_isMoving)
         {
@@ -64,7 +64,7 @@ public class HeroScript : MonoBehaviour
                 _isMoving = false;
             }
         }
-    }*/
+    }
 
     public void Heal(int healValue)
     {
@@ -109,7 +109,7 @@ public class HeroScript : MonoBehaviour
         }
     }
 
-    /*public void MoveTo(GameObject tile)
+    public void MoveTo(GameObject tile)
     {
         int x = tile.GetComponent<MoveTileScript>().GetXPos();
         int y = tile.GetComponent<MoveTileScript>().GetYPos();
@@ -118,7 +118,7 @@ public class HeroScript : MonoBehaviour
         _targetTile = _tileManager.tiles[x, y];
         _isMoving = true;
 
-    }*/
+    }
 
     public void SetCoords(int x, int y)
     {

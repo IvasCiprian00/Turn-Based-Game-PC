@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private HeroManager _heroManager;
     [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private TileManager _tileManager;
+    [SerializeField] private TurnManager _turnManager;
 
     [SerializeField] private int _levelNumber;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     {
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
     }
 
     public void Start()
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
 
         _levelNumber++;
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
+
+        _turnManager.StartHeroTurns();
     }
 
 
@@ -37,4 +41,7 @@ public class GameManager : MonoBehaviour
 
         _enemyManager.SpawnEnemies();
     }
+
+    public int GetNrOfRows() {  return _nrOfRows; }
+    public int GetNrOfColumns() {  return _nrOfColumns; }
 }
