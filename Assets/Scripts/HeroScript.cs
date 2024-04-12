@@ -20,6 +20,7 @@ public class HeroScript : MonoBehaviour
     }
 
     [SerializeField] private TileManager _tileManager;
+    [SerializeField] private HeroManager _heroManager;
     //[SerializeField] private GameManager _gmManager;
     //[SerializeField] private UIManager _uiManager;
 
@@ -47,6 +48,7 @@ public class HeroScript : MonoBehaviour
     {
         _hp = _maxHp;
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
+        _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         //gmManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         //uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
@@ -83,12 +85,13 @@ public class HeroScript : MonoBehaviour
 
         if (_animator != null)
         {
+            Debug.Log("YEY");
             _animator.SetTrigger("take_damage");
         }
 
         if (_hp <= 0)
         {
-            //gmManager.HeroDeath(gameObject, _xPos, _yPos);
+            _heroManager.HeroDeath(gameObject);
             Destroy(gameObject);
         }
     }
@@ -128,12 +131,12 @@ public class HeroScript : MonoBehaviour
 
     public int GetXPos() { return _xPos; }
     public int GetYPos() { return _yPos; }
-    public string GetMovementType() { return _movementType.ToString(); }
+    public string GetMovementType() { return _movementType.ToString().ToLower(); }
     public int GetDamage() { return _damage; }
     public int GetSpeed() { return _speed; }
     public int GetHp() { return _hp; }
     public int GetMaxHp() { return _maxHp; }
     public string GetAttackType() { return _attackType.ToString(); }
     public int GetRange() { return _range; }
-    public int GetNumberOfAttacks() { return _nrOfAttacks; }
+    public int GetNrOfAttacks() { return _nrOfAttacks; }
 }

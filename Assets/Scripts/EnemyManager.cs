@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private TileManager _tileManager;
     [SerializeField] private GameManager _gameManager;
+    [SerializeField] private TurnManager _turnManager;
 
     [Serializable]
     public struct EnemyInfo
@@ -26,11 +27,13 @@ public class EnemyManager : MonoBehaviour
     {
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
     }
 
     public void Start()
     {
         _gameManager.OnLevelLoaded();
+        _turnManager.OnLevelLoaded();
     }
 
     public void SpawnEnemies()
@@ -47,6 +50,35 @@ public class EnemyManager : MonoBehaviour
             enemiesAlive[i].transform.position = _tileManager.tiles[linePos, colPos].transform.position;
             _tileManager.gameBoard[linePos, colPos] = enemiesAlive[i];
             enemiesAlive[i].GetComponent<EnemyScript>().SetCoords(linePos, colPos);
+        }
+    }
+
+    public void EnemyDeath(GameObject deadChar)
+    {
+        EnemyScript enemyScript = deadChar.GetComponent<EnemyScript>();
+
+        _tileManager.gameBoard[enemyScript.GetXPos(), enemyScript.GetYPos()] = null;
+
+        for (int i = 0; i < _enemyCount; i++)
+        {
+            if (deadChar == enemiesAlive[i])
+            {
+                SetEnemyCount(_enemyCount - 1);
+
+                _turnManager.CheckLevelProgress();
+
+                RemoveDeadEnemy(i);
+
+                return;
+            }
+        }
+    }
+
+    public void RemoveDeadEnemy(int index)
+    {
+        for (int i = index; i < _enemyCount; i++)
+        {
+            enemiesAlive[i] = enemiesAlive[i + 1];
         }
     }
 

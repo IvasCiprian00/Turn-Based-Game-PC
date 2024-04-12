@@ -10,6 +10,8 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private HeroScript _heroScript;
     [SerializeField] private EnemyScript _enemyScript;
 
+    private int _attacksLeft;
+    private int _speedLeft;
     private int _currentHero;
     private int _currentEnemy;
 
@@ -35,10 +37,15 @@ public class TurnManager : MonoBehaviour
         }
 
         _heroScript = _heroManager.heroesAlive[_currentHero].GetComponent<HeroScript>();
-        //speedLeft = _heroScript.GetSpeed();
-        //attacksLeft = _heroScript.GetSpeed();
+        _speedLeft = _heroScript.GetSpeed();
+        _attacksLeft = _heroScript.GetNrOfAttacks();
 
         _tileManager.GenerateMoveTiles(_heroScript);
+    }
+
+    public void OnLevelLoaded()
+    {
+        _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
     }
 
     public void StartEnemyTurns()
@@ -47,7 +54,6 @@ public class TurnManager : MonoBehaviour
 
         _currentEnemy = 0;
 
-        _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
         _enemyScript = _enemyManager.enemiesAlive[_currentEnemy].GetComponent<EnemyScript>();
 
         //_heroTurn = false;
@@ -60,8 +66,8 @@ public class TurnManager : MonoBehaviour
         //_heroTurn = true;
 
         _heroScript = _heroManager.heroesAlive[_currentHero].GetComponent<HeroScript>();
-        //speedLeft = _heroScript.GetSpeed();
-        //attacksLeft = _heroScript.GetNumberOfAttacks();
+        _speedLeft = _heroScript.GetSpeed();
+        _attacksLeft = _heroScript.GetNrOfAttacks();
 
         _tileManager.GenerateMoveTiles(_heroScript);
     }
@@ -90,5 +96,35 @@ public class TurnManager : MonoBehaviour
         _enemyManager.enemiesAlive[_currentEnemy].GetComponent<EnemyScript>().StartTurn();
     }
 
+    public void CheckLevelProgress()
+    {
+        if (_heroManager.GetHeroCount() <= 0)
+        {
+            //_gameOver = true;
+
+            Debug.Log("Heroes Lost");
+        }
+
+        else if (_enemyManager.GetEnemyCount() <= 0)
+        {
+            //_gameOver = true;
+
+            _tileManager.DestroyMoveTiles();
+            //_uiManager.HideSkills();
+
+
+            for (int i = 0; i < _heroManager.GetHeroCount(); i++)
+            {
+                _heroManager.heroesAlive[i].GetComponent<HeroScript>().StartWinAniamtion();
+            }
+
+            Debug.Log("Heroes Won");
+        }
+    }
+
     public int GetCurrentEnemy() { return _currentEnemy; }
+    public int GetAttacksLeft() {  return _attacksLeft; }
+    public void DecreaseAttacksLeft() { _attacksLeft--; }
+    public int GetSpeedLeft() {  return _speedLeft; }
+    public void DecreaseSpeedLeft(int x) { _speedLeft -= x;  }
 }

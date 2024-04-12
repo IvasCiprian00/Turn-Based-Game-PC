@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private GameObject _target;
     [SerializeField] private HeroScript _heroScript;
     [SerializeField] private TargetType _targetType;
+    [SerializeField] private Animator _animator;
 
     [Header("Enemy Stats")]
     [SerializeField] private int _hp;
@@ -48,10 +49,9 @@ public class EnemyScript : MonoBehaviour
         public int distance;
     }
 
-    [Header("Pathfinding")]
-    [SerializeField] private int endX;
-    [SerializeField] private int endY;
-    [SerializeField] private int minPathLength;
+    private int minPathLength;
+    private int endX;
+    private int endY;
     private PathCoordinates[] currentPath;
     private PathCoordinates[] shortestPath;
     private PathGrid[,] grid;
@@ -197,6 +197,7 @@ public class EnemyScript : MonoBehaviour
             currentPath[pathLength].x = x;
             currentPath[pathLength].y = y;
             pathLength++;
+
             if (pathLength < minPathLength)
             {
                 minPathLength = pathLength;
@@ -206,7 +207,7 @@ public class EnemyScript : MonoBehaviour
                     shortestPath[i] = currentPath[i];
                 }
             }
-            return;//change structure here for better nesting
+            return;
         }
         for (int i = 0; i < 4; i++)
         {
@@ -307,9 +308,29 @@ public class EnemyScript : MonoBehaviour
         return Mathf.Abs(x - x2) + Mathf.Abs(y - y2);
     }
 
+    public void TakeDamage(int damage)
+    {
+        _hp -= damage;
+        //_uiManager.DisplayDamageDealt(gameObject, damage);
+
+        if (_hp <= 0)
+        {
+            _enemyManager.EnemyDeath(gameObject);
+            Destroy(gameObject);
+        }
+
+        if (_animator != null)
+        {
+            _animator.SetTrigger("take_damage");
+        }
+    }
+
     public void SetCoords(int x, int y)
     {
         _xPos = x;
         _yPos = y;
     }
+
+    public int GetXPos() { return _xPos; }
+    public int GetYPos() { return _yPos; }
 }

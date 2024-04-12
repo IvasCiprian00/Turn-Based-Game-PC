@@ -34,18 +34,19 @@ public class MoveTileScript : MonoBehaviour
         int pastYPos = heroScript.GetYPos();
 
 
-        /*if (_attackTile)
+        if (_attackTile)
         {
             int damageDealt = heroScript.GetDamage();
 
             _tileManager.gameBoard[_xPos, _yPos].GetComponent<EnemyScript>().TakeDamage(damageDealt);
-            gmManager.attacksLeft--;
-            gmManager.GenerateMoveTiles();
+            _turnManager.DecreaseAttacksLeft();
+            _tileManager.GenerateMoveTiles(heroScript);
 
             return;
-        }*/
+        }
 
-        //gmManager.speedLeft -= Mathf.Abs(_xPos - pastXPos) + Mathf.Abs(_yPos - pastYPos);
+        int distance = Mathf.Abs(_xPos - pastXPos) + Mathf.Abs(_yPos - pastYPos);
+        _turnManager.DecreaseSpeedLeft(distance);
 
         _tileManager.gameBoard[pastXPos, pastYPos] = null;
 
