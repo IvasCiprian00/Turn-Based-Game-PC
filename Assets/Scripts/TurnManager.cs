@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
     [SerializeField] private GameObject _selectedEffect;
 
+    private UIManager _uiManager;
     private HeroManager _heroManager;
     private TileManager _tileManager;
     private EnemyManager _enemyManager;
@@ -23,6 +25,7 @@ public class TurnManager : MonoBehaviour
     {
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     private void Start()
@@ -63,6 +66,7 @@ public class TurnManager : MonoBehaviour
     public void StartEnemyTurns()
     {
         _selectedEffect.SetActive(false);
+        _uiManager.DisplayUI(false);
 
         _tileManager.DestroyMoveTiles();
 
@@ -76,6 +80,7 @@ public class TurnManager : MonoBehaviour
 
     public void StartHeroTurns()
     {
+        _uiManager.DisplayUI(true);
         _selectedEffect.SetActive(true);
         _currentHero = 0;
         //_heroTurn = true;
@@ -118,6 +123,7 @@ public class TurnManager : MonoBehaviour
             //_gameOver = true;
 
             Debug.Log("Heroes Lost");
+            _uiManager.DisplayEndOfLevelButtons(false);
         }
 
         else if (_enemyManager.GetEnemyCount() <= 0)
@@ -134,7 +140,18 @@ public class TurnManager : MonoBehaviour
             }
 
             Debug.Log("Heroes Won");
+            _uiManager.DisplayEndOfLevelButtons(true);
         }
+    }
+
+    public void ResetHeroes()
+    {
+        for(int i = 0; i < _heroManager.GetHeroCount(); i++) 
+        {
+            Destroy(_heroManager.heroesAlive[i]);
+        }
+
+        _heroManager.SpawnHeroes();
     }
 
     public int GetCurrentEnemy() { return _currentEnemy; }
@@ -142,4 +159,6 @@ public class TurnManager : MonoBehaviour
     public void DecreaseAttacksLeft() { _attacksLeft--; }
     public int GetSpeedLeft() {  return _speedLeft; }
     public void DecreaseSpeedLeft(int x) { _speedLeft -= x;  }
+    public int GetCurrentHeroHp() { return _heroScript.GetHp(); }
+    public int GetCurrentHeroDamage() {  return _heroScript.GetDamage(); }
 }

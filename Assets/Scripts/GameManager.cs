@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private TileManager _tileManager;
     [SerializeField] private TurnManager _turnManager;
+    private UIManager _uiManager;
 
     [SerializeField] private int _levelNumber;
 
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     public void Start()
@@ -40,6 +43,19 @@ public class GameManager : MonoBehaviour
         _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
 
         _enemyManager.SpawnEnemies();
+
+    }
+
+    public void GoToNextLevel()
+    {
+        SceneManager.UnloadSceneAsync(_levelNumber);
+
+        _turnManager.ResetHeroes();
+        _turnManager.StartHeroTurns();
+        _uiManager.HideEndOfLevelButtons();
+
+        _levelNumber++;
+        SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
     }
 
     public int GetNrOfRows() {  return _nrOfRows; }
