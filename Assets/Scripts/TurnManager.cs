@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField] private HeroManager _heroManager;
-    [SerializeField] private TileManager _tileManager;
-    [SerializeField] private EnemyManager _enemyManager;
-    [SerializeField] private HeroScript _heroScript;
-    [SerializeField] private EnemyScript _enemyScript;
+    [SerializeField] private GameObject _selectedEffect;
+
+    private HeroManager _heroManager;
+    private TileManager _tileManager;
+    private EnemyManager _enemyManager;
+    private HeroScript _heroScript;
+    private EnemyScript _enemyScript;
 
     private int _attacksLeft;
     private int _speedLeft;
@@ -21,6 +23,16 @@ public class TurnManager : MonoBehaviour
     {
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+    }
+
+    private void Start()
+    {
+        _selectedEffect = Instantiate(_selectedEffect);
+    }
+
+    private void Update()
+    {
+        _selectedEffect.transform.position = _heroManager.heroesAlive[_currentHero].transform.position;
     }
 
     public void EndTurn()
@@ -50,6 +62,8 @@ public class TurnManager : MonoBehaviour
 
     public void StartEnemyTurns()
     {
+        _selectedEffect.SetActive(false);
+
         _tileManager.DestroyMoveTiles();
 
         _currentEnemy = 0;
@@ -62,6 +76,7 @@ public class TurnManager : MonoBehaviour
 
     public void StartHeroTurns()
     {
+        _selectedEffect.SetActive(true);
         _currentHero = 0;
         //_heroTurn = true;
 

@@ -364,10 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec30c5cbb4f91f4d936a26058ede3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heroManager: {fileID: 0}
-  _tileManager: {fileID: 0}
-  _enemyManager: {fileID: 0}
-  _heroScript: {fileID: 0}
+  _selectedEffect: {fileID: 2487624977911038736, guid: 83f99dcd532ac90438fad5f1ffe98d6e, type: 3}
 --- !u!1 &1114362190
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 0}
+  _heroScript: {fileID: 0}
+  _turnManager: {fileID: 0}
   _tile: {fileID: 6569301912543951891, guid: 7c1f064f02e4c5140b3cd7d9b68e1c9c, type: 3}
   _moveTile: {fileID: 1361772927564775215, guid: 6036ca591bc3fdd42874afef6a56b91d, type: 3}
 --- !u!4 &1114362192
@@ -648,6 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileManager: {fileID: 0}
+  _turnManager: {fileID: 0}
   heroList:
   - hero: {fileID: 6195696646146534212, guid: 734036b43ed0a72448019224e0591460, type: 3}
     startingXPos: 0
