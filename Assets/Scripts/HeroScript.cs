@@ -21,6 +21,7 @@ public class HeroScript : MonoBehaviour
 
     [SerializeField] private TileManager _tileManager;
     [SerializeField] private HeroManager _heroManager;
+    [SerializeField] private HealthbarScript _healthbarScript;
     //[SerializeField] private GameManager _gmManager;
     //[SerializeField] private UIManager _uiManager;
 
@@ -44,11 +45,23 @@ public class HeroScript : MonoBehaviour
     private bool _isMoving;
     private GameObject _targetTile;
 
-    public void Start()
+    public void Awake()
     {
-        _hp = _maxHp;
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _healthbarScript = GetComponentInChildren<HealthbarScript>();
+        
+    }
+
+    public void Start()
+    {
+        _hp = _maxHp; 
+
+        if (_healthbarScript != null)
+        {
+            _healthbarScript.SetHp(_hp);
+            _healthbarScript.SetMaxHp(_maxHp);
+        }
         //gmManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         //uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
@@ -82,6 +95,12 @@ public class HeroScript : MonoBehaviour
     {
         //uiManager.DisplayDamageDealt(gameObject, damage);
         _hp -= damage;
+
+        if (_healthbarScript != null)
+        {
+            _healthbarScript.SetHp(_hp);
+            _healthbarScript.SetMaxHp(_maxHp);
+        }
 
         if (_animator != null)
         {

@@ -1489,6 +1489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileManager: {fileID: 0}
   _turnManager: {fileID: 0}
+  _healthBar: {fileID: 5521041680400699150, guid: 687552fbe0f74284f965529314121730, type: 3}
   heroList:
   - hero: {fileID: 6195696646146534212, guid: 734036b43ed0a72448019224e0591460, type: 3}
     startingXPos: 0

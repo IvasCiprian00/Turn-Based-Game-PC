@@ -22,6 +22,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private HeroScript _heroScript;
     [SerializeField] private TargetType _targetType;
     [SerializeField] private Animator _animator;
+    [SerializeField] private HealthbarScript _healthbarScript;
 
     [Header("Enemy Stats")]
     [SerializeField] private int _hp;
@@ -66,11 +67,18 @@ public class EnemyScript : MonoBehaviour
         _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _healthbarScript = GetComponentInChildren<HealthbarScript>();
     }
 
     public void Start()
     {
         _hp = _maxHp;
+
+        if (_healthbarScript != null)
+        {
+            _healthbarScript.SetHp(_hp);
+            _healthbarScript.SetMaxHp(_maxHp);
+        }
     }
     public void Update()
     {
@@ -313,6 +321,13 @@ public class EnemyScript : MonoBehaviour
         _hp -= damage;
         //_uiManager.DisplayDamageDealt(gameObject, damage);
 
+
+        if (_healthbarScript != null)
+        {
+            _healthbarScript.SetHp(_hp);
+            _healthbarScript.SetMaxHp(_maxHp);
+        }
+
         if (_hp <= 0)
         {
             _enemyManager.EnemyDeath(gameObject);
@@ -333,4 +348,6 @@ public class EnemyScript : MonoBehaviour
 
     public int GetXPos() { return _xPos; }
     public int GetYPos() { return _yPos; }
+    public int GetHp() {  return _hp; }
+    public int GetMaxHp() { return _maxHp; }
 }
