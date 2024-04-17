@@ -17,8 +17,12 @@ public class TileManager : MonoBehaviour
 
     private bool _tilesLoaded;
 
+
     int[] lineDir = { -1, 0, 1, 0 };
     int[] colDir = { 0, 1, 0, -1 };
+
+    int[] diagonalLineDir = { -1, -1, 1, 1 };
+    int[] diagonalColDir = { -1, 1, 1, -1 };
 
     public void Start()
     {
@@ -114,26 +118,35 @@ public class TileManager : MonoBehaviour
     public void CreateAttackTiles()
     {
         string attackType = _heroScript.GetAttackType();
-        if (attackType == "mixed" || attackType == "ranged")
+
+        if (attackType == "mixed")
         {
             int range = _heroScript.GetRange();
 
-            DirectionalCheck(0, 1, range);
-            DirectionalCheck(1, 0, range);
-            DirectionalCheck(0, -1, range);
-            DirectionalCheck(-1, 0, range);
-            DirectionalCheck(1, 1, range);
-            DirectionalCheck(1, -1, range);
-            DirectionalCheck(-1, -1, range);
-            DirectionalCheck(-1, 1, range);
+            for(int i = 0; i < 4; i++)
+            {
+                DirectionalCheck(lineDir[i], colDir[i], range);
+                DirectionalCheck(diagonalLineDir[i], diagonalColDir[i], range);
+            }
         }
 
         if (attackType == "melee")
         {
-            DirectionalCheck(0, 1, 1);
-            DirectionalCheck(1, 0, 1);
-            DirectionalCheck(0, -1, 1);
-            DirectionalCheck(-1, 0, 1);
+            for(int i = 0; i < 4; i++)
+            {
+                DirectionalCheck(lineDir[i], colDir[i], 1);
+            }
+        }
+
+        if(attackType == "ranged")
+        {
+            int range = _heroScript.GetRange();
+
+            for (int i = 0; i < 4; i++)
+            {
+                DirectionalCheckRanged(lineDir[i], colDir[i], range);
+                DirectionalCheckRanged(diagonalLineDir[i], diagonalColDir[i], range);
+            }
         }
     }
     
@@ -141,6 +154,36 @@ public class TileManager : MonoBehaviour
     {
         int currentLine = _heroScript.GetXPos();
         int currentCol = _heroScript.GetYPos();
+
+        for (int i = 0; i < n; i++)
+        {
+            currentLine += line;
+            currentCol += col;
+
+            if (!PositionIsValid(currentLine, currentCol))
+            {
+                continue;
+            }
+
+            if (gameBoard[currentLine, currentCol] == null)
+            {
+                continue;
+            }
+
+            if (gameBoard[currentLine, currentCol].tag == "Enemy")
+            {
+                SpawnTile(true, currentLine, currentCol);
+            }
+        }
+    }
+
+    public void DirectionalCheckRanged(int line, int col, int n)
+    {
+        int currentLine = _heroScript.GetXPos();
+        int currentCol = _heroScript.GetYPos();
+
+        currentLine += line;
+        currentCol += col;
 
         for (int i = 0; i < n; i++)
         {

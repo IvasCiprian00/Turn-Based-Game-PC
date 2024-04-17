@@ -16,7 +16,8 @@ public class HeroScript : MonoBehaviour
     public enum AttackType
     {
         melee,
-        ranged
+        ranged,
+        mixed
     }
 
     [SerializeField] private TileManager _tileManager;
@@ -35,11 +36,11 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private int _speed;
     [SerializeField] private int _nrOfAttacks;
+    [SerializeField] private int _range;
     public GameObject[] skills;
 
     [SerializeField] private MovementType _movementType;
     [SerializeField] private AttackType _attackType;
-    [SerializeField] private int _range;
 
 
     private bool _isMoving;
@@ -104,7 +105,6 @@ public class HeroScript : MonoBehaviour
 
         if (_animator != null)
         {
-            Debug.Log("YEY");
             _animator.SetTrigger("take_damage");
         }
 

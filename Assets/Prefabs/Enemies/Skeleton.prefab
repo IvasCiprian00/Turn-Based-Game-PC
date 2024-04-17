@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7535927272383491116}
   - component: {fileID: 1284396858281712183}
   m_Layer: 0
-  m_Name: Skeleton Sprite
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 459402205674517001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.025, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -153,15 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563f68812beca794d88e89a9cd6fb60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameManager: {fileID: 0}
-  _enemyManager: {fileID: 0}
-  _heroManager: {fileID: 0}
-  _tileManager: {fileID: 0}
-  _turnManager: {fileID: 0}
-  _target: {fileID: 0}
-  _heroScript: {fileID: 0}
   _targetType: 0
   _animator: {fileID: 1284396858281712183}
+  _healthbarScript: {fileID: 0}
   _hp: 5
   _maxHp: 5
   _damage: 2
@@ -193,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 5286080166719966418}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.022, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33070898, y: 0.10305142, z: 0.33070898}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,6 +253,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 759441042426397254}
     m_Modifications:
+    - target: {fileID: 1225805781093089983, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3094622463373965070, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
