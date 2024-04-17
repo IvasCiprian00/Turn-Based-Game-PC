@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject[] enemiesAlive;
     [SerializeField] private int _enemyCount;
 
-    [SerializeField] private EnemyScript _enemyScript;
+    [SerializeField] private Enemy _enemyScript;
 
     public void Awake()
     {
@@ -49,13 +49,13 @@ public class EnemyManager : MonoBehaviour
             enemiesAlive[i] = Instantiate(enemyList[i].enemy);
             enemiesAlive[i].transform.position = _tileManager.tiles[linePos, colPos].transform.position;
             _tileManager.gameBoard[linePos, colPos] = enemiesAlive[i];
-            enemiesAlive[i].GetComponent<EnemyScript>().SetCoords(linePos, colPos);
+            enemiesAlive[i].GetComponent<Enemy>().SetCoords(linePos, colPos);
         }
     }
 
     public void EnemyDeath(GameObject deadChar)
     {
-        EnemyScript enemyScript = deadChar.GetComponent<EnemyScript>();
+        Enemy enemyScript = deadChar.GetComponent<Enemy>();
 
         _tileManager.gameBoard[enemyScript.GetXPos(), enemyScript.GetYPos()] = null;
 

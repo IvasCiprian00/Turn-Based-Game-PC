@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static EnemyScript;
 
-public class Enemy : MonoBehaviour
+abstract public class Enemy : MonoBehaviour
 {
     protected enum TargetType
     {
@@ -290,6 +289,8 @@ public class Enemy : MonoBehaviour
             _animator.SetTrigger("take_damage");
         }
     }
+
+    abstract public void StartTurn();
 
     public void EndTurn()
     {

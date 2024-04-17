@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class EnemyScript : Enemy
+public class BasicEnemy : Enemy
 {
 
     public void Awake()
@@ -25,6 +25,7 @@ public class EnemyScript : Enemy
         Movement();
     }
 
+    override
     public void StartTurn()
     {
         StartCoroutine(TakeTurn());

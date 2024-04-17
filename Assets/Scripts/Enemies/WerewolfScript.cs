@@ -2,17 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WerewolfScript : MonoBehaviour
+public class WerewolfScript : Enemy
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Awake()
     {
-        
+        SetManagers();
+        SetHealthbar();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        
+        _hp = _maxHp;
+        UpdateHealthbar();
+    }
+
+    public void Update()
+    {
+        Movement();
+    }
+
+    override
+    public void StartTurn()
+    {
+        Debug.Log("YEY");
+        StartCoroutine(TakeTurn());
+    }
+
+    public IEnumerator TakeTurn()
+    {
+        int speedLeft = _speed;
+        int attacksLeft = _attackCount;
+
+        while (speedLeft > 0 || attacksLeft > 0)
+        {
+            FindTarget();
+
+            if (CanAttack(_heroScript) && attacksLeft == 0)
+            {
+                break;
+            }
+
+            if (!CanAttack(_heroScript) && speedLeft == 0)
+            {
+                break;
+            }
+
+            if (CanAttack(_heroScript))
+            {
+                _heroScript.TakeDamage(_damage);
+                attacksLeft--;
+            }
+            else if (speedLeft > 0)
+            {
+                MoveTowardsTarget();
+                speedLeft--;
+            }
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        EndTurn();
     }
 }

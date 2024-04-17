@@ -12,7 +12,7 @@ public class TurnManager : MonoBehaviour
     private TileManager _tileManager;
     private EnemyManager _enemyManager;
     private HeroScript _heroScript;
-    private EnemyScript _enemyScript;
+    private Enemy _enemyScript;
 
     private int _attacksLeft;
     private int _speedLeft;
@@ -72,7 +72,7 @@ public class TurnManager : MonoBehaviour
 
         _currentEnemy = 0;
 
-        _enemyScript = _enemyManager.enemiesAlive[_currentEnemy].GetComponent<EnemyScript>();
+        _enemyScript = _enemyManager.enemiesAlive[_currentEnemy].GetComponent<Enemy>();
 
         //_heroTurn = false;
         _enemyScript.StartTurn();
@@ -113,7 +113,7 @@ public class TurnManager : MonoBehaviour
             return;
         }
 
-        _enemyManager.enemiesAlive[_currentEnemy].GetComponent<EnemyScript>().StartTurn();
+        _enemyManager.enemiesAlive[_currentEnemy].GetComponent<Enemy>().StartTurn();
     }
 
     public void CheckLevelProgress()

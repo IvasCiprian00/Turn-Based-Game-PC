@@ -38,7 +38,7 @@ public class MoveTileScript : MonoBehaviour
         {
             int damageDealt = heroScript.GetDamage();
 
-            _tileManager.gameBoard[_xPos, _yPos].GetComponent<EnemyScript>().TakeDamage(damageDealt);
+            _tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().TakeDamage(damageDealt);
             _turnManager.DecreaseAttacksLeft();
             _tileManager.GenerateMoveTiles(heroScript);
 

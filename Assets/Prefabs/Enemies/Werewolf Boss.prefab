@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 759441042426397254}
-  - component: {fileID: 2931333188952012110}
+  - component: {fileID: 5597214250499098716}
   m_Layer: 0
   m_Name: Werewolf Boss
   m_TagString: Enemy
@@ -141,7 +141,7 @@ Transform:
   - {fileID: 4156656822697204568}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2931333188952012110
+--- !u!114 &5597214250499098716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,17 +150,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 516937654099016190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563f68812beca794d88e89a9cd6fb60e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d7467e7e43d4cd4c92f8afdc99e555a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetType: 0
-  _animator: {fileID: 1284396858281712183}
   _healthbarScript: {fileID: 0}
-  _hp: 5
-  _maxHp: 5
+  _targetType: 1
+  _animator: {fileID: 0}
+  _hp: 0
+  _maxHp: 15
   _damage: 2
-  _speed: 1
-  _attackCount: 1
+  _speed: 2
+  _attackCount: 3
 --- !u!1 &5286080166719966418
 GameObject:
   m_ObjectHideFlags: 0
