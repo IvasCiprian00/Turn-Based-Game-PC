@@ -157,10 +157,21 @@ MonoBehaviour:
   _targetType: 1
   _animator: {fileID: 0}
   _hp: 0
-  _maxHp: 15
-  _damage: 2
-  _speed: 2
-  _attackCount: 3
+  _maxHp: 30
+  _damage: 1
+  _speed: 1
+  _attackCount: 2
+  _hpThreshold:
+  - speed: 2
+    damage: 1
+    attackCount: 3
+  - speed: 3
+    damage: 2
+    attackCount: 3
+  _swipe: {fileID: 0}
+  _swipeCooldown: 0
+  _rupture: {fileID: 0}
+  _ruptureCooldown: 0
 --- !u!1 &5286080166719966418
 GameObject:
   m_ObjectHideFlags: 0

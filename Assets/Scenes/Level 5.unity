@@ -155,7 +155,10 @@ MonoBehaviour:
   _tileManager: {fileID: 0}
   _gameManager: {fileID: 0}
   _turnManager: {fileID: 0}
-  enemyList: []
+  enemyList:
+  - enemy: {fileID: 516937654099016190, guid: bba2319088a9abb40a4688f5cf1ef7a6, type: 3}
+    startingXPos: 3
+    startingYPos: 4
   enemiesAlive: []
   _enemyCount: 0
   _enemyScript: {fileID: 0}
