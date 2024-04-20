@@ -161,13 +161,13 @@ MonoBehaviour:
   _animator: {fileID: 1233810341953722105}
   _hp: 0
   _maxHp: 10
-  _damage: 3
+  _damage: 2
   _speed: 1
   _nrOfAttacks: 1
+  _range: 3
   skills: []
   _movementType: 0
   _attackType: 1
-  _range: 3
 --- !u!1 &8581179276476738501
 GameObject:
   m_ObjectHideFlags: 0

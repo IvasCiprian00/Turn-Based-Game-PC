@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class BasicEnemy : Enemy
 {
-
     public void Awake()
     {
         SetManagers();
@@ -52,6 +52,7 @@ public class BasicEnemy : Enemy
 
             if (CanAttack(_heroScript))
             {
+                _uiManager.DisplayDamage(_heroScript.gameObject, _damage);
                 _heroScript.TakeDamage(_damage);
                 attacksLeft--;
             }

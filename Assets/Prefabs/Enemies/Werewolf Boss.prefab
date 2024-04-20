@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 459402205674517001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 759441042426397254}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 1151336709
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f89fd5b86fb9e1f4e9a87874362b05ee, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,7 +133,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3622263007021251701}
@@ -155,18 +155,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthbarScript: {fileID: 0}
   _targetType: 1
-  _animator: {fileID: 0}
+  _animator: {fileID: 1284396858281712183}
   _hp: 0
-  _maxHp: 30
+  _maxHp: 50
   _damage: 1
-  _speed: 1
+  _speed: 2
   _attackCount: 2
   _hpThreshold:
-  - speed: 2
-    damage: 1
-    attackCount: 3
   - speed: 3
     damage: 2
+    attackCount: 2
+  - speed: 3
+    damage: 3
     attackCount: 3
   _swipe: {fileID: 0}
   _swipeCooldown: 0

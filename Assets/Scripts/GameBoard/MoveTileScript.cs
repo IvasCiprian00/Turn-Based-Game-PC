@@ -7,6 +7,7 @@ public class MoveTileScript : MonoBehaviour
     [SerializeField] private TileManager _tileManager;
     [SerializeField] private HeroManager _heroManager;
     [SerializeField] private TurnManager _turnManager;
+    [SerializeField] private UIManager _uiManager;
     private bool _attackTile;
 
     [SerializeField] private Sprite _attackTileSprite;
@@ -19,6 +20,7 @@ public class MoveTileScript : MonoBehaviour
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     public void SetCoords(int x, int y)
@@ -38,6 +40,7 @@ public class MoveTileScript : MonoBehaviour
         {
             int damageDealt = heroScript.GetDamage();
 
+            _uiManager.DisplayDamage(_tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().gameObject, damageDealt);
             _tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().TakeDamage(damageDealt);
             _turnManager.DecreaseAttacksLeft();
             _tileManager.GenerateMoveTiles(heroScript);

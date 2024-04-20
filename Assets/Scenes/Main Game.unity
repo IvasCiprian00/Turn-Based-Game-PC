@@ -1271,7 +1271,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1466045918}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GoToNextLevel
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1489,7 +1489,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileManager: {fileID: 0}
   _turnManager: {fileID: 0}
-  _healthBar: {fileID: 5521041680400699150, guid: 687552fbe0f74284f965529314121730, type: 3}
   heroList:
   - hero: {fileID: 6195696646146534212, guid: 734036b43ed0a72448019224e0591460, type: 3}
     startingXPos: 0
@@ -1734,7 +1733,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 77102267
+  m_SortingLayerID: -1890100179
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1724372939
@@ -1779,6 +1778,7 @@ MonoBehaviour:
   _statsContainer: {fileID: 1229271209}
   _nextLevelButton: {fileID: 131624977}
   _restartLevelButton: {fileID: 1404309384}
+  _damageDealt: {fileID: 14144394939284105, guid: 71393cff118a4e647824d910ff32b6a4, type: 3}
 --- !u!1 &1791671267
 GameObject:
   m_ObjectHideFlags: 0

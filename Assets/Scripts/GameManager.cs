@@ -58,6 +58,17 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
     }
 
+    public void RestartLevel()
+    {
+        SceneManager.UnloadSceneAsync(_levelNumber);
+
+        _turnManager.ResetHeroes();
+        _turnManager.StartHeroTurns();
+        _uiManager.HideEndOfLevelButtons();
+
+        SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
+    }
+
     public int GetNrOfRows() {  return _nrOfRows; }
     public int GetNrOfColumns() {  return _nrOfColumns; }
 }

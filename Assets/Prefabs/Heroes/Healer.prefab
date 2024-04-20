@@ -245,13 +245,13 @@ MonoBehaviour:
   _animator: {fileID: 5147600488552359778}
   _hp: 0
   _maxHp: 10
-  _damage: 3
+  _damage: 1
   _speed: 1
-  _nrOfAttacks: 2
+  _nrOfAttacks: 1
+  _range: 0
   skills: []
   _movementType: 0
   _attackType: 0
-  _range: 0
 --- !u!1001 &6473671549368816811
 PrefabInstance:
   m_ObjectHideFlags: 0

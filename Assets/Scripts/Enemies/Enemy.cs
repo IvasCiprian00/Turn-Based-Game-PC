@@ -12,12 +12,12 @@ abstract public class Enemy : MonoBehaviour
         lowestHp
     }
 
-    protected int test;
     protected GameManager _gameManager;
     protected EnemyManager _enemyManager;
     protected HeroManager _heroManager;
     protected TileManager _tileManager;
     protected TurnManager _turnManager;
+    protected UIManager _uiManager;
 
     [SerializeField] protected HealthbarScript _healthbarScript;
     [SerializeField] protected TargetType _targetType;
@@ -34,6 +34,7 @@ abstract public class Enemy : MonoBehaviour
     protected int _xPos;
     protected int _yPos;
     protected GameObject _target;
+    protected GameObject[] _unreachableHeroes;
     protected HeroScript _heroScript;
 
 
@@ -52,6 +53,7 @@ abstract public class Enemy : MonoBehaviour
     }
 
     protected int minPathLength;
+    protected bool _canReach;
     protected int endX;
     protected int endY;
     protected PathCoordinates[] currentPath;
@@ -70,6 +72,7 @@ abstract public class Enemy : MonoBehaviour
         _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     public void SetHealthbar()
@@ -106,6 +109,20 @@ abstract public class Enemy : MonoBehaviour
 
     public void FindTarget()
     {
+        List<GameObject> unreachableHeroes = new List<GameObject>();
+
+        do
+        {
+            GetPossibleTarget(unreachableHeroes);
+
+            _canReach = VerifyTarget();
+
+            unreachableHeroes.Add(_heroScript.gameObject);
+        } while (!_canReach);
+    }
+
+    public void GetPossibleTarget(List<GameObject> targets)
+    {
         int minDistance = 99;
 
         switch (_targetType)
@@ -117,11 +134,18 @@ abstract public class Enemy : MonoBehaviour
                     HeroScript hsScript = _heroManager.heroesAlive[i].GetComponent<HeroScript>();
                     int distance = Mathf.Abs(_xPos - hsScript.GetXPos()) + Mathf.Abs(_yPos - hsScript.GetYPos());
 
-                    if (distance < minDistance)
+                    if (distance >= minDistance)
                     {
-                        minDistance = distance;
-                        _target = _heroManager.heroesAlive[i];
+                        continue;
                     }
+
+                    if (targets.Contains(hsScript.gameObject))
+                    {
+                        continue;
+                    }
+
+                    minDistance = distance;
+                    _target = _heroManager.heroesAlive[i];
                 }
 
                 break;
@@ -134,11 +158,18 @@ abstract public class Enemy : MonoBehaviour
                 {
                     HeroScript hsScript = _heroManager.heroesAlive[i].GetComponent<HeroScript>();
 
-                    if (hsScript.GetHp() < minHp)
+                    if (hsScript.GetHp() >= minHp)
                     {
-                        minHp = hsScript.GetHp();
-                        _target = _heroManager.heroesAlive[i];
+                        continue;
                     }
+
+                    if (targets.Contains(hsScript.gameObject))
+                    {
+                        continue;
+                    }
+
+                    minHp = hsScript.GetHp();
+                    _target = _heroManager.heroesAlive[i];
                 }
 
                 break;
@@ -146,6 +177,28 @@ abstract public class Enemy : MonoBehaviour
         }
 
         _heroScript = _target.GetComponent<HeroScript>();
+    }
+
+
+    public bool VerifyTarget()
+    {
+        minPathLength = 100;
+
+        currentPath = new PathCoordinates[100];
+        shortestPath = new PathCoordinates[100];
+
+        endX = _heroScript.GetXPos();
+        endY = _heroScript.GetYPos();
+
+        CopyGrid();
+        PathFinder(_xPos, _yPos, 0);
+
+        if(minPathLength < 100)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void CopyGrid()
@@ -172,6 +225,7 @@ abstract public class Enemy : MonoBehaviour
     {
         if (CanAttack(_heroScript, x, y))
         {
+            _canReach = true;
             currentPath[pathLength].x = x;
             currentPath[pathLength].y = y;
             pathLength++;
@@ -239,6 +293,13 @@ abstract public class Enemy : MonoBehaviour
 
     public void UpdatePosition(int x, int y)
     {
+
+        if (minPathLength >= 2)
+        {
+            _xPos = shortestPath[1].x;
+            _yPos = shortestPath[1].y;
+        }
+
         _tileManager.gameBoard[x, y] = null;
         _tileManager.gameBoard[_xPos, _yPos] = gameObject;
 
@@ -251,29 +312,12 @@ abstract public class Enemy : MonoBehaviour
         int pastXPos = _xPos;
         int pastYPos = _yPos;
 
-        endX = _heroScript.GetXPos();
-        endY = _heroScript.GetYPos();
-
-        minPathLength = 30;
-        currentPath = new PathCoordinates[100];
-        shortestPath = new PathCoordinates[100];
-
-        CopyGrid();
-        PathFinder(_xPos, _yPos, 0);
-
-        if (minPathLength >= 2)
-        {
-            _xPos = shortestPath[1].x;
-            _yPos = shortestPath[1].y;
-        }
-
         UpdatePosition(pastXPos, pastYPos);
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         _hp -= damage;
-        //_uiManager.DisplayDamageDealt(gameObject, damage);
 
 
         UpdateHealthbar();

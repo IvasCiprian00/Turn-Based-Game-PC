@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _statsContainer;
     [SerializeField] private GameObject _nextLevelButton;
     [SerializeField] private GameObject _restartLevelButton;
+    [SerializeField] private GameObject _damageDealt;
 
     public void Awake()
     {
@@ -48,5 +49,15 @@ public class UIManager : MonoBehaviour
     {
         _nextLevelButton.SetActive(false);
         _restartLevelButton.SetActive(false);
+    }
+
+    public void DisplayDamage(GameObject character, int damage)
+    {
+        GameObject reference = Instantiate(_damageDealt, character.transform.position, Quaternion.identity, gameObject.transform);
+
+        float rot = Random.Range(-30f, 30f);
+
+        reference.transform.Rotate(0, 0, rot);
+        reference.GetComponent<DamageText>().SetText(damage);
     }
 }

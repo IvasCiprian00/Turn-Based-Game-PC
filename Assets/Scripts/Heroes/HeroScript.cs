@@ -94,7 +94,7 @@ public class HeroScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        //uiManager.DisplayDamageDealt(gameObject, damage);
+        //uiManager.DisplayDamage(gameObject, damage);
         _hp -= damage;
 
         if (_healthbarScript != null)

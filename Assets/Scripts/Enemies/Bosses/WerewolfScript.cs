@@ -87,6 +87,7 @@ public class WerewolfScript : Enemy
 
             if (CanAttack(_heroScript))
             {
+                _uiManager.DisplayDamage(_heroScript.gameObject, _damage);
                 _heroScript.TakeDamage(_damage);
                 attacksLeft--;
             }
@@ -102,7 +103,7 @@ public class WerewolfScript : Enemy
         EndTurn();
     }
 
-    public new void TakeDamage(int dmg)
+    public override void TakeDamage(int dmg)// tb sa aflu diferenta intre new si override
     {
         base.TakeDamage(dmg);
         
