@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Level 5.unity
-    guid: 99906e6f1c27f7048bc5c0eeffae35e2
+    path: Assets/Scenes/Slime Level.unity
+    guid: 96962c271b4af4c4997fcee641f9d79a
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 1c87edd595851854cb6c318cfe1552e1
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
     guid: 04e65d5f38b311c4d8700772123f6f55
+  - enabled: 1
+    path: Assets/Scenes/Werewold Level.unity
+    guid: 99906e6f1c27f7048bc5c0eeffae35e2
   m_configObjects: {}

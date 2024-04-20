@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveTileScript : MonoBehaviour
+public class MoveTile : Tile
 {
     [SerializeField] private TileManager _tileManager;
     [SerializeField] private HeroManager _heroManager;
@@ -12,21 +12,12 @@ public class MoveTileScript : MonoBehaviour
 
     [SerializeField] private Sprite _attackTileSprite;
 
-    [SerializeField] private int _xPos;
-    [SerializeField] private int _yPos;
-
     public void Start()
     {
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-    }
-
-    public void SetCoords(int x, int y)
-    {
-        _xPos = x;
-        _yPos = y;
     }
 
     public void OnMouseUp()
@@ -64,7 +55,7 @@ public class MoveTileScript : MonoBehaviour
         Debug.Log(_xPos + " " + _yPos);
     }
 
-    public void SetAttacking(bool attacking)
+    override public void SetAttacking(bool attacking)
     {
         if (attacking)
         {
@@ -73,7 +64,4 @@ public class MoveTileScript : MonoBehaviour
 
         _attackTile = attacking;
     }
-
-    public int GetXPos() { return _xPos; }
-    public int GetYPos() { return _yPos; }
 }

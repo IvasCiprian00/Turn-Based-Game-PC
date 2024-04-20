@@ -133,8 +133,8 @@ public class HeroScript : MonoBehaviour
 
     public void MoveTo(GameObject tile)
     {
-        int x = tile.GetComponent<MoveTileScript>().GetXPos();
-        int y = tile.GetComponent<MoveTileScript>().GetYPos();
+        int x = tile.GetComponent<MoveTile>().GetXPos();
+        int y = tile.GetComponent<MoveTile>().GetYPos();
         SetCoords(x, y);
 
         _targetTile = _tileManager.tiles[x, y];

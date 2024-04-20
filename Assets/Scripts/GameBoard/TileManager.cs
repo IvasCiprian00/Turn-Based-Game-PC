@@ -46,7 +46,7 @@ public class TileManager : MonoBehaviour
             for (int j = 0; j < sizeY; j++)
             {
                 tiles[i, j] = Instantiate(_tile, new Vector3(xPos, yPos, 0), Quaternion.identity, GameObject.Find("Tile Container").transform);
-                tiles[i, j].GetComponent<TileScript>().SetCoords(i, j);
+                tiles[i, j].GetComponent<Tile>().SetCoords(i, j);
 
                 xPos += positionIncrement;
             }
@@ -108,7 +108,8 @@ public class TileManager : MonoBehaviour
                     continue;
                 }
 
-                SpawnTile(false, nextX, nextY);
+                GameObject reference = SpawnTile(_moveTile, nextX, nextY);
+                reference.GetComponent<MoveTile>().SetAttacking(false);
                 SpawnBasicTiles(speed - 1, nextX, nextY);
             }
         }
@@ -172,7 +173,8 @@ public class TileManager : MonoBehaviour
 
             if (gameBoard[currentLine, currentCol].tag == "Enemy")
             {
-                SpawnTile(true, currentLine, currentCol);
+                GameObject reference = SpawnTile(_moveTile, currentLine, currentCol);
+                reference.GetComponent<MoveTile>().SetAttacking(true);
             }
         }
     }
@@ -202,19 +204,21 @@ public class TileManager : MonoBehaviour
 
             if (gameBoard[currentLine, currentCol].tag == "Enemy")
             {
-                SpawnTile(true, currentLine, currentCol);
+                GameObject reference = SpawnTile(_moveTile, currentLine, currentCol);
+                reference.GetComponent<MoveTile>().SetAttacking(true);
             }
         }
     }
 
-    public void SpawnTile(bool isAttackTile, int line, int col)
+    public GameObject SpawnTile(GameObject tile, int line, int col)
     {
         Vector3 tilePosition = tiles[line, col].transform.position;
         tilePosition -= new Vector3(0, 0, 1);
 
-        GameObject reference = Instantiate(_moveTile, tilePosition, Quaternion.identity);
-        reference.GetComponent<MoveTileScript>().SetCoords(line, col);
-        reference.GetComponent<MoveTileScript>().SetAttacking(isAttackTile);
+        GameObject reference = Instantiate(tile, tilePosition, Quaternion.identity);
+        reference.GetComponent<Tile>().SetCoords(line, col);
+
+        return reference;
     }
 
     public bool PositionIsValid(int x, int y)

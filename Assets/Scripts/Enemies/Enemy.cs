@@ -29,6 +29,8 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected int _damage;
     [SerializeField] protected int _speed;
     [SerializeField] protected int _attackCount;
+    [SerializeField] protected float _waitDuration;
+    [SerializeField] protected float _actionSpeed;
 
 
     protected int _xPos;
@@ -96,7 +98,7 @@ abstract public class Enemy : MonoBehaviour
 
         if (_isMoving)
         {
-            var step = 10 * Time.deltaTime;
+            var step = _actionSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, _targetTile.transform.position, step);
 
             if (Vector3.Distance(transform.position, _targetTile.transform.position) < 0.001f)

@@ -161,6 +161,8 @@ MonoBehaviour:
   _damage: 1
   _speed: 2
   _attackCount: 2
+  _waitDuration: 0
+  _actionSpeed: 0
   _hpThreshold:
   - speed: 3
     damage: 2
@@ -168,10 +170,6 @@ MonoBehaviour:
   - speed: 3
     damage: 3
     attackCount: 3
-  _swipe: {fileID: 0}
-  _swipeCooldown: 0
-  _rupture: {fileID: 0}
-  _ruptureCooldown: 0
 --- !u!1 &5286080166719966418
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +353,10 @@ PrefabInstance:
     - target: {fileID: 6656916332049436562, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467112852816263717, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1890100179
       objectReference: {fileID: 0}
     - target: {fileID: 8249423884094740605, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
       propertyPath: m_Name

@@ -1,24 +1,22 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
-public class WerewolfScript : Enemy
+public class SlimeBossScript : Enemy
 {
-    [Serializable]
-    public struct HpThreshold
-    {
-        public int speed;
-        public int damage;
-        public int attackCount;
-    }
+    [SerializeField] private SkillManager _skillManager;
 
-    [SerializeField] HpThreshold[] _hpThreshold;
+    [Header("Skills")]
+    [SerializeField] private GameObject[] _slamTiles;
+    [SerializeField] private int _slamDamage;
+    [SerializeField] private int _slamCooldown;
+    [SerializeField] private int _slamTimer;
+    [SerializeField] private int _slamRange;
+    //
 
     public void Awake()
     {
+        _skillManager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
         SetManagers();
         SetHealthbar();
     }
@@ -26,6 +24,8 @@ public class WerewolfScript : Enemy
     public void Start()
     {
         _hp = _maxHp;
+
+        _slamTimer = _slamCooldown;
 
         UpdateHealthbar();
     }
@@ -35,8 +35,7 @@ public class WerewolfScript : Enemy
         Movement();
     }
 
-    override
-    public void StartTurn()
+    override public void StartTurn()
     {
         StartCoroutine(TakeTurn());
     }
@@ -45,6 +44,8 @@ public class WerewolfScript : Enemy
     {
         int speedLeft = _speed;
         int attacksLeft = _attackCount;
+
+        _slamTimer++;
 
         while (speedLeft > 0 || attacksLeft > 0)
         {
@@ -60,6 +61,15 @@ public class WerewolfScript : Enemy
                 break;
             }
 
+            if(HeroesInSlamRange() && _slamTimer >= _slamCooldown)
+            {
+                _slamTimer = 0;
+                speedLeft = 0;
+                attacksLeft = 0;
+
+                _skillManager.SlimeSlamAttack(_slamRange, _xPos, _yPos);
+            }
+
             if (CanAttack(_heroScript))
             {
                 _uiManager.DisplayDamage(_heroScript.gameObject, _damage);
@@ -72,32 +82,14 @@ public class WerewolfScript : Enemy
                 speedLeft--;
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(_waitDuration);
         }
 
         EndTurn();
     }
 
-    public override void TakeDamage(int dmg)// tb sa aflu diferenta intre new si override
+    public bool HeroesInSlamRange()
     {
-        base.TakeDamage(dmg);
-        
-        if(_hp <= 0.3 * _maxHp)
-        {
-            ChangeThreshold(1);
-            return;
-        }
-
-        if(_hp <= 0.7 * _maxHp)
-        {
-            ChangeThreshold(0);
-        }
-    }
-
-    public void ChangeThreshold(int x)
-    {
-        _speed = _hpThreshold[x].speed;
-        _damage = _hpThreshold[x].damage;
-        _attackCount = _hpThreshold[x].attackCount;
+        return true;
     }
 }
