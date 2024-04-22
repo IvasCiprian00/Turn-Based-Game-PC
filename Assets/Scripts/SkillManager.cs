@@ -18,17 +18,21 @@ public class SkillManager : MonoBehaviour
 
     public void SlimeSlamAttack(int range, int xPos, int yPos)
     {
-        for(int i = xPos - range; i < xPos + range; i++)
+        for(int i = xPos - range; i <= xPos + range; i++)
         {
-            for(int j = yPos - range; j < yPos + range; j++)
+            for(int j = yPos - range; j <= yPos + range; j++)
             {
                 if(!_tileManager.PositionIsValid(i, j))
                 {
                     continue;
                 }
+                if(i == xPos && j == yPos)
+                {
+                    continue;
+                }
 
                 GameObject reference = _tileManager.SpawnTile(_timerTile, i, j);
-                //reference.GetComponent<TimerTile>().SetTimer(2);
+                reference.GetComponent<TimerTile>().SetTimer(2);
             }
         }
     }

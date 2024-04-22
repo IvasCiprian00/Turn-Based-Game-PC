@@ -12,12 +12,17 @@ public class MoveTile : Tile
 
     [SerializeField] private Sprite _attackTileSprite;
 
-    public void Start()
+    public void Awake()
     {
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+    }
+
+    public void Start()
+    {
+        transform.position -= new Vector3(0, 0, 1);
     }
 
     public void OnMouseUp()

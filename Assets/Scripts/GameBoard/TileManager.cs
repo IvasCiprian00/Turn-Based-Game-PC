@@ -213,7 +213,6 @@ public class TileManager : MonoBehaviour
     public GameObject SpawnTile(GameObject tile, int line, int col)
     {
         Vector3 tilePosition = tiles[line, col].transform.position;
-        tilePosition -= new Vector3(0, 0, 1);
 
         GameObject reference = Instantiate(tile, tilePosition, Quaternion.identity);
         reference.GetComponent<Tile>().SetCoords(line, col);

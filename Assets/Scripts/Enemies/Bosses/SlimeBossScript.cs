@@ -47,6 +47,19 @@ public class SlimeBossScript : Enemy
 
         _slamTimer++;
 
+        _slamTiles = GameObject.FindGameObjectsWithTag("Timer Tile");
+
+        if(_slamTiles.Length > 0)
+        {
+            for(int i = 0; i < _slamTiles.Length; i++)
+            {
+                _slamTiles[i].GetComponent<TimerTile>().TickTimer();
+            }
+
+            speedLeft = 0;
+            attacksLeft = 0;
+        }
+
         while (speedLeft > 0 || attacksLeft > 0)
         {
             FindTarget();
@@ -70,7 +83,7 @@ public class SlimeBossScript : Enemy
                 _skillManager.SlimeSlamAttack(_slamRange, _xPos, _yPos);
             }
 
-            if (CanAttack(_heroScript))
+            if (CanAttack(_heroScript) && attacksLeft > 0)
             {
                 _uiManager.DisplayDamage(_heroScript.gameObject, _damage);
                 _heroScript.TakeDamage(_damage);
@@ -90,6 +103,34 @@ public class SlimeBossScript : Enemy
 
     public bool HeroesInSlamRange()
     {
-        return true;
+        int count = 0;
+
+        for(int i = _xPos - _slamRange; i <= _xPos + _slamRange; i++)
+        {
+            for(int j =  _yPos - _slamRange; j <= _yPos + _slamRange; j++)
+            {
+                if (!_tileManager.PositionIsValid(i, j))
+                {
+                    continue;
+                }
+
+                if (_tileManager.gameBoard[i, j] == null)
+                {
+                    continue;
+                }
+
+                if (_tileManager.gameBoard[i, j].tag == "Hero")
+                {
+                    count++;
+                }
+            }
+        }
+
+        if(count >= 2)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
