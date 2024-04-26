@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private HeroManager _heroManager;
-    [SerializeField] private EnemyManager _enemyManager;
-    [SerializeField] private TileManager _tileManager;
-    [SerializeField] private TurnManager _turnManager;
+    private HeroManager _heroManager;
+    private EnemyManager _enemyManager;
+    private TileManager _tileManager;
+    private TurnManager _turnManager;
+    private EnvironmentManager _envManager;
+    private DarknessManager _darknessManager;
     private UIManager _uiManager;
 
     [SerializeField] private int _levelNumber;
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     [Header("Game Board Section")]
     [SerializeField] private int _nrOfRows;
     [SerializeField] private int _nrOfColumns;
+
 
     private void Awake()
     {
@@ -38,12 +41,26 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void OnLevelLoaded()
+    public void OnEnemiesLoaded()
     {
         _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
 
         _enemyManager.SpawnEnemies();
 
+    }
+
+    public void OnEnvironmentLoaded()
+    {
+        _envManager = GameObject.Find("Environment Manager").GetComponent<EnvironmentManager>();
+
+        _envManager.SpawnEnvironment();
+    }
+
+    public void OnDarknessLoaded()
+    {
+        _darknessManager = GameObject.Find("Darkness Manager").GetComponent<DarknessManager>();
+
+        _darknessManager.SpawnDarkness();
     }
 
     public void GoToNextLevel()
@@ -67,6 +84,14 @@ public class GameManager : MonoBehaviour
         _uiManager.HideEndOfLevelButtons();
 
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
+    }
+
+    public void CenterCamera()
+    {
+        Vector3 center = _tileManager.tiles[_nrOfRows / 2, _nrOfColumns / 2].transform.position;
+        float x = center.x;
+        float y = center.y;
+        Camera.main.transform.position = new Vector3(x, y, Camera.main.transform.position.z);
     }
 
     public int GetNrOfRows() {  return _nrOfRows; }

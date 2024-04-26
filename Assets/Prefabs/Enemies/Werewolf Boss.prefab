@@ -161,8 +161,8 @@ MonoBehaviour:
   _damage: 1
   _speed: 2
   _attackCount: 2
-  _waitDuration: 0
-  _actionSpeed: 0
+  _waitDuration: 0.3
+  _actionSpeed: 10
   _hpThreshold:
   - speed: 3
     damage: 2

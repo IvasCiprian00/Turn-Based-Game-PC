@@ -177,8 +177,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2052036977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2052036979}
+  - component: {fileID: 2052036978}
+  m_Layer: 0
+  m_Name: Environment Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2052036978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052036977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377c286936999134cbed0ccc50eb4025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obstacles:
+  - obstacle: {fileID: 1984944129177357079, guid: 9f467fd64438ea24e896be878a9837f9, type: 3}
+    _xPos: 2
+    _yPos: 2
+  - obstacle: {fileID: 1984944129177357079, guid: 9f467fd64438ea24e896be878a9837f9, type: 3}
+    _xPos: 4
+    _yPos: 2
+  - obstacle: {fileID: 1984944129177357079, guid: 9f467fd64438ea24e896be878a9837f9, type: 3}
+    _xPos: 2
+    _yPos: 4
+  - obstacle: {fileID: 1984944129177357079, guid: 9f467fd64438ea24e896be878a9837f9, type: 3}
+    _xPos: 5
+    _yPos: 3
+  - obstacle: {fileID: 8078606472246156849, guid: f6cd663e53422d344b305bb9ca9e8f54, type: 3}
+    _xPos: 5
+    _yPos: 7
+  - obstacle: {fileID: 8078606472246156849, guid: f6cd663e53422d344b305bb9ca9e8f54, type: 3}
+    _xPos: 4
+    _yPos: 8
+--- !u!4 &2052036979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052036977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1608176540}
+  - {fileID: 2052036979}

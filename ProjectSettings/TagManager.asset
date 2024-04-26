@@ -57,3 +57,6 @@ TagManager:
   - name: UI
     uniqueID: 2404867117
     locked: 0
+  - name: Darkness
+    uniqueID: 1921430079
+    locked: 0

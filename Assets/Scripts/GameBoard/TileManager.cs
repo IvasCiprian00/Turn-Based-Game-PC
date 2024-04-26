@@ -32,16 +32,17 @@ public class TileManager : MonoBehaviour
 
     public void GenerateGameBoard(int sizeX, int sizeY)
     {
-        float xPos = -1.2f;
-        float yPos = 0.65f;
-        float positionIncrement = Mathf.Abs(xPos) * 2 / (sizeY - 1);
+        float xPos = 0;
+        float yPos = 0;
+        //float positionIncrement = Mathf.Abs(xPos) * 2 / (sizeY - 1);
+        float positionIncrement = 0.25f; //1 tile is 25 pixels wide so an increment of 0.25 at 100 pixels per unit would get us consecutive tiles with no space inbetween
 
         tiles = new GameObject[sizeX, sizeY];
         gameBoard = new GameObject[sizeX, sizeY];
 
         for (int i = 0; i < sizeX; i++)
         {
-            xPos = -1.2f;
+            xPos = 0;
 
             for (int j = 0; j < sizeY; j++)
             {
@@ -49,12 +50,18 @@ public class TileManager : MonoBehaviour
                 tiles[i, j].GetComponent<Tile>().SetCoords(i, j);
 
                 xPos += positionIncrement;
+
+                if((i + j) % 2 == 1)
+                {
+                    tiles[i, j].GetComponent<SpriteRenderer>().color = new Color(0.7f, 0.7f, 0.7f);
+                }
             }
 
             yPos -= positionIncrement;
         }
 
         _tilesLoaded = true;
+        _gameManager.CenterCamera();
     }
 
     public void GenerateMoveTiles(HeroScript heroScript)
@@ -86,7 +93,7 @@ public class TileManager : MonoBehaviour
 
     public void CreateMoveTiles(HeroScript heroScript)
     {
-        SpawnBasicTiles(1, heroScript.GetXPos(), heroScript.GetYPos());
+        SpawnBasicTiles(_heroScript.GetSpeed(), heroScript.GetXPos(), heroScript.GetYPos());
     }
 
     public void SpawnBasicTiles(int speed, int x, int y)

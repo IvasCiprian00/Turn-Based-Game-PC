@@ -8,6 +8,7 @@ public class MoveTile : Tile
     [SerializeField] private HeroManager _heroManager;
     [SerializeField] private TurnManager _turnManager;
     [SerializeField] private UIManager _uiManager;
+    private DarknessManager _darknessManager;
     private bool _attackTile;
 
     [SerializeField] private Sprite _attackTileSprite;
@@ -17,6 +18,7 @@ public class MoveTile : Tile
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
+        //_darknessManager = GameObject.Find("Darkness Manager").GetComponent<DarknessManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
@@ -53,6 +55,12 @@ public class MoveTile : Tile
 
         _tileManager.gameBoard[_xPos, _yPos] = _heroManager.heroesAlive[_turnManager.GetCurrentHero()];
         _tileManager.GenerateMoveTiles(heroScript);
+
+        if(_darknessManager != null)
+        {
+            _darknessManager.UpdateDarkness();
+        }
+
     }
 
     public void ShowCoords()

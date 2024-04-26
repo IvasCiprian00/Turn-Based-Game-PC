@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class SlimeBossScript : Enemy
 {
-    [SerializeField] private SkillManager _skillManager;
-
     [Header("Skills")]
     [SerializeField] private GameObject[] _slamTiles;
     [SerializeField] private int _slamDamage;
     [SerializeField] private int _slamCooldown;
     [SerializeField] private int _slamTimer;
     [SerializeField] private int _slamRange;
-    //
 
     public void Awake()
     {
-        _skillManager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
         SetManagers();
         SetHealthbar();
     }

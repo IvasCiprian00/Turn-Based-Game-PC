@@ -12,6 +12,7 @@ abstract public class Enemy : MonoBehaviour
         lowestHp
     }
 
+    protected SkillManager _skillManager;
     protected GameManager _gameManager;
     protected EnemyManager _enemyManager;
     protected HeroManager _heroManager;
@@ -74,6 +75,7 @@ abstract public class Enemy : MonoBehaviour
         _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _skillManager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
@@ -95,7 +97,6 @@ abstract public class Enemy : MonoBehaviour
 
     public void Movement()
     {
-
         if (_isMoving)
         {
             var step = _actionSpeed * Time.deltaTime;
@@ -268,6 +269,11 @@ abstract public class Enemy : MonoBehaviour
 
     public bool CanAttack(HeroScript targetScript)
     {
+        if (_isMoving)
+        {
+            return false;
+        }
+
         if (GetDistance(_xPos, targetScript.GetXPos(), _yPos, targetScript.GetYPos()) == 1)
         {
             return true;

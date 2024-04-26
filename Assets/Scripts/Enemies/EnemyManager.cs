@@ -32,7 +32,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Start()
     {
-        _gameManager.OnLevelLoaded();
+        _gameManager.OnEnemiesLoaded();
         _turnManager.OnLevelLoaded();
     }
 

@@ -162,7 +162,7 @@ MonoBehaviour:
   _speed: 1
   _attackCount: 1
   _waitDuration: 0.5
-  _actionSpeed: 5
+  _actionSpeed: 2
   _skillManager: {fileID: 0}
   _slamTiles: []
   _slamDamage: 10
