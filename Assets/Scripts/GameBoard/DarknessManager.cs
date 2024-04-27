@@ -8,7 +8,6 @@ public class DarknessManager : MonoBehaviour
     private GameManager _gameManager;
     private TileManager _tileManager;
 
-    public GameObject[,] darkTiles;
     [SerializeField] private GameObject _darkTile;
 
     public void Awake()
@@ -25,21 +24,19 @@ public class DarknessManager : MonoBehaviour
 
     public void SpawnDarkness()
     {
-        darkTiles = new GameObject[_gameManager.GetNrOfRows(), _gameManager.GetNrOfColumns()];
-
         for(int i = 0; i < _gameManager.GetNrOfRows(); i++)
         {
             for(int j = 0; j < _gameManager.GetNrOfColumns(); j++)
             {
-                darkTiles[i, j] = Instantiate(_darkTile, _tileManager.tiles[i, j].transform.position, Quaternion.identity);
-                darkTiles[i, j].GetComponent<Tile>().SetCoords(i, j);
+                GameObject reference = Instantiate(_darkTile, _tileManager.tiles[i, j].transform.position, Quaternion.identity);
+                reference.GetComponent<Tile>().SetCoords(i, j);
             }
         }
 
-        UpdateDarkness();
+        //UpdateDarkness();
     }
 
-    public void UpdateDarkness()
+    /*public void UpdateDarkness()
     {
         for(int k = 0; k < _heroManager.GetHeroCount(); k++)
         {
@@ -60,5 +57,5 @@ public class DarknessManager : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

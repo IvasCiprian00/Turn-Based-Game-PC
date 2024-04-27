@@ -58,7 +58,7 @@ public class MoveTile : Tile
 
         if(_darknessManager != null)
         {
-            _darknessManager.UpdateDarkness();
+            //_darknessManager.UpdateDarkness();
         }
 
     }
