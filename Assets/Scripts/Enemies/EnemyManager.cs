@@ -32,8 +32,8 @@ public class EnemyManager : MonoBehaviour
 
     public void Start()
     {
-        _gameManager.OnEnemiesLoaded();
-        _turnManager.OnLevelLoaded();
+        //_gameManager.LoadEnemies();
+        _turnManager.OnEnemiesLoaded();
     }
 
     public void SpawnEnemies()

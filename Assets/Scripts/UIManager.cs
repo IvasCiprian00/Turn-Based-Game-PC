@@ -23,6 +23,11 @@ public class UIManager : MonoBehaviour
 
     public void Update()
     {
+        if(!_gameManager.GetLevelLoaded())
+        {
+            return;
+        }
+
         int hp = _turnManager.GetCurrentHeroHp();
         int damage = _turnManager.GetCurrentHeroDamage();
 

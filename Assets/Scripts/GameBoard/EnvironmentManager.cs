@@ -23,10 +23,10 @@ public class EnvironmentManager : MonoBehaviour
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    public void Start()
+    /*public void Start()
     {
-        _gameManager.OnEnvironmentLoaded();
-    }
+        _gameManager.LoadEnvironment();
+    }*/
 
     public void SpawnEnvironment()
     {

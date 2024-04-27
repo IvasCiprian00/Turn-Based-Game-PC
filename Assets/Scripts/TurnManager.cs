@@ -58,7 +58,7 @@ public class TurnManager : MonoBehaviour
         _tileManager.GenerateMoveTiles(_heroScript);
     }
 
-    public void OnLevelLoaded()
+    public void OnEnemiesLoaded()
     {
         _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
     }

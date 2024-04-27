@@ -7,7 +7,7 @@ TagManager:
   - Hero
   - Move Tile
   - Enemy
-  - Timer Tile
+  - Light Source
   layers:
   - Default
   - TransparentFX

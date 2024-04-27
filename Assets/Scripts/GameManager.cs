@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _nrOfRows;
     [SerializeField] private int _nrOfColumns;
 
+    private bool _levelLoaded;
 
     private void Awake()
     {
@@ -36,24 +37,37 @@ public class GameManager : MonoBehaviour
 
         _levelNumber++;
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
+    }
 
+    public void StartLevel()
+    {
+        _levelLoaded = true;
         _turnManager.StartHeroTurns();
     }
 
-
-    public void OnEnemiesLoaded()
+    public void LoadEnemies()
     {
         _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
 
-        _enemyManager.SpawnEnemies();
+        if (_enemyManager != null)
+        {
+            _enemyManager.SpawnEnemies();
+        }
 
+        LoadEnvironment();
     }
 
-    public void OnEnvironmentLoaded()
+    public void LoadEnvironment()
     {
         _envManager = GameObject.Find("Environment Manager").GetComponent<EnvironmentManager>();
 
-        _envManager.SpawnEnvironment();
+        if(_envManager != null)
+        {
+            _envManager.SpawnEnvironment();
+        }
+
+        _levelLoaded = true;
+        _turnManager.StartHeroTurns();
     }
 
     public void OnDarknessLoaded()
@@ -96,4 +110,5 @@ public class GameManager : MonoBehaviour
 
     public int GetNrOfRows() {  return _nrOfRows; }
     public int GetNrOfColumns() {  return _nrOfColumns; }
+    public bool GetLevelLoaded() { return _levelLoaded; }
 }
