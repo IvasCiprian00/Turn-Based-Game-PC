@@ -19,8 +19,8 @@ public class EnvironmentManager : MonoBehaviour
 
     public void Awake()
     {
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager.SetManager(ref _tileManager);
     }
 
     /*public void Start()

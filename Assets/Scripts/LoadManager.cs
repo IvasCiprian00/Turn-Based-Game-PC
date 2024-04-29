@@ -11,21 +11,21 @@ public class LoadManager : MonoBehaviour
 
     void Awake()
     {
-        if(GameObject.Find("Darkness Manager") != null)
-        {
-            _darknessManager = GameObject.Find("Darkness Manager").GetComponent<DarknessManager>();
-        }
-        if (GameObject.Find("Environment Manager") != null)
-        {
-            _envManager = GameObject.Find("Environment Manager").GetComponent<EnvironmentManager>();
-        }
-        if (GameObject.Find("Enemy Manager") != null)
-        {
-            _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
-        }
         if (GameObject.Find("Game Manager") != null)
         {
             _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        }
+        if (GameObject.Find("Darkness Manager") != null)
+        {
+            _gameManager.SetManager(ref _darknessManager);
+        }
+        if (GameObject.Find("Environment Manager") != null)
+        {
+            _gameManager.SetManager(ref _envManager);
+        }
+        if (GameObject.Find("Enemy Manager") != null)
+        {
+            _gameManager.SetManager(ref _enemyManager);
         }
     }
 

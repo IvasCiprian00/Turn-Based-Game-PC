@@ -27,7 +27,8 @@ public class TileManager : MonoBehaviour
     public void Start()
     {
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
+        _gameManager.SetManager(ref _turnManager);
+        //_turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
     }
 
     public void GenerateGameBoard(int sizeX, int sizeY)
@@ -53,7 +54,7 @@ public class TileManager : MonoBehaviour
 
                 if((i + j) % 2 == 1)
                 {
-                    tiles[i, j].GetComponent<SpriteRenderer>().color = new Color(0.7f, 0.7f, 0.7f);
+                    tiles[i, j].GetComponent<SpriteRenderer>().color = new Color(0.9f, 0.9f, 0.9f);
                 }
             }
 

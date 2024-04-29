@@ -6,7 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     private GameManager _gameManager;
-    [SerializeField] private TurnManager _turnManager;
+    private TurnManager _turnManager;
     [SerializeField] private GameObject _endTurnButton;
     [SerializeField] private TextMeshProUGUI _hpValue;
     [SerializeField] private TextMeshProUGUI _damageValue;
@@ -17,8 +17,8 @@ public class UIManager : MonoBehaviour
 
     public void Awake()
     {
-        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager.SetManager(ref _turnManager);
     }
 
     public void Update()

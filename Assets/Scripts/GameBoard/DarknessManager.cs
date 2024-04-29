@@ -12,14 +12,9 @@ public class DarknessManager : MonoBehaviour
 
     public void Awake()
     {
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
-        _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-    }
-
-    public void Start()
-    {
-        _gameManager.OnDarknessLoaded();
+        _gameManager.SetManager(ref _heroManager);
+        _gameManager.SetManager(ref _tileManager);
     }
 
     public void SpawnDarkness()
@@ -33,29 +28,5 @@ public class DarknessManager : MonoBehaviour
             }
         }
 
-        //UpdateDarkness();
     }
-
-    /*public void UpdateDarkness()
-    {
-        for(int k = 0; k < _heroManager.GetHeroCount(); k++)
-        {
-            HeroScript heroScript = _heroManager.heroesAlive[k].GetComponent<HeroScript>();
-            int x = heroScript.GetXPos();
-            int y = heroScript.GetYPos();
-
-            for(int i = x - 2; i <= x + 2; i++)
-            {
-                for(int j = y - 2; j <= y + 2; j++)
-                {
-                    if (!_tileManager.PositionIsValid(i, j))
-                    {
-                        continue;
-                    }
-
-                    darkTiles[i, j].SetActive(false);
-                }
-            }
-        }
-    }*/
 }

@@ -24,10 +24,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
-        _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
-        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        SetManager(ref _tileManager);
+        SetManager(ref _heroManager);
+        SetManager(ref _turnManager);
+        SetManager(ref _uiManager);
     }
 
     public void Start()
@@ -43,38 +43,6 @@ public class GameManager : MonoBehaviour
     {
         _levelLoaded = true;
         _turnManager.StartHeroTurns();
-    }
-
-    public void LoadEnemies()
-    {
-        _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
-
-        if (_enemyManager != null)
-        {
-            _enemyManager.SpawnEnemies();
-        }
-
-        LoadEnvironment();
-    }
-
-    public void LoadEnvironment()
-    {
-        _envManager = GameObject.Find("Environment Manager").GetComponent<EnvironmentManager>();
-
-        if(_envManager != null)
-        {
-            _envManager.SpawnEnvironment();
-        }
-
-        _levelLoaded = true;
-        _turnManager.StartHeroTurns();
-    }
-
-    public void OnDarknessLoaded()
-    {
-        _darknessManager = GameObject.Find("Darkness Manager").GetComponent<DarknessManager>();
-
-        _darknessManager.SpawnDarkness();
     }
 
     public void GoToNextLevel()
@@ -111,4 +79,41 @@ public class GameManager : MonoBehaviour
     public int GetNrOfRows() {  return _nrOfRows; }
     public int GetNrOfColumns() {  return _nrOfColumns; }
     public bool GetLevelLoaded() { return _levelLoaded; }
+
+    public void SetManager(ref TurnManager manager)
+    {
+        manager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
+    }
+    public void SetManager(ref TileManager manager)
+    {
+        manager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
+    }
+    public void SetManager(ref LoadManager manager)
+    {
+        manager = GameObject.Find("Load Manager").GetComponent<LoadManager>();
+    }
+    public void SetManager(ref HeroManager manager)
+    {
+        manager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+    }
+    public void SetManager(ref EnemyManager manager)
+    {
+        manager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
+    }
+    public void SetManager(ref UIManager manager)
+    {
+        manager = GameObject.Find("Canvas").GetComponent<UIManager>();
+    }
+    public void SetManager(ref EnvironmentManager manager)
+    {
+        manager = GameObject.Find("Environment Manager").GetComponent<EnvironmentManager>();
+    }
+    public void SetManager(ref DarknessManager manager)
+    {
+        manager = GameObject.Find("Darkness Manager").GetComponent<DarknessManager>();
+    }
+    public void SetManager(ref SkillManager manager)
+    {
+        manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
+    }
 }

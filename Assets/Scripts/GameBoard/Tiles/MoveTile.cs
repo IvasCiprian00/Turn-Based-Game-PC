@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MoveTile : Tile
 {
-    [SerializeField] private TileManager _tileManager;
-    [SerializeField] private HeroManager _heroManager;
-    [SerializeField] private TurnManager _turnManager;
-    [SerializeField] private UIManager _uiManager;
+    private GameManager _gameManager;
+    private TileManager _tileManager;
+    private HeroManager _heroManager;
+    private TurnManager _turnManager;
+    private UIManager _uiManager;
     private DarknessManager _darknessManager;
     private bool _attackTile;
 
@@ -15,11 +16,11 @@ public class MoveTile : Tile
 
     public void Awake()
     {
-        _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
-        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
-        //_darknessManager = GameObject.Find("Darkness Manager").GetComponent<DarknessManager>();
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager.SetManager(ref _turnManager);
+        _gameManager.SetManager(ref _heroManager);
+        _gameManager.SetManager(ref _tileManager);
+        _gameManager.SetManager(ref _uiManager);
     }
 
     public void Start()

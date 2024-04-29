@@ -207,24 +207,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obstacles:
-  - obstacle: {fileID: 1984944129177357079, guid: 9f467fd64438ea24e896be878a9837f9, type: 3}
-    _xPos: 2
-    _yPos: 2
-  - obstacle: {fileID: 1984944129177357079, guid: 9f467fd64438ea24e896be878a9837f9, type: 3}
+  - obstacle: {fileID: 8078606472246156849, guid: 21ec45ee3a9737c429a9eee8a2b1fde8, type: 3}
     _xPos: 4
     _yPos: 2
-  - obstacle: {fileID: 1984944129177357079, guid: 9f467fd64438ea24e896be878a9837f9, type: 3}
-    _xPos: 2
-    _yPos: 4
-  - obstacle: {fileID: 1984944129177357079, guid: 9f467fd64438ea24e896be878a9837f9, type: 3}
-    _xPos: 5
+  - obstacle: {fileID: 8078606472246156849, guid: 9e30e8bd6993e1e448648577ac2e4c98, type: 3}
+    _xPos: 4
     _yPos: 3
-  - obstacle: {fileID: 8078606472246156849, guid: f6cd663e53422d344b305bb9ca9e8f54, type: 3}
-    _xPos: 5
-    _yPos: 7
-  - obstacle: {fileID: 8078606472246156849, guid: f6cd663e53422d344b305bb9ca9e8f54, type: 3}
+  - obstacle: {fileID: 8078606472246156849, guid: d24fc837ca99f3a4a8808d213053e26c, type: 3}
     _xPos: 4
-    _yPos: 8
+    _yPos: 4
+  - obstacle: {fileID: 8078606472246156849, guid: db9c0ab9ed1c80d46b4a520b3b9dcf3b, type: 3}
+    _xPos: 4
+    _yPos: 5
 --- !u!4 &2052036979
 Transform:
   m_ObjectHideFlags: 0

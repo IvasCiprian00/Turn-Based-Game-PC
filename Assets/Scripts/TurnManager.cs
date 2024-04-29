@@ -7,6 +7,7 @@ public class TurnManager : MonoBehaviour
 {
     [SerializeField] private GameObject _selectedEffect;
 
+    private GameManager _gameManager;
     private UIManager _uiManager;
     private HeroManager _heroManager;
     private TileManager _tileManager;
@@ -23,9 +24,10 @@ public class TurnManager : MonoBehaviour
 
     private void Awake()
     {
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
-        _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager.SetManager(ref _uiManager);
+        _gameManager.SetManager(ref _tileManager);
+        _gameManager.SetManager(ref _heroManager);
     }
 
     private void Start()
@@ -60,7 +62,7 @@ public class TurnManager : MonoBehaviour
 
     public void OnEnemiesLoaded()
     {
-        _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
+        _gameManager.SetManager(ref _enemyManager);
     }
 
     public void StartEnemyTurns()

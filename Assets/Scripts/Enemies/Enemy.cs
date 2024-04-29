@@ -71,12 +71,12 @@ abstract public class Enemy : MonoBehaviour
     public void SetManagers()
     {
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
-        _enemyManager = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>();
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
-        _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
-        _skillManager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _gameManager.SetManager(ref _turnManager);
+        _gameManager.SetManager(ref _enemyManager);
+        _gameManager.SetManager(ref _tileManager);
+        _gameManager.SetManager(ref _heroManager);
+        _gameManager.SetManager(ref _skillManager);
+        _gameManager.SetManager(ref _uiManager);
     }
 
     public void SetHealthbar()
