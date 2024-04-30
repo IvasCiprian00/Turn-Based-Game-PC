@@ -32,11 +32,14 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        _tileManager.GenerateGameBoard(_nrOfRows, _nrOfColumns);
-        _heroManager.SpawnHeroes();
-
         _levelNumber++;
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
+    }
+
+    public void InitializeGrid()
+    {
+        _tileManager.GenerateGameBoard(_nrOfRows, _nrOfColumns);
+        _heroManager.SpawnHeroes();
     }
 
     public void StartLevel()
@@ -79,6 +82,11 @@ public class GameManager : MonoBehaviour
     public int GetNrOfRows() {  return _nrOfRows; }
     public int GetNrOfColumns() {  return _nrOfColumns; }
     public bool GetLevelLoaded() { return _levelLoaded; }
+    public void SetGridSize(int x, int y)
+    {
+        _nrOfRows = x;
+        _nrOfColumns = y;
+    }
 
     public void SetManager(ref TurnManager manager)
     {

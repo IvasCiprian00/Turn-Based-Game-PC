@@ -35,10 +35,6 @@ public class TurnManager : MonoBehaviour
         _selectedEffect = Instantiate(_selectedEffect);
     }
 
-    private void Update()
-    {
-        _selectedEffect.transform.position = _heroManager.heroesAlive[_currentHero].transform.position;
-    }
 
     public void EndTurn()
     {
@@ -56,6 +52,9 @@ public class TurnManager : MonoBehaviour
         _heroScript = _heroManager.heroesAlive[_currentHero].GetComponent<HeroScript>();
         _speedLeft = _heroScript.GetSpeed();
         _attacksLeft = _heroScript.GetNrOfAttacks();
+
+        _selectedEffect.transform.position = _heroManager.heroesAlive[_currentHero].transform.position;
+        _selectedEffect.transform.parent = _heroManager.heroesAlive[_currentHero].transform;
 
         _tileManager.GenerateMoveTiles(_heroScript);
     }
@@ -86,6 +85,9 @@ public class TurnManager : MonoBehaviour
         _selectedEffect.SetActive(true);
         _currentHero = 0;
         //_heroTurn = true;
+
+        _selectedEffect.transform.position = _heroManager.heroesAlive[_currentHero].transform.position;
+        _selectedEffect.transform.parent = _heroManager.heroesAlive[_currentHero].transform;
 
         _heroScript = _heroManager.heroesAlive[_currentHero].GetComponent<HeroScript>();
         _speedLeft = _heroScript.GetSpeed();

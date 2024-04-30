@@ -31,14 +31,20 @@ public class LoadManager : MonoBehaviour
 
     private void Start()
     {
-        if(_darknessManager != null)
+        if (_envManager != null)
         {
-            _darknessManager.SpawnDarkness();
+            int x = _envManager.GetNrOfRows();
+            int y = _envManager.GetNrOfColumns();
+
+            _gameManager.SetGridSize(x, y);
+            _gameManager.InitializeGrid();
+
+            _envManager.SpawnEnvironment();
         }
 
-        if(_envManager != null)
+        if (_darknessManager != null)
         {
-            _envManager.SpawnEnvironment();
+            _darknessManager.SpawnDarkness();
         }
 
         if(_enemyManager != null)

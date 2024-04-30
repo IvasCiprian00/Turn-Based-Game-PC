@@ -15,6 +15,8 @@ public class EnvironmentManager : MonoBehaviour
         public int _yPos;
     }
 
+    [SerializeField] private int _nrOfRows;
+    [SerializeField] private int _nrOfColumns;
     [SerializeField] private Obstacle[] _obstacles;
 
     public void Awake()
@@ -37,4 +39,7 @@ public class EnvironmentManager : MonoBehaviour
             _tileManager.gameBoard[_obstacles[i]._xPos, _obstacles[i]._yPos] = reference;
         }
     }
+
+    public int GetNrOfRows() { return _nrOfRows; }
+    public int GetNrOfColumns() {  return _nrOfColumns; }
 }

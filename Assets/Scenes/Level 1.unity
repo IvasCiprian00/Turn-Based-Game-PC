@@ -206,6 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377c286936999134cbed0ccc50eb4025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nrOfRows: 7
+  _nrOfColumns: 11
   _obstacles:
   - obstacle: {fileID: 8078606472246156849, guid: 21ec45ee3a9737c429a9eee8a2b1fde8, type: 3}
     _xPos: 4
