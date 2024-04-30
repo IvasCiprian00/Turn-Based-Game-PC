@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using TMPro.EditorUtilities;
 using UnityEngine;
 
@@ -35,7 +36,6 @@ public class TurnManager : MonoBehaviour
         _selectedEffect = Instantiate(_selectedEffect);
     }
 
-
     public void EndTurn()
     {
         _currentHero++;
@@ -66,6 +66,7 @@ public class TurnManager : MonoBehaviour
 
     public void StartEnemyTurns()
     {
+        _selectedEffect.transform.parent = null;
         _selectedEffect.SetActive(false);
         _uiManager.DisplayUI(false);
 
@@ -150,12 +151,14 @@ public class TurnManager : MonoBehaviour
 
     public void ResetHeroes()
     {
+        _selectedEffect.transform.parent = null;
+
         for(int i = 0; i < _heroManager.GetHeroCount(); i++) 
         {
             Destroy(_heroManager.heroesAlive[i]);
         }
 
-        _heroManager.SpawnHeroes();
+        //_heroManager.SpawnHeroes();
     }
 
     public int GetCurrentEnemy() { return _currentEnemy; }

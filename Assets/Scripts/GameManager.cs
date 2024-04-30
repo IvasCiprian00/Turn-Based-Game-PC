@@ -38,6 +38,12 @@ public class GameManager : MonoBehaviour
 
     public void InitializeGrid()
     {
+        GameObject[] activeTiles = GameObject.FindGameObjectsWithTag("Tile");
+        for(int i = 0; i < activeTiles.Length; i++)
+        {
+            Destroy(activeTiles[i]);
+        }
+
         _tileManager.GenerateGameBoard(_nrOfRows, _nrOfColumns);
         _heroManager.SpawnHeroes();
     }
@@ -53,7 +59,6 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(_levelNumber);
 
         _turnManager.ResetHeroes();
-        _turnManager.StartHeroTurns();
         _uiManager.HideEndOfLevelButtons();
 
         _levelNumber++;
@@ -65,7 +70,6 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(_levelNumber);
 
         _turnManager.ResetHeroes();
-        _turnManager.StartHeroTurns();
         _uiManager.HideEndOfLevelButtons();
 
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);

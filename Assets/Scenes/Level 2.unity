@@ -215,10 +215,10 @@ MonoBehaviour:
   enemyList:
   - enemy: {fileID: 516937654099016190, guid: 0ff414194b8c56a45a7765a51a363043, type: 3}
     startingXPos: 1
-    startingYPos: 3
+    startingYPos: 2
   - enemy: {fileID: 516937654099016190, guid: 0ff414194b8c56a45a7765a51a363043, type: 3}
     startingXPos: 2
-    startingYPos: 3
+    startingYPos: 2
   enemiesAlive: []
   _enemyCount: 0
   _enemyScript: {fileID: 0}
@@ -237,9 +237,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1800974132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800974134}
+  - component: {fileID: 1800974133}
+  m_Layer: 0
+  m_Name: Environment Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1800974133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800974132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377c286936999134cbed0ccc50eb4025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nrOfRows: 5
+  _nrOfColumns: 5
+  _obstacles: []
+--- !u!4 &1800974134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800974132}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1608176540}
   - {fileID: 975462587}
+  - {fileID: 1800974134}

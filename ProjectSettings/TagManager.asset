@@ -8,6 +8,8 @@ TagManager:
   - Move Tile
   - Enemy
   - Light Source
+  - Timer Tile
+  - Tile
   layers:
   - Default
   - TransparentFX
