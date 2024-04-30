@@ -28,7 +28,6 @@ public class TileManager : MonoBehaviour
     {
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         _gameManager.SetManager(ref _turnManager);
-        //_turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
     }
 
     public void GenerateGameBoard(int sizeX, int sizeY)

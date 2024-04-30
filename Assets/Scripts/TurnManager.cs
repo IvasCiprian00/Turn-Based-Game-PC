@@ -22,6 +22,7 @@ public class TurnManager : MonoBehaviour
     private int _currentEnemy;
 
     private bool _heroesSpawned;
+    private bool _gameOver;
 
     private void Awake()
     {
@@ -133,7 +134,7 @@ public class TurnManager : MonoBehaviour
 
         else if (_enemyManager.GetEnemyCount() <= 0)
         {
-            //_gameOver = true;
+            _gameOver = true;
 
             _tileManager.DestroyMoveTiles();
             //_uiManager.HideSkills();
@@ -157,8 +158,6 @@ public class TurnManager : MonoBehaviour
         {
             Destroy(_heroManager.heroesAlive[i]);
         }
-
-        //_heroManager.SpawnHeroes();
     }
 
     public int GetCurrentEnemy() { return _currentEnemy; }
@@ -168,4 +167,5 @@ public class TurnManager : MonoBehaviour
     public void DecreaseSpeedLeft(int x) { _speedLeft -= x;  }
     public int GetCurrentHeroHp() { return _heroScript.GetHp(); }
     public int GetCurrentHeroDamage() {  return _heroScript.GetDamage(); }
+    public bool IsGameOver() {  return _gameOver; }
 }

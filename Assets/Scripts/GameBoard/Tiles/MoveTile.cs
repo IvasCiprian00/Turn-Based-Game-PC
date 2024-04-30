@@ -9,7 +9,6 @@ public class MoveTile : Tile
     private HeroManager _heroManager;
     private TurnManager _turnManager;
     private UIManager _uiManager;
-    private DarknessManager _darknessManager;
     private bool _attackTile;
 
     [SerializeField] private Sprite _attackTileSprite;
@@ -42,7 +41,11 @@ public class MoveTile : Tile
             _uiManager.DisplayDamage(_tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().gameObject, damageDealt);
             _tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().TakeDamage(damageDealt);
             _turnManager.DecreaseAttacksLeft();
-            _tileManager.GenerateMoveTiles(heroScript);
+
+            if (!_turnManager.IsGameOver())
+            {
+                _tileManager.GenerateMoveTiles(heroScript);
+            }
 
             return;
         }
@@ -56,11 +59,6 @@ public class MoveTile : Tile
 
         _tileManager.gameBoard[_xPos, _yPos] = _heroManager.heroesAlive[_turnManager.GetCurrentHero()];
         _tileManager.GenerateMoveTiles(heroScript);
-
-        if(_darknessManager != null)
-        {
-            //_darknessManager.UpdateDarkness();
-        }
 
     }
 

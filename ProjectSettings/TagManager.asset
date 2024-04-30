@@ -10,6 +10,7 @@ TagManager:
   - Light Source
   - Timer Tile
   - Tile
+  - Obstacle
   layers:
   - Default
   - TransparentFX

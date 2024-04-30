@@ -44,6 +44,12 @@ public class GameManager : MonoBehaviour
             Destroy(activeTiles[i]);
         }
 
+        GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        for(int i = 0; i < obstacles.Length; i++)
+        {
+            Destroy(obstacles[i]);
+        }
+
         _tileManager.GenerateGameBoard(_nrOfRows, _nrOfColumns);
         _heroManager.SpawnHeroes();
     }
