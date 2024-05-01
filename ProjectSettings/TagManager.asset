@@ -54,6 +54,9 @@ TagManager:
   - name: Foreground
     uniqueID: 77102267
     locked: 0
+  - name: Tilemap
+    uniqueID: 2621299911
+    locked: 0
   - name: Characters
     uniqueID: 1151336709
     locked: 0

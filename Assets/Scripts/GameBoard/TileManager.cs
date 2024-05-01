@@ -33,7 +33,7 @@ public class TileManager : MonoBehaviour
     public void GenerateGameBoard(int sizeX, int sizeY)
     {
         float xPos = 0;
-        float yPos = 0;
+        float yPos = 0.125f;
         //float positionIncrement = Mathf.Abs(xPos) * 2 / (sizeY - 1);
         float positionIncrement = 0.25f; //1 tile is 25 pixels wide so an increment of 0.25 at 100 pixels per unit would get us consecutive tiles with no space inbetween
 
@@ -42,7 +42,7 @@ public class TileManager : MonoBehaviour
 
         for (int i = 0; i < sizeX; i++)
         {
-            xPos = 0;
+            xPos = -0.125f;
 
             for (int j = 0; j < sizeY; j++)
             {
