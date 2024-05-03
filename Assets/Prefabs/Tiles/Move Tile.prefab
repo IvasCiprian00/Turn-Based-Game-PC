@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1151336709
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e14672d9c0d8997458f7bb6b83705dd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -143,8 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a385a93a1e7e7646b4e71b99a9b593f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileManager: {fileID: 0}
-  _heroManager: {fileID: 0}
-  _turnManager: {fileID: 0}
-  _uiManager: {fileID: 0}
   _attackTileSprite: {fileID: 21300000, guid: 3300b78737124a4478e3827d8fafd04a, type: 3}
+  _healTileSprite: {fileID: 21300000, guid: 72ad0ed079900b745a5710ec0e735d08, type: 3}

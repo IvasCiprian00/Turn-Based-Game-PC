@@ -11,6 +11,7 @@ TagManager:
   - Timer Tile
   - Tile
   - Obstacle
+  - Tall Obstacle
   layers:
   - Default
   - TransparentFX

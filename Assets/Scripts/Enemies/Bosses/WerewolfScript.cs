@@ -17,24 +17,6 @@ public class WerewolfScript : Enemy
 
     [SerializeField] HpThreshold[] _hpThreshold;
 
-    public void Awake()
-    {
-        SetManagers();
-        SetHealthbar();
-    }
-
-    public void Start()
-    {
-        _hp = _maxHp;
-
-        UpdateHealthbar();
-    }
-
-    public void Update()
-    {
-        Movement();
-    }
-
     override
     public void StartTurn()
     {

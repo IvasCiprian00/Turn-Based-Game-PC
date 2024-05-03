@@ -20,14 +20,14 @@ public class HeroScript : MonoBehaviour
         mixed
     }
 
-    [SerializeField] private TileManager _tileManager;
-    [SerializeField] private HeroManager _heroManager;
-    [SerializeField] private HealthbarScript _healthbarScript;
-    //[SerializeField] private GameManager _gmManager;
-    //[SerializeField] private UIManager _uiManager;
+    private TileManager _tileManager;
+    private HeroManager _heroManager;
+    private HealthbarScript _healthbarScript;
+    private GameManager _gameManager;
+    private UIManager _uiManager;
 
-    [SerializeField] private int _xPos;
-    [SerializeField] private int _yPos;
+    private int _xPos;
+    private int _yPos;
     [SerializeField] Animator _animator;
 
     [Header("Hero Attributes")]
@@ -35,7 +35,7 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private int _maxHp;
     [SerializeField] private int _damage;
     [SerializeField] private int _speed;
-    [SerializeField] private int _nrOfAttacks;
+    [SerializeField] private int _nrOfActions;
     [SerializeField] private int _range;
     public GameObject[] skills;
 
@@ -48,8 +48,9 @@ public class HeroScript : MonoBehaviour
 
     public void Awake()
     {
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
-        _heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager.SetManager(ref _tileManager);
+        _gameManager.SetManager(ref _heroManager);
         _healthbarScript = GetComponentInChildren<HealthbarScript>();
         
     }
@@ -63,8 +64,8 @@ public class HeroScript : MonoBehaviour
             _healthbarScript.SetHp(_hp);
             _healthbarScript.SetMaxHp(_maxHp);
         }
-        //gmManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        //uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+
+        GetComponentInChildren<SpriteRenderer>().sortingOrder = _xPos;
     }
 
     public void Update()
@@ -94,7 +95,6 @@ public class HeroScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        //uiManager.DisplayDamage(gameObject, damage);
         _hp -= damage;
 
         if (_healthbarScript != null)
@@ -144,8 +144,17 @@ public class HeroScript : MonoBehaviour
 
     public void SetCoords(int x, int y)
     {
+        GetComponentInChildren<SpriteRenderer>().sortingOrder = x;
         _xPos = x;
         _yPos = y;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Obstacle")
+        {
+            Debug.Log("YEY");
+        }
     }
 
     public int GetXPos() { return _xPos; }
@@ -157,5 +166,7 @@ public class HeroScript : MonoBehaviour
     public int GetMaxHp() { return _maxHp; }
     public string GetAttackType() { return _attackType.ToString(); }
     public int GetRange() { return _range; }
-    public int GetNrOfAttacks() { return _nrOfAttacks; }
+    public int GetNrOfActions() { return _nrOfActions; }
+    virtual public bool IsHealer() { return false; }
+    virtual public int GetHealAmount() { return 0; }
 }

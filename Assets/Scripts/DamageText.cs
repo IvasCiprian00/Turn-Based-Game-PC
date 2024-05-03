@@ -14,6 +14,13 @@ public class DamageText : MonoBehaviour
 
     public void SetText(int damage)
     {
-        gameObject.GetComponent<TextMeshProUGUI>().text = damage.ToString();
+        if(damage > 0)
+        {
+            gameObject.GetComponent<TextMeshProUGUI>().text = "-" + damage.ToString();
+            return;
+        }
+
+        gameObject.GetComponent<TextMeshProUGUI>().text = "+" + (-damage).ToString();
+        gameObject.GetComponent<TextMeshProUGUI>().color = Color.green;
     }
 }

@@ -10,8 +10,10 @@ public class MoveTile : Tile
     private TurnManager _turnManager;
     private UIManager _uiManager;
     private bool _attackTile;
+    private bool _healTile;
 
     [SerializeField] private Sprite _attackTileSprite;
+    [SerializeField] private Sprite _healTileSprite;
 
     public void Awake()
     {
@@ -33,6 +35,22 @@ public class MoveTile : Tile
         int pastXPos = heroScript.GetXPos();
         int pastYPos = heroScript.GetYPos();
 
+        if (_healTile)
+        {
+            int healAmount = heroScript.GetHealAmount();
+
+            _uiManager.DisplayDamage(_tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().gameObject, -healAmount);
+            _tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().Heal(healAmount);
+
+            _turnManager.DecreaseActionsLeft();
+
+            if (!_turnManager.IsGameOver())
+            {
+                _tileManager.GenerateMoveTiles(heroScript);
+            }
+
+            return;
+        }
 
         if (_attackTile)
         {
@@ -40,7 +58,7 @@ public class MoveTile : Tile
 
             _uiManager.DisplayDamage(_tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().gameObject, damageDealt);
             _tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().TakeDamage(damageDealt);
-            _turnManager.DecreaseAttacksLeft();
+            _turnManager.DecreaseActionsLeft();
 
             if (!_turnManager.IsGameOver())
             {
@@ -75,5 +93,15 @@ public class MoveTile : Tile
         }
 
         _attackTile = attacking;
+    }
+
+    public void SetHealing(bool healing)
+    {
+        if(healing)
+        {
+            GetComponent<SpriteRenderer>().sprite = _healTileSprite;
+        }
+
+        _healTile = healing;
     }
 }

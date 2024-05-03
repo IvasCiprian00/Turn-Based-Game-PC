@@ -16,7 +16,7 @@ public class TurnManager : MonoBehaviour
     private HeroScript _heroScript;
     private Enemy _enemyScript;
 
-    private int _attacksLeft;
+    private int _actionsLeft;
     private int _speedLeft;
     private int _currentHero;
     private int _currentEnemy;
@@ -52,7 +52,7 @@ public class TurnManager : MonoBehaviour
 
         _heroScript = _heroManager.heroesAlive[_currentHero].GetComponent<HeroScript>();
         _speedLeft = _heroScript.GetSpeed();
-        _attacksLeft = _heroScript.GetNrOfAttacks();
+        _actionsLeft = _heroScript.GetNrOfActions();
 
         _selectedEffect.transform.position = _heroManager.heroesAlive[_currentHero].transform.position;
         _selectedEffect.transform.parent = _heroManager.heroesAlive[_currentHero].transform;
@@ -93,7 +93,7 @@ public class TurnManager : MonoBehaviour
 
         _heroScript = _heroManager.heroesAlive[_currentHero].GetComponent<HeroScript>();
         _speedLeft = _heroScript.GetSpeed();
-        _attacksLeft = _heroScript.GetNrOfAttacks();
+        _actionsLeft = _heroScript.GetNrOfActions();
 
         _tileManager.GenerateMoveTiles(_heroScript);
     }
@@ -161,11 +161,12 @@ public class TurnManager : MonoBehaviour
     }
 
     public int GetCurrentEnemy() { return _currentEnemy; }
-    public int GetAttacksLeft() {  return _attacksLeft; }
-    public void DecreaseAttacksLeft() { _attacksLeft--; }
+    public int GetActionsLeft() {  return _actionsLeft; }
+    public void DecreaseActionsLeft() { _actionsLeft--; }
     public int GetSpeedLeft() {  return _speedLeft; }
     public void DecreaseSpeedLeft(int x) { _speedLeft -= x;  }
     public int GetCurrentHeroHp() { return _heroScript.GetHp(); }
     public int GetCurrentHeroDamage() {  return _heroScript.GetDamage(); }
     public bool IsGameOver() {  return _gameOver; }
+    public void SetGameOver(bool pp) { _gameOver = pp; }
 }

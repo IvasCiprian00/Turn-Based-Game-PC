@@ -11,25 +11,13 @@ public class SlimeBossScript : Enemy
     [SerializeField] private int _slamTimer;
     [SerializeField] private int _slamRange;
 
-    public void Awake()
+    override public void Start()
     {
-        SetManagers();
-        SetHealthbar();
-    }
-
-    public void Start()
-    {
-        _hp = _maxHp;
+        base.Start();
 
         _slamTimer = _slamCooldown;
-
-        UpdateHealthbar();
     }
 
-    public void Update()
-    {
-        Movement();
-    }
 
     override public void StartTurn()
     {

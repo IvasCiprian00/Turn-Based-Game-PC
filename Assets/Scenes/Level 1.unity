@@ -195,7 +195,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1673667385
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -5661,6 +5661,9 @@ MonoBehaviour:
   - obstacle: {fileID: 8078606472246156849, guid: db9c0ab9ed1c80d46b4a520b3b9dcf3b, type: 3}
     _xPos: 4
     _yPos: 5
+  - obstacle: {fileID: 1984944129177357079, guid: dde75343d70fcf44c9ea5e76bd340e1d, type: 3}
+    _xPos: 1
+    _yPos: 1
 --- !u!4 &2052036979
 Transform:
   m_ObjectHideFlags: 0

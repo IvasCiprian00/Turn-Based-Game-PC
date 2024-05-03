@@ -75,9 +75,9 @@ public class TileManager : MonoBehaviour
             CreateMoveTiles(heroScript);
         }
 
-        if (_turnManager.GetAttacksLeft() != 0)
+        if (_turnManager.GetActionsLeft() != 0)
         {
-            CreateAttackTiles();
+            CreateActionTiles();
         }
     }
 
@@ -123,7 +123,7 @@ public class TileManager : MonoBehaviour
     }
 
 
-    public void CreateAttackTiles()
+    public void CreateActionTiles()
     {
         string attackType = _heroScript.GetAttackType();
 
@@ -176,6 +176,15 @@ public class TileManager : MonoBehaviour
             if (gameBoard[currentLine, currentCol] == null)
             {
                 continue;
+            }
+
+            if (gameBoard[currentLine, currentCol].tag == "Hero")
+            {
+                if (_heroScript.IsHealer())
+                {
+                    GameObject reference = SpawnTile(_moveTile, currentLine, currentCol);
+                    reference.GetComponent<MoveTile>().SetHealing(true);
+                }
             }
 
             if (gameBoard[currentLine, currentCol].tag == "Enemy")

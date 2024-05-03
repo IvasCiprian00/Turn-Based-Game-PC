@@ -57,8 +57,6 @@ abstract public class Enemy : MonoBehaviour
 
     protected int minPathLength;
     protected bool _canReach;
-    protected int endX;
-    protected int endY;
     protected PathCoordinates[] currentPath;
     protected PathCoordinates[] shortestPath;
     protected PathGrid[,] grid;
@@ -68,6 +66,25 @@ abstract public class Enemy : MonoBehaviour
 
     protected bool _isMoving;
     protected GameObject _targetTile;
+
+    public void Awake()
+    {
+        SetManagers();
+        SetHealthbar();
+    }
+
+    virtual public void Start()
+    {
+        _hp = _maxHp;
+        UpdateHealthbar();
+        GetComponentInChildren<SpriteRenderer>().sortingOrder = _xPos;
+    }
+
+    virtual public void Update()
+    {
+        Movement();
+    }
+
     public void SetManagers()
     {
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -110,7 +127,7 @@ abstract public class Enemy : MonoBehaviour
         }
     }
 
-    public void FindTarget()
+    virtual public void FindTarget()
     {
         List<GameObject> unreachableHeroes = new List<GameObject>();
 
@@ -183,15 +200,12 @@ abstract public class Enemy : MonoBehaviour
     }
 
 
-    public bool VerifyTarget()
+    virtual public bool VerifyTarget()
     {
         minPathLength = 100;
 
         currentPath = new PathCoordinates[100];
         shortestPath = new PathCoordinates[100];
-
-        endX = _heroScript.GetXPos();
-        endY = _heroScript.GetYPos();
 
         CopyGrid();
         PathFinder(_xPos, _yPos, 0);
@@ -257,7 +271,7 @@ abstract public class Enemy : MonoBehaviour
         }
     }
 
-    public bool CanAttack(HeroScript targetScript, int x, int y)
+    virtual public bool CanAttack(HeroScript targetScript, int x, int y)
     {
         if (GetDistance(x, targetScript.GetXPos(), y, targetScript.GetYPos()) == 1)
         {
@@ -267,7 +281,7 @@ abstract public class Enemy : MonoBehaviour
         return false;
     }
 
-    public bool CanAttack(HeroScript targetScript)
+    virtual public bool CanAttack(HeroScript targetScript)
     {
         if (_isMoving)
         {
@@ -356,6 +370,7 @@ abstract public class Enemy : MonoBehaviour
 
     public void SetCoords(int x, int y)
     {
+        GetComponentInChildren<SpriteRenderer>().sortingOrder = x;
         _xPos = x;
         _yPos = y;
     }

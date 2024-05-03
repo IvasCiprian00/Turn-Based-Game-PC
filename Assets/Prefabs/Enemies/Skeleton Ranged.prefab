@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 459402205674517001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.252, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0.025, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 759441042426397254}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 1151336709
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8e28263e822da7242a997ddf2f8281ef, type: 3}
+  m_Color: {r: 0.3490566, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,9 +115,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 759441042426397254}
-  - component: {fileID: 5349217291724827675}
+  - component: {fileID: 597692980218793819}
   m_Layer: 0
-  m_Name: Slime Boss
+  m_Name: Skeleton Ranged
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,15 +133,15 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8245747930304898849}
   - {fileID: 3622263007021251701}
+  - {fileID: 8245747930304898849}
   - {fileID: 4156656822697204568}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5349217291724827675
+--- !u!114 &597692980218793819
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,24 +150,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 516937654099016190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f07c8c1558f264f8062a3f63332a9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f5ab4b53d69e6840a357d4bd087bc07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _healthbarScript: {fileID: 0}
   _targetType: 0
   _animator: {fileID: 1284396858281712183}
   _hp: 0
-  _maxHp: 50
-  _damage: 5
-  _speed: 1
+  _maxHp: 5
+  _damage: 4
+  _speed: 3
   _attackCount: 1
-  _waitDuration: 0.5
-  _actionSpeed: 2
-  _slamTiles: []
-  _slamDamage: 10
-  _slamCooldown: 4
-  _slamTimer: 0
-  _slamRange: 2
+  _waitDuration: 0.4
+  _actionSpeed: 1
+  _range: 2
 --- !u!1 &5286080166719966418
 GameObject:
   m_ObjectHideFlags: 0

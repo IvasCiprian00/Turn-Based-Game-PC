@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void StartLevel()
     {
+        _turnManager.SetGameOver(false);
         _levelLoaded = true;
         _turnManager.StartHeroTurns();
     }

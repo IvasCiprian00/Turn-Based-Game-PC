@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Slime Level.unity
+    guid: 6673016191fb03a459c41d9807900d86
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 1c87edd595851854cb6c318cfe1552e1
   - enabled: 1
@@ -20,7 +23,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Werewolf Level.unity
     guid: 99906e6f1c27f7048bc5c0eeffae35e2
-  - enabled: 0
-    path: Assets/Scenes/Slime Level.unity
-    guid: 96962c271b4af4c4997fcee641f9d79a
   m_configObjects: {}
