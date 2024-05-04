@@ -238,7 +238,7 @@ abstract public class Enemy : MonoBehaviour
         }
     }
 
-    public void PathFinder(int x, int y, int pathLength)
+    virtual public void PathFinder(int x, int y, int pathLength)
     {
         if (CanAttack(_heroScript, x, y))
         {

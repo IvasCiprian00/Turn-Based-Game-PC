@@ -136,8 +136,8 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3622263007021251701}
   - {fileID: 8245747930304898849}
+  - {fileID: 3622263007021251701}
   - {fileID: 4156656822697204568}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,6 +164,7 @@ MonoBehaviour:
   _waitDuration: 0.4
   _actionSpeed: 1
   _range: 2
+  temp: {fileID: 8078606472246156849, guid: f6cd663e53422d344b305bb9ca9e8f54, type: 3}
 --- !u!1 &5286080166719966418
 GameObject:
   m_ObjectHideFlags: 0

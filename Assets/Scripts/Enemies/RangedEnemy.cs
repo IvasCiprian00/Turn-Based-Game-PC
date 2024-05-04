@@ -5,6 +5,8 @@ using UnityEngine;
 public class RangedEnemy : Enemy
 {
     [SerializeField] private int _range;
+    public GameObject temp;
+    private GameObject _tempTarget;
 
     int[] rangedl = { -1, -1, -1, 0, 1, 1, 1, 0 };
     int[] rangedc = { -1, 0, 1, 1, 1, 0, -1, -1 };
@@ -24,17 +26,17 @@ public class RangedEnemy : Enemy
         {
             FindTarget();
 
-            if (CanAttack(_heroScript) && attacksLeft == 0)
+            if (CanAttack() && attacksLeft == 0)
             {
                 break;
             }
 
-            if (!CanAttack(_heroScript) && speedLeft == 0)
+            if (!CanAttack() && speedLeft == 0)
             {
                 break;
             }
 
-            if (CanAttack(_heroScript))
+            if (CanAttack())
             {
                 _uiManager.DisplayDamage(_heroScript.gameObject, _damage);
                 _heroScript.TakeDamage(_damage);
@@ -52,12 +54,46 @@ public class RangedEnemy : Enemy
         EndTurn();
     }
 
+    override public void PathFinder(int x, int y, int pathLength)
+    {
+        if (CanAttack(x, y))
+        {
+            _canReach = true;
+            currentPath[pathLength].x = x;
+            currentPath[pathLength].y = y;
+            pathLength++;
+
+            if (pathLength < minPathLength)
+            {
+                _heroScript = _tempTarget.GetComponent<HeroScript>();
+                minPathLength = pathLength;
+
+                for (int i = 0; i < pathLength; i++)
+                {
+                    shortestPath[i] = currentPath[i];
+                }
+            }
+            return;
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            if (PositionIsValid(x + dl[i], y + dc[i], pathLength))
+            {
+                grid[x, y].state = -1;
+                grid[x, y].distance = pathLength;
+                currentPath[pathLength].x = x;
+                currentPath[pathLength].y = y;
+                PathFinder(x + dl[i], y + dc[i], pathLength + 1);
+            }
+        }
+    }
+
     public override void FindTarget()
     {
         VerifyTarget();
     }
 
-    override public bool CanAttack(HeroScript targetScript, int xPos, int yPos)
+    public bool CanAttack(int xPos, int yPos)
     {
         for(int i = 0; i < rangedl.Length; i++)
         {
@@ -70,9 +106,9 @@ public class RangedEnemy : Enemy
         return false;
     }
 
-    public override bool CanAttack(HeroScript targetScript)
+    public bool CanAttack()
     {
-        return CanAttack(targetScript, _yPos, _xPos);
+        return CanAttack(_xPos, _yPos);
     }
 
     public bool DirectionalCheck(int lineDirection, int colDirection, int startingXPos, int startingYPos)
@@ -97,7 +133,7 @@ public class RangedEnemy : Enemy
 
             if (_tileManager.gameBoard[currentLine, currentCol].tag == "Hero")
             {
-                _heroScript = _tileManager.gameBoard[currentLine, currentCol].GetComponent<HeroScript>();
+                _tempTarget = _tileManager.gameBoard[currentLine, currentCol];
                 return true;
             }
         }
