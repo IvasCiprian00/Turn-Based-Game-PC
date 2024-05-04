@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Testing.unity
+    guid: 3527e8b7c58700c4c8eb4e45760a6617
+  - enabled: 1
     path: Assets/Scenes/Slime Level.unity
     guid: 6673016191fb03a459c41d9807900d86
   - enabled: 1

@@ -113,10 +113,10 @@ public class RangedEnemy : Enemy
 
     public bool DirectionalCheck(int lineDirection, int colDirection, int startingXPos, int startingYPos)
     {
-        int currentLine = startingXPos + lineDirection;
-        int currentCol = startingYPos + colDirection;
+        int currentLine = startingXPos;
+        int currentCol = startingYPos;
 
-        for(int i = 1; i < _range; i++)
+        for(int i = 0; i < _range; i++)
         {
             currentLine += lineDirection;
             currentCol += colDirection;
@@ -133,6 +133,11 @@ public class RangedEnemy : Enemy
 
             if (_tileManager.gameBoard[currentLine, currentCol].tag == "Hero")
             {
+                if(i == 0)
+                {
+                    return false;
+                }
+
                 _tempTarget = _tileManager.gameBoard[currentLine, currentCol];
                 return true;
             }

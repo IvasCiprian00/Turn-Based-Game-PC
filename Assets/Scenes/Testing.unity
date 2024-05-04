@@ -276,9 +276,15 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _turnManager: {fileID: 0}
   enemyList:
-  - enemy: {fileID: 516937654099016190, guid: 4d9c464a42b267b4ea578b0c5f4c48f1, type: 3}
+  - enemy: {fileID: 516937654099016190, guid: 0ff414194b8c56a45a7765a51a363043, type: 3}
     startingXPos: 4
-    startingYPos: 4
+    startingYPos: 1
+  - enemy: {fileID: 516937654099016190, guid: 0ff414194b8c56a45a7765a51a363043, type: 3}
+    startingXPos: 4
+    startingYPos: 2
+  - enemy: {fileID: 516937654099016190, guid: 0ff414194b8c56a45a7765a51a363043, type: 3}
+    startingXPos: 4
+    startingYPos: 3
   enemiesAlive: []
   _enemyCount: 0
   _enemyScript: {fileID: 0}

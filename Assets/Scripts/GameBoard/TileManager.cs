@@ -87,6 +87,9 @@ public class TileManager : MonoBehaviour
 
         for (int i = 0; i < moveTiles.Length; i++)
         {
+            MoveTile tempTile = moveTiles[i].GetComponent<MoveTile>();
+
+            gameBoard[tempTile.GetXPos(), tempTile.GetYPos()] = null;
             Destroy(moveTiles[i]);
         }
     }
@@ -116,6 +119,7 @@ public class TileManager : MonoBehaviour
                 }
 
                 GameObject reference = SpawnTile(_moveTile, nextX, nextY);
+                gameBoard[nextX, nextY] = reference;
                 reference.GetComponent<MoveTile>().SetAttacking(false);
                 SpawnBasicTiles(speed - 1, nextX, nextY);
             }
@@ -200,9 +204,6 @@ public class TileManager : MonoBehaviour
         int currentLine = _heroScript.GetXPos();
         int currentCol = _heroScript.GetYPos();
 
-        currentLine += line;
-        currentCol += col;
-
         for (int i = 0; i < n; i++)
         {
             currentLine += line;
@@ -218,11 +219,18 @@ public class TileManager : MonoBehaviour
                 continue;
             }
 
-            if (gameBoard[currentLine, currentCol].tag == "Enemy")
+            if (gameBoard[currentLine, currentCol].tag != "Enemy")
             {
-                GameObject reference = SpawnTile(_moveTile, currentLine, currentCol);
-                reference.GetComponent<MoveTile>().SetAttacking(true);
+                return;
             }
+
+            if(i == 0)
+            {
+                continue;
+            }
+
+            GameObject reference = SpawnTile(_moveTile, currentLine, currentCol);
+            reference.GetComponent<MoveTile>().SetAttacking(true);
         }
     }
 

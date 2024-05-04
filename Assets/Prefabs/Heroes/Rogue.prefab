@@ -154,8 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ada8ce2b4ea454ab53415eeb86a1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xPos: 0
-  _yPos: 0
   _animator: {fileID: 8009414817806761583}
   _hp: 0
   _maxHp: 10
@@ -238,7 +236,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1151336709
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   m_FlipX: 0
