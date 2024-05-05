@@ -27,6 +27,7 @@ abstract public class Enemy : MonoBehaviour
     [Header("Enemy Stats")]
     [SerializeField] protected int _hp;
     [SerializeField] protected int _maxHp;
+    [SerializeField] protected int _evasion;
     [SerializeField] protected int _damage;
     [SerializeField] protected int _speed;
     [SerializeField] protected int _attackCount;
@@ -339,8 +340,15 @@ abstract public class Enemy : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        _hp -= damage;
+        int chance = UnityEngine.Random.Range(1, 100);
 
+        if(chance <= _evasion)
+        {
+            damage = 0;
+        }
+
+        _hp -= damage;
+        _uiManager.DisplayDamage(gameObject, damage);
 
         UpdateHealthbar();
 
@@ -379,4 +387,6 @@ abstract public class Enemy : MonoBehaviour
     public int GetYPos() { return _yPos; }
     public int GetHp() { return _hp; }
     public int GetMaxHp() { return _maxHp; }
+    public int GetEvasion() { return _evasion; }
+    public void SetEvasion(int evasion) {  _evasion = evasion; }
 }

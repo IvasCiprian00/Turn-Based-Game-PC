@@ -12,6 +12,7 @@ TagManager:
   - Tile
   - Obstacle
   - Tall Obstacle
+  - Concealing
   layers:
   - Default
   - TransparentFX

@@ -89,7 +89,11 @@ public class TileManager : MonoBehaviour
         {
             MoveTile tempTile = moveTiles[i].GetComponent<MoveTile>();
 
-            gameBoard[tempTile.GetXPos(), tempTile.GetYPos()] = null;
+            /*if (!tempTile.IsAttacking() && !tempTile.IsHealing())
+            {
+                gameBoard[tempTile.GetXPos(), tempTile.GetYPos()] = null;
+            }*/
+
             Destroy(moveTiles[i]);
         }
     }
@@ -119,7 +123,7 @@ public class TileManager : MonoBehaviour
                 }
 
                 GameObject reference = SpawnTile(_moveTile, nextX, nextY);
-                gameBoard[nextX, nextY] = reference;
+                //gameBoard[nextX, nextY] = reference;
                 reference.GetComponent<MoveTile>().SetAttacking(false);
                 SpawnBasicTiles(speed - 1, nextX, nextY);
             }

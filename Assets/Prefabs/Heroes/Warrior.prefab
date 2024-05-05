@@ -241,6 +241,7 @@ MonoBehaviour:
   _animator: {fileID: 8085765146414373935}
   _hp: 0
   _maxHp: 10
+  _evasion: 100
   _damage: 3
   _speed: 1
   _nrOfActions: 2

@@ -39,7 +39,6 @@ public class MoveTile : Tile
         {
             int healAmount = heroScript.GetHealAmount();
 
-            _uiManager.DisplayDamage(_tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().gameObject, -healAmount);
             _tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().Heal(healAmount);
 
             _turnManager.DecreaseActionsLeft();
@@ -56,7 +55,6 @@ public class MoveTile : Tile
         {
             int damageDealt = heroScript.GetDamage();
 
-            _uiManager.DisplayDamage(_tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().gameObject, damageDealt);
             _tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().TakeDamage(damageDealt);
             _turnManager.DecreaseActionsLeft();
 
@@ -104,4 +102,7 @@ public class MoveTile : Tile
 
         _healTile = healing;
     }
+
+    public bool IsAttacking() { return _attackTile; }
+    public bool IsHealing() { return _healTile; }
 }

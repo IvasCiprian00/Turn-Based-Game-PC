@@ -36,7 +36,6 @@ public class BasicEnemy : Enemy
 
             if (CanAttack(_heroScript))
             {
-                _uiManager.DisplayDamage(_heroScript.gameObject, _damage);
                 _heroScript.TakeDamage(_damage);
                 attacksLeft--;
             }

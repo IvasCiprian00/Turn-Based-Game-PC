@@ -69,7 +69,6 @@ public class SlimeBossScript : Enemy
 
             if (CanAttack(_heroScript) && attacksLeft > 0)
             {
-                _uiManager.DisplayDamage(_heroScript.gameObject, _damage);
                 _heroScript.TakeDamage(_damage);
                 attacksLeft--;
             }

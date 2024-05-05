@@ -38,7 +38,6 @@ public class RangedEnemy : Enemy
 
             if (CanAttack())
             {
-                _uiManager.DisplayDamage(_heroScript.gameObject, _damage);
                 _heroScript.TakeDamage(_damage);
                 attacksLeft--;
             }

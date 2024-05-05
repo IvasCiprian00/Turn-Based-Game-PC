@@ -33,6 +33,7 @@ public class HeroScript : MonoBehaviour
     [Header("Hero Attributes")]
     [SerializeField] private int _hp;
     [SerializeField] private int _maxHp;
+    [SerializeField] private int _evasion;
     [SerializeField] private int _damage;
     [SerializeField] private int _speed;
     [SerializeField] private int _nrOfActions;
@@ -51,6 +52,7 @@ public class HeroScript : MonoBehaviour
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         _gameManager.SetManager(ref _tileManager);
         _gameManager.SetManager(ref _heroManager);
+        _gameManager.SetManager(ref _uiManager);
         _healthbarScript = GetComponentInChildren<HealthbarScript>();
         
     }
@@ -87,6 +89,8 @@ public class HeroScript : MonoBehaviour
     {
         _hp += healValue;
 
+        _uiManager.DisplayDamage(gameObject, -healValue);
+
         if (_hp > _maxHp)
         {
             _hp = _maxHp;
@@ -95,6 +99,15 @@ public class HeroScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        int chance = Random.Range(0, 100);
+
+        if(chance <= _evasion)
+        {
+            damage = 0;
+        }
+
+        _uiManager.DisplayDamage(gameObject, damage);
+
         _hp -= damage;
 
         if (_healthbarScript != null)
@@ -169,4 +182,6 @@ public class HeroScript : MonoBehaviour
     public int GetNrOfActions() { return _nrOfActions; }
     virtual public bool IsHealer() { return false; }
     virtual public int GetHealAmount() { return 0; }
+    public void SetEvasion(int evasion) { _evasion = evasion; }
+    public int GetEvasion() {  return _evasion; }
 }
