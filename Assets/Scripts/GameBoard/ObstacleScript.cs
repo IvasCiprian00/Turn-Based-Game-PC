@@ -7,7 +7,7 @@ public class ObstacleScript : MonoBehaviour
     [SerializeField] private int _evasionAmount;
 
     public void OnTriggerEnter2D(Collider2D collision)
-    {
+    { 
         if(collision.tag == "Hero")
         {
             HeroScript heroScript = collision.GetComponent<HeroScript>();
