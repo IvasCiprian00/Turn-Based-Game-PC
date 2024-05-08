@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        _levelNumber++;
+        _levelNumber += 2;
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
     }
 

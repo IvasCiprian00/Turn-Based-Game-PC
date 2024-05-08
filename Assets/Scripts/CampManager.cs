@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CampManager : MonoBehaviour
@@ -9,6 +10,20 @@ public class CampManager : MonoBehaviour
     [SerializeField] private GameObject[] _selectedHeroes;
     [SerializeField] private int _heroIndex;
     [SerializeField] private GameObject _changeHeroContainer;
+
+    public void ContinueJourney()
+    {
+        HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+
+        heroManager.SetHeroList();
+
+        if(heroManager.heroList.Length <= 0)
+        {
+            return;
+        }
+
+        SceneManager.LoadScene(1);
+    }
 
     public void OpenHeroMenu(int index)
     {
@@ -36,10 +51,10 @@ public class CampManager : MonoBehaviour
             menuReference.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = false;
         }
 
-        _selectedHeroes[_heroIndex] = reference;
+        _selectedHeroes[_heroIndex] = hero;
 
         Destroy(_heroSlots[_heroIndex]);
-        _heroSlots[_heroIndex] = Instantiate(hero, GameObject.Find(slot).transform.position, Quaternion.identity, GameObject.Find("Buttons").transform);
+        _heroSlots[_heroIndex] = Instantiate(reference, GameObject.Find(slot).transform.position, Quaternion.identity, GameObject.Find("Buttons").transform);
 
         _changeHeroContainer.SetActive(true);
     }
@@ -57,5 +72,10 @@ public class CampManager : MonoBehaviour
 
         Destroy(_heroSlots[_heroIndex]);
         _selectedHeroes[_heroIndex] = null;
+    }
+
+    public GameObject GetSelectedHeroAtIndex(int i)
+    {
+        return _selectedHeroes[i];
     }
 }

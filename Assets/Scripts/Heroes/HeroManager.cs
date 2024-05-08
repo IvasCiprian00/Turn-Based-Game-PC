@@ -22,12 +22,14 @@ public class HeroManager : MonoBehaviour
 
     public void Awake()
     {
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
-        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SpawnHeroes()
     {
+        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
+        _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
+
         _heroCount = heroList.Length;
         heroesAlive = new GameObject[_heroCount];
 
@@ -71,6 +73,40 @@ public class HeroManager : MonoBehaviour
             heroesAlive[i] = heroesAlive[i + 1];
         }
 
+    }
+
+    public void SetHeroList()
+    {
+        CampManager campManager = GameObject.Find("Camp Manager").GetComponent<CampManager>();
+
+        int heroCount = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if(campManager.GetSelectedHeroAtIndex(i) == null)
+            {
+                continue;
+            }
+
+            heroCount++;
+        }
+
+        heroList = new HeroInfo[heroCount];
+
+        int j = 0;
+
+        for(int i = 0; i < 4; i++)
+        {
+            if (campManager.GetSelectedHeroAtIndex(i) == null)
+            {
+                continue;
+            }
+
+            heroList[j].hero = campManager.GetSelectedHeroAtIndex(i);
+            heroList[j].startingXPos = j % 2;
+            heroList[j].startingYPos = j / 2;
+
+            j++;
+        }
     }
 
     public int GetHeroCount() { return _heroCount; }
