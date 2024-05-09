@@ -24,7 +24,7 @@ public class RangedEnemy : Enemy
 
         while (speedLeft > 0 || attacksLeft > 0)
         {
-            FindTarget();
+            VerifyTarget();
 
             if (CanAttack() && attacksLeft == 0)
             {
@@ -85,11 +85,6 @@ public class RangedEnemy : Enemy
                 PathFinder(x + dl[i], y + dc[i], pathLength + 1);
             }
         }
-    }
-
-    public override void FindTarget()
-    {
-        VerifyTarget();
     }
 
     public bool CanAttack(int xPos, int yPos)

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 36665989}
   - component: {fileID: 36665988}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Warrior Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1402,7 +1402,7 @@ GameObject:
   - component: {fileID: 1001589486}
   - component: {fileID: 1001589485}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Healer Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3121,7 +3121,7 @@ GameObject:
   - component: {fileID: 1854028812}
   - component: {fileID: 1854028811}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Mage Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3428,7 +3428,7 @@ GameObject:
   - component: {fileID: 2103707119}
   - component: {fileID: 2103707118}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Rogue Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

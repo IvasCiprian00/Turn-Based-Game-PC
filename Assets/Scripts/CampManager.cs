@@ -11,6 +11,46 @@ public class CampManager : MonoBehaviour
     [SerializeField] private int _heroIndex;
     [SerializeField] private GameObject _changeHeroContainer;
 
+    public void Start()
+    {
+        HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+
+        if(heroManager.heroList == null)
+        {
+            return;
+        }
+
+        heroManager.GetHeroes(_selectedHeroes);
+
+        SpawnHeroesAtCamp();
+    }
+
+    public void SpawnHeroesAtCamp()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            _heroIndex = i;
+
+            if (_selectedHeroes[i] == null)
+            {
+                continue;
+            }
+
+            AddHeroToCamp(_selectedHeroes[i]);
+        }
+    }
+
+    public void AddHeroToCamp(GameObject hero)
+    {
+        string slot = "Slot " + (_heroIndex + 1);
+
+        GameObject reference = GameObject.Find(hero.name + " Icon");
+        reference.GetComponent<Button>().enabled = false;
+        reference.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+
+        _heroSlots[_heroIndex] = Instantiate(reference, GameObject.Find(slot).transform.position, Quaternion.identity, GameObject.Find("Buttons").transform);
+    }
+
     public void ContinueJourney()
     {
         HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();

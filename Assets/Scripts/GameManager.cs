@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        _levelNumber += 2;
+        _levelNumber ++;
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
     }
 
@@ -80,6 +80,11 @@ public class GameManager : MonoBehaviour
         _uiManager.HideEndOfLevelButtons();
 
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
+    }
+
+    public void GoToCamp()
+    {
+        SceneManager.LoadScene("Camp Screen");
     }
 
     public void CenterCamera()

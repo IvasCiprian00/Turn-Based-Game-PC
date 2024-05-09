@@ -30,18 +30,26 @@ public class HeroManager : MonoBehaviour
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _turnManager = GameObject.Find("Turn Manager").GetComponent<TurnManager>();
 
-        _heroCount = heroList.Length;
         heroesAlive = new GameObject[_heroCount];
 
-        for (int i = 0; i < _heroCount; i++)
+        int j = 0;
+
+        for (int i = 0; i < 4; i++)
         {
+            if (heroList[i].hero == null)
+            {
+                continue;
+            }
+
             int linePos = heroList[i].startingXPos;
             int colPos = heroList[i].startingYPos;
 
-            heroesAlive[i] = Instantiate(heroList[i].hero);
-            heroesAlive[i].transform.position = _tileManager.tiles[linePos, colPos].transform.position;
-            _tileManager.gameBoard[linePos, colPos] = heroesAlive[i];
-            heroesAlive[i].GetComponent<HeroScript>().SetCoords(linePos, colPos);
+            heroesAlive[j] = Instantiate(heroList[i].hero);
+            heroesAlive[j].transform.position = _tileManager.tiles[linePos, colPos].transform.position;
+            _tileManager.gameBoard[linePos, colPos] = heroesAlive[j];
+            heroesAlive[j].GetComponent<HeroScript>().SetCoords(linePos, colPos);
+
+            j++;
         }
     }
 
@@ -80,6 +88,8 @@ public class HeroManager : MonoBehaviour
         CampManager campManager = GameObject.Find("Camp Manager").GetComponent<CampManager>();
 
         int heroCount = 0;
+        heroList = new HeroInfo[4];
+
         for (int i = 0; i < 4; i++)
         {
             if(campManager.GetSelectedHeroAtIndex(i) == null)
@@ -87,25 +97,21 @@ public class HeroManager : MonoBehaviour
                 continue;
             }
 
+            heroList[i].hero = campManager.GetSelectedHeroAtIndex(i);
+            heroList[i].startingXPos = i % 2;
+            heroList[i].startingYPos = i / 2;
+
             heroCount++;
         }
 
-        heroList = new HeroInfo[heroCount];
+        _heroCount = heroCount;
+    }
 
-        int j = 0;
-
-        for(int i = 0; i < 4; i++)
+    public void GetHeroes(GameObject[] list)
+    {
+        for(int i = 0; i < heroList.Length; i++)
         {
-            if (campManager.GetSelectedHeroAtIndex(i) == null)
-            {
-                continue;
-            }
-
-            heroList[j].hero = campManager.GetSelectedHeroAtIndex(i);
-            heroList[j].startingXPos = j % 2;
-            heroList[j].startingYPos = j / 2;
-
-            j++;
+            list[i] = heroList[i].hero;
         }
     }
 

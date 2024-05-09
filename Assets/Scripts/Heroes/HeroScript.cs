@@ -30,6 +30,8 @@ public class HeroScript : MonoBehaviour
     private int _yPos;
     [SerializeField] Animator _animator;
 
+    [SerializeField] private GameObject _icon;
+
     [Header("Hero Attributes")]
     [SerializeField] private int _hp;
     [SerializeField] private int _maxHp;

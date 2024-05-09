@@ -142,6 +142,11 @@ public class TurnManager : MonoBehaviour
 
             for (int i = 0; i < _heroManager.GetHeroCount(); i++)
             {
+                if (_heroManager.heroesAlive[i] == null)
+                {
+                    continue;
+                }
+
                 _heroManager.heroesAlive[i].GetComponent<HeroScript>().StartWinAniamtion();
             }
 

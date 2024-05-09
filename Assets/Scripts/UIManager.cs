@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _statsContainer;
     [SerializeField] private GameObject _nextLevelButton;
     [SerializeField] private GameObject _restartLevelButton;
+    [SerializeField] private GameObject _goToCampButton;
     [SerializeField] private GameObject _damageDealt;
 
     public void Awake()
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
     public void DisplayEndOfLevelButtons(bool heroesWon)
     {
         _restartLevelButton.SetActive(true);
+        _goToCampButton.SetActive(true);
 
         if (heroesWon)
         {
@@ -56,6 +58,7 @@ public class UIManager : MonoBehaviour
     {
         _nextLevelButton.SetActive(false);
         _restartLevelButton.SetActive(false);
+        _goToCampButton.SetActive(false);
     }
 
     public void DisplayDamage(GameObject character, int damage)

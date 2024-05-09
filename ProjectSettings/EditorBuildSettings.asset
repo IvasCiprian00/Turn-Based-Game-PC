@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Forest Levels/Level 1.unity
     guid: 1c87edd595851854cb6c318cfe1552e1
   - enabled: 1
+    path: Assets/Scenes/Slime Level.unity
+    guid: 6673016191fb03a459c41d9807900d86
+  - enabled: 1
     path: Assets/Scenes/Levels/Forest Levels/Level 2.unity
     guid: 7c1f92d3b0ce3ac4086eca6494c7c060
   - enabled: 1
@@ -26,9 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing.unity
     guid: 3527e8b7c58700c4c8eb4e45760a6617
-  - enabled: 1
-    path: Assets/Scenes/Slime Level.unity
-    guid: 6673016191fb03a459c41d9807900d86
   - enabled: 0
     path: Assets/Scenes/Werewolf Level.unity
     guid: 99906e6f1c27f7048bc5c0eeffae35e2
