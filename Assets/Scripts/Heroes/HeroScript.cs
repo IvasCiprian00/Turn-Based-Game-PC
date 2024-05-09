@@ -45,7 +45,7 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private MovementType _movementType;
     [SerializeField] private AttackType _attackType;
 
-
+    private string _prefName;
     private bool _isMoving;
     private GameObject _targetTile;
 
@@ -61,7 +61,8 @@ public class HeroScript : MonoBehaviour
 
     public void Start()
     {
-        _hp = _maxHp; 
+        _prefName = gameObject.name + "Hp";
+        _hp = PlayerPrefs.GetInt(_prefName, _maxHp);
 
         if (_healthbarScript != null)
         {
@@ -90,6 +91,7 @@ public class HeroScript : MonoBehaviour
     public void Heal(int healValue)
     {
         _hp += healValue;
+        PlayerPrefs.SetInt(_prefName, _hp);
 
         _uiManager.DisplayDamage(gameObject, -healValue);
 
@@ -111,6 +113,7 @@ public class HeroScript : MonoBehaviour
         _uiManager.DisplayDamage(gameObject, damage);
 
         _hp -= damage;
+        PlayerPrefs.SetInt(_prefName, _hp);
 
         if (_healthbarScript != null)
         {
