@@ -324,11 +324,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5147600488552359778}
+  _icon: {fileID: 0}
   _hp: 0
-  _maxHp: 10
+  _maxHp: 5
   _evasion: 0
   _damage: 1
-  _speed: 5
+  _speed: 2
   _nrOfActions: 1
   _range: 0
   skills: []
