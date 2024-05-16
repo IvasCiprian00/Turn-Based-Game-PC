@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour

@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class CampManager : MonoBehaviour
 {
+    [SerializeField] private GameObject[] _allHeroesList;
     [SerializeField] private GameObject[] _heroSlots;
     [SerializeField] private GameObject[] _selectedHeroes;
     [SerializeField] private int _heroIndex;
     [SerializeField] private GameObject _changeHeroContainer;
+
+    private float _timer;
 
     public void Start()
     {
@@ -23,6 +26,26 @@ public class CampManager : MonoBehaviour
         heroManager.GetHeroes(_selectedHeroes);
 
         SpawnHeroesAtCamp();
+    }
+
+    public void Update()
+    {
+        _timer += Time.deltaTime;
+
+        if(_timer <= 5)
+        {
+            return;
+        }
+
+        _timer = 0;
+
+        for(int i = 0; i < _allHeroesList.Length; i++)
+        {
+            HeroScript heroScript = _allHeroesList[i].GetComponent<HeroScript>();
+            string prefName = heroScript.GetPrefName();
+            int maxHp = heroScript.GetMaxHp();
+            PlayerPrefs.SetInt(prefName, PlayerPrefs.GetInt(prefName, maxHp));
+        }
     }
 
     public void SpawnHeroesAtCamp()

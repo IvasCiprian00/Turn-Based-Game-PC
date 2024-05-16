@@ -518,6 +518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a420e53e0b748e43a8e91631435b66c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _allHeroesList:
+  - {fileID: 6195696646146534212, guid: 734036b43ed0a72448019224e0591460, type: 3}
+  - {fileID: 6195696646146534212, guid: d1dd7a5de1b5bb848962aef0c488caed, type: 3}
+  - {fileID: 6195696646146534212, guid: a379c968d3df8d843942d4b264613418, type: 3}
+  - {fileID: 6195696646146534212, guid: 30ac6936b3d45a8418c3af6a825fbe9f, type: 3}
   _heroSlots:
   - {fileID: 0}
   - {fileID: 0}
@@ -1070,6 +1075,7 @@ GameObject:
   - component: {fileID: 694304492}
   - component: {fileID: 694304491}
   - component: {fileID: 694304490}
+  - component: {fileID: 694304493}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1151,6 +1157,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &694304493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694304489}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40337e07b45b064ca04b5ab0b781177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dragSpeed: 1.5
 --- !u!1 &790240205
 GameObject:
   m_ObjectHideFlags: 0

@@ -189,4 +189,5 @@ public class HeroScript : MonoBehaviour
     virtual public int GetHealAmount() { return 0; }
     public void SetEvasion(int evasion) { _evasion = evasion; }
     public int GetEvasion() {  return _evasion; }
+    public string GetPrefName() { return _prefName; }
 }
