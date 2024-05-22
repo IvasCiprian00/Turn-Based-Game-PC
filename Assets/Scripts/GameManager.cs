@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
     {
         if (_cameraSlideTrigger.activeSelf)
         {
-            Debug.Log("YEY");
             _cameraAnimator.SetTrigger("slide trigger");
         }
 
