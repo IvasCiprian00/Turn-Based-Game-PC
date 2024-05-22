@@ -156,9 +156,9 @@ MonoBehaviour:
   _healthbarScript: {fileID: 0}
   _targetType: 0
   _animator: {fileID: 1284396858281712183}
-  _hp: 4
-  _maxHp: 6
-  _evasion: 10
+  _hp: 1
+  _maxHp: 1
+  _evasion: 0
   _damage: 1
   _speed: 2
   _attackCount: 1

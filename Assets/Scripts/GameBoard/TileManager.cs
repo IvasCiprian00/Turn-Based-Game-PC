@@ -61,7 +61,7 @@ public class TileManager : MonoBehaviour
         }
 
         _tilesLoaded = true;
-        _gameManager.CenterCamera();
+        //_gameManager.CenterCamera();
     }
 
     public void GenerateMoveTiles(HeroScript heroScript)

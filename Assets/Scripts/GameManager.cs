@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private EnvironmentManager _envManager;
     private DarknessManager _darknessManager;
     private UIManager _uiManager;
+    private Animator _cameraAnimator;
+    [SerializeField] private GameObject _cameraSlideTrigger;
 
     [SerializeField] private int _levelNumber;
 
@@ -27,12 +29,24 @@ public class GameManager : MonoBehaviour
         SetManager(ref _heroManager);
         SetManager(ref _turnManager);
         SetManager(ref _uiManager);
+        _cameraAnimator = GameObject.Find("Camera Parent").GetComponent<Animator>();
     }
 
     public void Start()
     {
+        _cameraAnimator.SetTrigger("slide up");
         _levelNumber ++;
         SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
+    }
+
+    public void Update()
+    {
+        if (_cameraSlideTrigger.activeSelf)
+        {
+            Debug.Log("YEY");
+            _cameraAnimator.SetTrigger("slide trigger");
+        }
+
     }
 
     public void InitializeGrid()
@@ -64,6 +78,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync(_levelNumber);
 
+        _cameraAnimator.SetTrigger("next level");
         _turnManager.ResetHeroes();
         _uiManager.HideEndOfLevelButtons();
 

@@ -22,19 +22,19 @@ public class CameraController : MonoBehaviour
     public void CameraMovement()
     {
         _dragSpeed = Camera.main.orthographicSize / 2;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             _previousMousePosition = Input.mousePosition;
             _isDragging = true;
             return;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(1))
         {
             _isDragging = false;
         }
 
-        if (_isDragging && Input.GetMouseButton(0))
+        if (_isDragging && Input.GetMouseButton(1))
         {
             Vector3 currentMousePosition = Input.mousePosition;
             Vector3 mouseDelta = currentMousePosition - _previousMousePosition;
@@ -42,6 +42,7 @@ public class CameraController : MonoBehaviour
             if (mouseDelta != Vector3.zero)
             {
                 Vector3 move = new Vector3(mouseDelta.x * _dragSpeed, mouseDelta.y * _dragSpeed, 0) * Time.deltaTime;
+                Debug.Log(move);
                 transform.Translate(-move, Space.World);
                 _previousMousePosition = currentMousePosition;
             }

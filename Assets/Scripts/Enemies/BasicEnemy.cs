@@ -30,7 +30,6 @@ public class BasicEnemy : Enemy
 
             if(!CanAttack(_heroScript) && speedLeft == 0)
             {
-                Debug.Log("?");
                 break;
             }
 
