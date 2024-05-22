@@ -87,6 +87,9 @@ public class HeroManager : MonoBehaviour
     {
         CampManager campManager = GameObject.Find("Camp Manager").GetComponent<CampManager>();
 
+        int[] startingX = { 0, 1, 1, 2 };
+        int[] startingY = { 1, 0, 2, 1 };
+
         int heroCount = 0;
         heroList = new HeroInfo[4];
 
@@ -98,8 +101,8 @@ public class HeroManager : MonoBehaviour
             }
 
             heroList[i].hero = campManager.GetSelectedHeroAtIndex(i);
-            heroList[i].startingXPos = i % 2;
-            heroList[i].startingYPos = i / 2;
+            heroList[i].startingXPos = startingX[i];
+            heroList[i].startingYPos = startingY[i];
 
             heroCount++;
         }

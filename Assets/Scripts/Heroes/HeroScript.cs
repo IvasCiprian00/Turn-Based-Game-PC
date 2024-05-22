@@ -98,7 +98,10 @@ public class HeroScript : MonoBehaviour
         if (_hp > _maxHp)
         {
             _hp = _maxHp;
+            PlayerPrefs.SetInt(_prefName, _hp);
         }
+
+        _healthbarScript.SetHp(_hp);
     }
 
     public void TakeDamage(int damage)

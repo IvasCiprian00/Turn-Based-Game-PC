@@ -373,19 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nrOfRows: 7
   _nrOfColumns: 11
-  _obstacles:
-  - obstacle: {fileID: 8078606472246156849, guid: 21ec45ee3a9737c429a9eee8a2b1fde8, type: 3}
-    _xPos: 4
-    _yPos: 2
-  - obstacle: {fileID: 8078606472246156849, guid: 9e30e8bd6993e1e448648577ac2e4c98, type: 3}
-    _xPos: 4
-    _yPos: 3
-  - obstacle: {fileID: 8078606472246156849, guid: d24fc837ca99f3a4a8808d213053e26c, type: 3}
-    _xPos: 4
-    _yPos: 4
-  - obstacle: {fileID: 8078606472246156849, guid: db9c0ab9ed1c80d46b4a520b3b9dcf3b, type: 3}
-    _xPos: 4
-    _yPos: 5
+  _obstacles: []
 --- !u!4 &2052036979
 Transform:
   m_ObjectHideFlags: 0

@@ -284,10 +284,10 @@ abstract public class Enemy : MonoBehaviour
 
     virtual public bool CanAttack(HeroScript targetScript)
     {
-        if (_isMoving)
+        /*if (_isMoving)
         {
             return false;
-        }
+        }*/
 
         if (GetDistance(_xPos, targetScript.GetXPos(), _yPos, targetScript.GetYPos()) == 1)
         {

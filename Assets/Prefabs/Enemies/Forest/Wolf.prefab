@@ -161,7 +161,7 @@ MonoBehaviour:
   _evasion: 10
   _damage: 1
   _speed: 2
-  _attackCount: 2
+  _attackCount: 1
   _waitDuration: 0.3
   _actionSpeed: 1
 --- !u!1 &5286080166719966418

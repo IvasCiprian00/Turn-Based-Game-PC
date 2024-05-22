@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,11 +12,20 @@ public class CampManager : MonoBehaviour
     [SerializeField] private GameObject[] _selectedHeroes;
     [SerializeField] private int _heroIndex;
     [SerializeField] private GameObject _changeHeroContainer;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private TextMeshProUGUI _levelText;
+    [SerializeField] private GameObject _continueGameTrigger;
 
     private float _timer;
 
+    public void Awake()
+    {
+        _animator = GameObject.Find("Canvas").GetComponent<Animator>();
+    }
+
     public void Start()
     {
+        PlayerPrefs.DeleteAll();
         HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
 
         if(heroManager.heroList == null)
@@ -30,6 +40,11 @@ public class CampManager : MonoBehaviour
 
     public void Update()
     {
+        if(_continueGameTrigger.activeSelf == true)
+        {
+            SceneManager.LoadScene("Main Game");
+        }
+
         _timer += Time.deltaTime;
 
         if(_timer <= 5)
@@ -85,12 +100,12 @@ public class CampManager : MonoBehaviour
             return;
         }
 
-        SceneManager.LoadScene(1);
+        _animator.SetTrigger("exit camp");
     }
 
     public void OpenHeroMenu(int index)
     {
-        GameObject.Find("Canvas").GetComponent<Animator>().SetTrigger("slide");
+        _animator.SetTrigger("slide");
 
         _heroIndex = index;
 
@@ -99,7 +114,7 @@ public class CampManager : MonoBehaviour
 
     public void SelectHero(GameObject hero)
     {
-        GameObject.Find("Canvas").GetComponent<Animator>().SetTrigger("exit slide");
+        _animator.SetTrigger("exit slide");
 
         GameObject reference = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         reference.GetComponent<Button>().enabled = false;
