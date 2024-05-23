@@ -191,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: warrior_front
+      name: warrior_1
       rect:
         serializedVersion: 2
         x: 50
@@ -212,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_3
+      name: ranger_1
       rect:
         serializedVersion: 2
         x: 75
@@ -233,7 +233,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_4
+      name: rogue_1
       rect:
         serializedVersion: 2
         x: 100
@@ -254,7 +254,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_5
+      name: healer_1
       rect:
         serializedVersion: 2
         x: 125
@@ -296,7 +296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: warrior_back
+      name: warrior_2
       rect:
         serializedVersion: 2
         x: 50
@@ -317,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_8
+      name: ranger_2
       rect:
         serializedVersion: 2
         x: 75
@@ -338,7 +338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_9
+      name: rogue_2
       rect:
         serializedVersion: 2
         x: 100
@@ -359,7 +359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_10
+      name: healer_2
       rect:
         serializedVersion: 2
         x: 125
@@ -401,7 +401,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: warrior_sitting_front
+      name: warrior_3
       rect:
         serializedVersion: 2
         x: 50
@@ -422,7 +422,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_13
+      name: ranger_3
       rect:
         serializedVersion: 2
         x: 75
@@ -443,7 +443,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_14
+      name: rogue_3
       rect:
         serializedVersion: 2
         x: 100
@@ -464,7 +464,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_15
+      name: healer_3
       rect:
         serializedVersion: 2
         x: 125
@@ -506,7 +506,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: warrior_sitting_back
+      name: warrior_4
       rect:
         serializedVersion: 2
         x: 50
@@ -527,7 +527,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_18
+      name: ranger_4
       rect:
         serializedVersion: 2
         x: 75
@@ -548,7 +548,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_19
+      name: rogue_4
       rect:
         serializedVersion: 2
         x: 100
@@ -569,7 +569,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small_heroes_set_20
+      name: healer_4
       rect:
         serializedVersion: 2
         x: 125
@@ -600,27 +600,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      healer_1: 151437339
+      healer_2: 358849595
+      healer_3: 1458897053
+      healer_4: 28631362
+      ranger_1: -1048975517
+      ranger_2: 741910244
+      ranger_3: -746326345
+      ranger_4: 517763261
+      rogue_1: -335660537
+      rogue_2: 1981883160
+      rogue_3: -466976921
+      rogue_4: 828067795
       small_heroes_set_0: -288134902
       small_heroes_set_1: -1667932655
-      small_heroes_set_10: 358849595
       small_heroes_set_11: -103025827
-      small_heroes_set_13: -746326345
-      small_heroes_set_14: -466976921
-      small_heroes_set_15: 1458897053
       small_heroes_set_16: -86223176
-      small_heroes_set_18: 517763261
-      small_heroes_set_19: 828067795
-      small_heroes_set_20: 28631362
-      small_heroes_set_3: -1048975517
-      small_heroes_set_4: -335660537
-      small_heroes_set_5: 151437339
       small_heroes_set_6: 1864296954
-      small_heroes_set_8: 741910244
-      small_heroes_set_9: 1981883160
-      warrior_back: -1639121750
-      warrior_front: -1775726294
-      warrior_sitting_back: -302684860
-      warrior_sitting_front: -264459839
+      warrior_1: -1775726294
+      warrior_2: -1639121750
+      warrior_3: -264459839
+      warrior_4: -302684860
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
