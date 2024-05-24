@@ -1,3 +1,10 @@
+narrator: Man. What a boring party of heroes. I've been narrating their journey for months and nothing interesting has happened yet.
+narrator: Embarrassing. I should just move on to the next p... 
+narrator: Wait.
+narrator: Something interesting is about to occur.
+
+*begin cutscene*
+
 elder: Someone please help me! My daughter, she was taken, please someone, anyone!
 
 hero: Breathe man and tell me what happened.
@@ -6,7 +13,7 @@ elder: I heard a ripping noise from my daughters room and I ran in to check.
 elder: I found her room destroyed and her window wide open. There were claw marks everywhere. 
 elder: I looked through the window and right at the tree line I saw a beastly figure retreating to the shadows of the forest. 
 elder: Please you have to help my daughter! That thing took her. 
-edler: I don't want to imagine what will happen if you don't get to her in time.
+elder: I don't want to imagine what will happen if you don't get to her in time.
 
 hero: I understand, I will gather my friends and leave right away. 
 hero: However are you sure she might not already be...

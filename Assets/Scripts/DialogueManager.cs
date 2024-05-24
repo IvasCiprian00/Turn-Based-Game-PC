@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     [Header("Dialogue")]
+    [SerializeField] private TextMeshProUGUI _narratorText;
     [SerializeField] private RectTransform _containerRect;
     [SerializeField] private TextMeshProUGUI _dialogueText;
     private string _dialogueLine;
@@ -27,6 +28,9 @@ public class DialogueManager : MonoBehaviour
     {
         _path = "Assets/Dialogue/intro_dialogue.txt";
         _reader = new StreamReader(_path);
+
+        _dialogueLine = _reader.ReadLine();
+        _narratorText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
     }
 
     public void Update()
@@ -72,6 +76,13 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
 
+            if(_dialogueLine.IndexOf("*begin cutscene*") != -1)
+            {
+                _animator.SetTrigger("begin cutscene");
+                _narratorText.gameObject.SetActive(false);
+                return;
+            }
+
             if (_dialogueLine.IndexOf(":") != -1)
             {
                 break;
@@ -100,15 +111,18 @@ public class DialogueManager : MonoBehaviour
         {
             //_containerRect.transform.position = new Vector2(_hero.transform.position.x, _hero.transform.position.y + 1);
             _containerRect.transform.position = _hero.transform.position;
-            Debug.Log(_hero.transform.position);
 
         }
 
         if(_dialogueLine.IndexOf("elder:") != -1)
         {
-            Debug.Log(_elder.transform.position);
             //_containerRect.transform.position = new Vector2(_elder.transform.position.x, _elder.transform.position.y + 1);
             _containerRect.transform.position = _elder.transform.position;
+        }
+
+        if(_dialogueLine.IndexOf("narrator:") != -1)
+        {
+            _narratorText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
         }
     }
 

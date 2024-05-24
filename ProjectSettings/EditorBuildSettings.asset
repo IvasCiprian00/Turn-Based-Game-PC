@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 3c23a94ae51249b4685fde53278510a9
+  - enabled: 1
     path: Assets/Scenes/Camp Screen.unity
     guid: 9912acc0ed662d5408f9057cb526de43
   - enabled: 1
