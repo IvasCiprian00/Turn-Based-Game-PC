@@ -1,14 +1,15 @@
-avem scheletul primului act
+TO DO
 
 game related
 
+-learn obsidian
 -bug fixes
 -add days to complete ( a system that counts the amount of rests you used to complete the game and at the end it can be a kind of scoreboard)
 -add skills
 -change the way the healer works(disable ability to heal instead of attacking, add a skill that heals)
 -add sounds
 -better dialogue
--add dialogue before elder enters tavern
+
 -fix camp screen
 -design better levels
 -change attack system to dice roll
@@ -19,3 +20,6 @@ dissertation related
 	cutscenes
 	animator
 	animation events
+
+DONE
+-add dialogue before elder enters tavern

@@ -30,7 +30,8 @@ public class DialogueManager : MonoBehaviour
         _reader = new StreamReader(_path);
 
         _dialogueLine = _reader.ReadLine();
-        _narratorText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
+        StartCoroutine(ReadDialogue(_narratorText));
+        //_narratorText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
     }
 
     public void Update()
@@ -58,6 +59,13 @@ public class DialogueManager : MonoBehaviour
 
     public void GetDialogueLine()
     {
+        if(_dialogueText.text.Length != _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2).Length)
+        {
+            StopAllCoroutines();
+            _dialogueText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2);
+            return;
+        }
+
         int maxIterations = 0;
         while (true)
         {
@@ -97,7 +105,8 @@ public class DialogueManager : MonoBehaviour
 
         SetSpeaker();
 
-        _dialogueText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
+        StartCoroutine(ReadDialogue(_dialogueText));
+        //_dialogueText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
     }
 
     public void ExitIntro()
@@ -122,47 +131,23 @@ public class DialogueManager : MonoBehaviour
 
         if(_dialogueLine.IndexOf("narrator:") != -1)
         {
-            _narratorText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
+            _narratorText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2);
+
+            StartCoroutine(ReadDialogue(_narratorText));
         }
     }
 
-    /*
-    public void ReadDialogueLine()
+    
+
+    private IEnumerator ReadDialogue(TextMeshProUGUI field)
     {
-        _lineHasFinished = false;
-        _dialogueLine = _reader.ReadLine();
+        field.text = string.Empty;
+        int index = _dialogueLine.IndexOf(":") + 1;
 
-        if(_dialogueLine == null)
+        for(int i = index; i < _dialogueLine.Length; i++)
         {
-            return;
-        }
-
-        for(_index = 0; _index < _dialogueLine.Length; _index++)
-        {
-            Debug.Log(_index);
-            Invoke("ReadCharacter", 0.05f);
-        }
-    }
-
-    public void ReadCharacter()
-    {
-        _test.text += _dialogueLine[_index];
-    }
-
-    private IEnumerator ReadDialogue()
-    {
-        _lineHasFinished = false;
-        _test.text = null;
-        for(int i = 0; i < _dialogueLine.Length; i++)
-        {
-            _test.text += _dialogueLine[i];
-            if (_lineHasFinished)
-            {
-                yield break;
-            }
+            field.text += _dialogueLine[i];
             yield return new WaitForSeconds(0.05f);
         }
-
-        _lineHasFinished = true;
-    }*/
+    }
 }
