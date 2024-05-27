@@ -20,8 +20,18 @@ public class HeroManager : MonoBehaviour
     public GameObject[] heroesAlive;
     [SerializeField] private int _heroCount;
 
+    private static HeroManager instance;
+
     public void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
         DontDestroyOnLoad(gameObject);
     }
 
@@ -87,7 +97,7 @@ public class HeroManager : MonoBehaviour
     {
         CampManager campManager = GameObject.Find("Camp Manager").GetComponent<CampManager>();
 
-        int[] startingX = { 0, 1, 1, 2 };
+        int[] startingX = { 2, 1, 1, 0 };
         int[] startingY = { 1, 0, 2, 1 };
 
         int heroCount = 0;
@@ -97,6 +107,7 @@ public class HeroManager : MonoBehaviour
         {
             if(campManager.GetSelectedHeroAtIndex(i) == null)
             {
+                Debug.Log(i);
                 continue;
             }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,9 +9,9 @@ using UnityEngine.UI;
 public class CampManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] _allHeroesList;
-    [SerializeField] private GameObject[] _heroSlots;
-    [SerializeField] private GameObject[] _selectedHeroes;
-    [SerializeField] private int _heroIndex;
+    [SerializeField] private GameObject[] _heroList;
+    [SerializeField] private Image[] _slots;
+    [SerializeField] private int _slotIndex;
     [SerializeField] private GameObject _changeHeroContainer;
     [SerializeField] private Animator _animator;
     [SerializeField] private TextMeshProUGUI _levelText;
@@ -33,7 +34,7 @@ public class CampManager : MonoBehaviour
             return;
         }
 
-        heroManager.GetHeroes(_selectedHeroes);
+        heroManager.GetHeroes(_heroList);
 
         SpawnHeroesAtCamp();
     }
@@ -47,7 +48,7 @@ public class CampManager : MonoBehaviour
 
         _timer += Time.deltaTime;
 
-        if(_timer <= 5)
+        if(_timer <= 5)//change to >= when implementing finaly
         {
             return;
         }
@@ -67,26 +68,22 @@ public class CampManager : MonoBehaviour
     {
         for(int i = 0; i < 4; i++)
         {
-            _heroIndex = i;
-
-            if (_selectedHeroes[i] == null)
+            if (_heroList[i] == null)
             {
                 continue;
             }
 
-            AddHeroToCamp(_selectedHeroes[i]);
+            _slots[i].sprite = _heroList[i].GetComponentInChildren<SpriteRenderer>().sprite;
+            _slots[i].color = new Color(1, 1, 1, 1);
         }
     }
 
     public void AddHeroToCamp(GameObject hero)
     {
-        string slot = "Slot " + (_heroIndex + 1);
+        _heroList[_slotIndex] = hero;
 
-        GameObject reference = GameObject.Find(hero.name + " Icon");
-        reference.GetComponent<Button>().enabled = false;
-        reference.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
-
-        _heroSlots[_heroIndex] = Instantiate(reference, GameObject.Find(slot).transform.position, Quaternion.identity, GameObject.Find("Buttons").transform);
+        _slots[_slotIndex].sprite = hero.GetComponentInChildren<SpriteRenderer>().sprite;
+        _slots[_slotIndex].color = new Color(1, 1, 1, 1);
     }
 
     public void ContinueJourney()
@@ -107,7 +104,7 @@ public class CampManager : MonoBehaviour
     {
         _animator.SetTrigger("slide");
 
-        _heroIndex = index;
+        _slotIndex = index;
 
         //_changeHeroContainer.SetActive(false);
     }
@@ -116,44 +113,32 @@ public class CampManager : MonoBehaviour
     {
         _animator.SetTrigger("exit slide");
 
-        GameObject reference = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        reference.GetComponent<Button>().enabled = false;
-        reference.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
-
-        string slot = "Slot " + (_heroIndex + 1);
-
-        if (_heroSlots[_heroIndex] != null)
+        for(int i = 0; i < 4; i++)
         {
-            GameObject menuReference = GameObject.Find(_selectedHeroes[_heroIndex].name);
-            menuReference.GetComponent<Button>().enabled = true;
-            menuReference.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = false;
+            if (_heroList[i] == null)
+            {
+                continue;
+            }
+
+            if (_heroList[i] != hero)
+            {
+                continue;
+            }
+
+            _heroList[i] = null;
+            _slots[i].sprite = null;
+            _slots[i].color = new Color(1, 1, 1, 0);
         }
 
-        _selectedHeroes[_heroIndex] = hero;
-
-        Destroy(_heroSlots[_heroIndex]);
-        _heroSlots[_heroIndex] = Instantiate(reference, GameObject.Find(slot).transform.position, Quaternion.identity, GameObject.Find("Buttons").transform);
-
-        _changeHeroContainer.SetActive(true);
+        AddHeroToCamp(hero);
     }
 
     public void DeleteHero()
     {
-        GameObject.Find("Canvas").GetComponent<Animator>().SetTrigger("exit slide");
-
-        if (_heroSlots[_heroIndex] != null)
-        {
-            GameObject menuReference = GameObject.Find(_selectedHeroes[_heroIndex].name);
-            menuReference.GetComponent<Button>().enabled = true;
-            menuReference.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = false;
-        }
-
-        Destroy(_heroSlots[_heroIndex]);
-        _selectedHeroes[_heroIndex] = null;
     }
 
     public GameObject GetSelectedHeroAtIndex(int i)
     {
-        return _selectedHeroes[i];
+        return _heroList[i];
     }
 }

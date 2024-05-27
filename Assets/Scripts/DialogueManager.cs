@@ -59,7 +59,14 @@ public class DialogueManager : MonoBehaviour
 
     public void GetDialogueLine()
     {
-        if(_dialogueText.text.Length != _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2).Length)
+        if (_reader.EndOfStream)
+        {
+            _containerRect.gameObject.SetActive(false);
+            _animator.SetTrigger("exit intro");
+            return;
+        }
+
+        if (_dialogueText.text.Length != _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2).Length)
         {
             StopAllCoroutines();
             _dialogueText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2);

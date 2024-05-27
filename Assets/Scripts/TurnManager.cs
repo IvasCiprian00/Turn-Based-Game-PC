@@ -127,7 +127,6 @@ public class TurnManager : MonoBehaviour
         {
             //_gameOver = true;
 
-            Debug.Log("Heroes Lost");
             _uiManager.DisplayEndOfLevelButtons(false);
         }
 
@@ -149,7 +148,6 @@ public class TurnManager : MonoBehaviour
                 _heroManager.heroesAlive[i].GetComponent<HeroScript>().StartWinAniamtion();
             }
 
-            Debug.Log("Heroes Won");
             _uiManager.DisplayEndOfLevelButtons(true);
         }
     }

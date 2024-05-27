@@ -42,7 +42,6 @@ public class CameraController : MonoBehaviour
             if (mouseDelta != Vector3.zero)
             {
                 Vector3 move = new Vector3(mouseDelta.x * _dragSpeed, mouseDelta.y * _dragSpeed, 0) * Time.deltaTime;
-                Debug.Log(move);
                 transform.Translate(-move, Space.World);
                 _previousMousePosition = currentMousePosition;
             }
