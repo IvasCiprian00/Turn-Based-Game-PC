@@ -29,6 +29,8 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected int _maxHp;
     [SerializeField] protected int _evasion;
     [SerializeField] protected int _damage;
+    [SerializeField] protected int _lowerDamage;
+    [SerializeField] protected int _upperDamage;
     [SerializeField] protected int _speed;
     [SerializeField] protected int _attackCount;
     [SerializeField] protected float _waitDuration;
@@ -389,4 +391,6 @@ abstract public class Enemy : MonoBehaviour
     public int GetMaxHp() { return _maxHp; }
     public int GetEvasion() { return _evasion; }
     public void SetEvasion(int evasion) {  _evasion = evasion; }
+
+    public int GetDamage() { return UnityEngine.Random.Range(_lowerDamage, _upperDamage); }
 }

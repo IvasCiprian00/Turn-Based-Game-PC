@@ -69,7 +69,7 @@ public class SlimeBossScript : Enemy
 
             if (CanAttack(_heroScript) && attacksLeft > 0)
             {
-                _heroScript.TakeDamage(_damage);
+                _heroScript.TakeDamage(GetDamage());
                 attacksLeft--;
             }
             else if (speedLeft > 0)

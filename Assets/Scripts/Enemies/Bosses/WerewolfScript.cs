@@ -11,7 +11,8 @@ public class WerewolfScript : Enemy
     public struct HpThreshold
     {
         public int speed;
-        public int damage;
+        public int lowerDamage;
+        public int upperDamage;
         public int attackCount;
     }
 
@@ -44,7 +45,7 @@ public class WerewolfScript : Enemy
 
             if (CanAttack(_heroScript))
             {
-                _heroScript.TakeDamage(_damage);
+                _heroScript.TakeDamage(GetDamage());
                 attacksLeft--;
             }
             else if (speedLeft > 0)
@@ -78,7 +79,8 @@ public class WerewolfScript : Enemy
     public void ChangeThreshold(int x)
     {
         _speed = _hpThreshold[x].speed;
-        _damage = _hpThreshold[x].damage;
+        _lowerDamage = _hpThreshold[x].lowerDamage;
+        _upperDamage = _hpThreshold[x].upperDamage;
         _attackCount = _hpThreshold[x].attackCount;
     }
 }

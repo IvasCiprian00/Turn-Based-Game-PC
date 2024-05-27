@@ -35,7 +35,7 @@ public class BasicEnemy : Enemy
 
             if (CanAttack(_heroScript))
             {
-                _heroScript.TakeDamage(_damage);
+                _heroScript.TakeDamage(GetDamage());
                 attacksLeft--;
             }
             else if (speedLeft > 0)

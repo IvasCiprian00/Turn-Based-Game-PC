@@ -37,6 +37,8 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private int _maxHp;
     [SerializeField] private int _evasion;
     [SerializeField] private int _damage;
+    [SerializeField] private int _lowerDamage;
+    [SerializeField] private int _upperDamage;
     [SerializeField] private int _speed;
     [SerializeField] private int _nrOfActions;
     [SerializeField] private int _range;
@@ -181,7 +183,7 @@ public class HeroScript : MonoBehaviour
     public int GetXPos() { return _xPos; }
     public int GetYPos() { return _yPos; }
     public string GetMovementType() { return _movementType.ToString().ToLower(); }
-    public int GetDamage() { return _damage; }
+    public int GetDamage() { return Random.Range(_lowerDamage, _upperDamage + 1); }
     public int GetSpeed() { return _speed; }
     public int GetHp() { return _hp; }
     public int GetMaxHp() { return _maxHp; }
