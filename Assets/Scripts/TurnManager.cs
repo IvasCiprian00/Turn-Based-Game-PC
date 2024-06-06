@@ -56,6 +56,8 @@ public class TurnManager : MonoBehaviour
         _selectedEffect.transform.position = _heroManager.heroesAlive[_currentHero].transform.position;
         _selectedEffect.transform.parent = _heroManager.heroesAlive[_currentHero].transform;
 
+        _uiManager.DisplaySkills(_heroScript.skills);
+
         _tileManager.GenerateMoveTiles(_heroScript);
     }
 
@@ -66,6 +68,8 @@ public class TurnManager : MonoBehaviour
 
     public void StartEnemyTurns()
     {
+        _uiManager.DestroySkills();
+
         _selectedEffect.transform.parent = null;
         _selectedEffect.SetActive(false);
         _uiManager.DisplayUI(false);
@@ -93,6 +97,8 @@ public class TurnManager : MonoBehaviour
         _heroScript = _heroManager.heroesAlive[_currentHero].GetComponent<HeroScript>();
         _speedLeft = _heroScript.GetSpeed();
         _actionsLeft = _heroScript.GetNrOfActions();
+
+        _uiManager.DisplaySkills(_heroScript.skills);
 
         _tileManager.GenerateMoveTiles(_heroScript);
     }

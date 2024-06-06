@@ -89,6 +89,11 @@ public class TileManager : MonoBehaviour
     {
         GameObject[] moveTiles = GameObject.FindGameObjectsWithTag("Move Tile");
 
+        if(_moveTileList != null)
+        {
+            _moveTileList.Clear();
+        }
+
         for (int i = 0; i < moveTiles.Length; i++)
         {
             MoveTile tempTile = moveTiles[i].GetComponent<MoveTile>();
@@ -276,7 +281,7 @@ public class TileManager : MonoBehaviour
     [ContextMenu("Test enable")]
     public void EnableMoveTiles()
     {
-        if(_moveTileList.Count <= 0)
+        if(_moveTileList == null)
         {
             return;
         }

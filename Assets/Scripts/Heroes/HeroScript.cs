@@ -167,7 +167,7 @@ public class HeroScript : MonoBehaviour
 
     public void SetCoords(int x, int y)
     {
-        GetComponentInChildren<SpriteRenderer>().sortingOrder = x;
+        GetComponentInChildren<SpriteRenderer>().sortingOrder = x + 1;
         _xPos = x;
         _yPos = y;
     }

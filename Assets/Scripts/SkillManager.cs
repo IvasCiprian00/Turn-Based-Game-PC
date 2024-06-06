@@ -43,11 +43,8 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Heal Test")]
     public void HealingWord()
     {
-        CancelSkill();
-
         _tileManager.DisableMoveTiles();
 
         int xPos;
@@ -68,7 +65,6 @@ public class SkillManager : MonoBehaviour
         _uiManager.DisplayCancelSkill(true);
     }
 
-    [ContextMenu("Cancel Skill Test")]
     public void CancelSkill()
     {
         foreach(GameObject tile in _skillTiles)
@@ -77,6 +73,8 @@ public class SkillManager : MonoBehaviour
         }
 
         _skillTiles.Clear();
+
+        _uiManager.DisplayCancelSkill(false);
 
         _tileManager.EnableMoveTiles();
     }

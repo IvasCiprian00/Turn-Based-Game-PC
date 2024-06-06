@@ -27,7 +27,6 @@ public class DirectInteractTile : Tile
     {
         switch (_tileType){
             case TileType.Heal:
-                Debug.Log(_tileManager.gameBoard[_xPos, _yPos]);
                 _tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().Heal(_interactValue);
                 break;
 
