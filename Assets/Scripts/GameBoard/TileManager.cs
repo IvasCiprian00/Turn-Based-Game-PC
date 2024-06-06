@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static HeroScript;
 
@@ -9,8 +10,11 @@ public class TileManager : MonoBehaviour
     [SerializeField] private HeroScript _heroScript;
     [SerializeField] private TurnManager _turnManager;
 
+    [Header("Tile types")]
     [SerializeField] private GameObject _tile;
     [SerializeField] private GameObject _moveTile;
+    [SerializeField] private GameObject _interactTile;
+    private List<GameObject> _moveTileList;
 
     public GameObject[,] tiles;
     public GameObject[,] gameBoard;
@@ -258,6 +262,35 @@ public class TileManager : MonoBehaviour
         return false;
     }
 
+    [ContextMenu("Test disable")]
+    public void DisableMoveTiles()
+    {
+        SetActiveMoveTiles();
+
+        foreach (GameObject tile in _moveTileList)
+        {
+            tile.SetActive(false);
+        }
+    }
+
+    [ContextMenu("Test enable")]
+    public void EnableMoveTiles()
+    {
+        if(_moveTileList.Count <= 0)
+        {
+            return;
+        }
+
+        foreach (GameObject tile in _moveTileList)
+        {
+            tile.SetActive(true);
+        }
+    }
+
+    public void SetActiveMoveTiles()
+    {
+        _moveTileList = GameObject.FindGameObjectsWithTag("Move Tile").ToList();
+    }
 
     public bool TilesAreLoaded() { return _tilesLoaded; }
 }

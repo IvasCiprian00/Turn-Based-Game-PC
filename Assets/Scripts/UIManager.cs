@@ -7,13 +7,18 @@ public class UIManager : MonoBehaviour
 {
     private GameManager _gameManager;
     private TurnManager _turnManager;
+    [Header("Buttons")]
     [SerializeField] private GameObject _endTurnButton;
-    [SerializeField] private TextMeshProUGUI _hpValue;
-    [SerializeField] private TextMeshProUGUI _damageValue;
-    [SerializeField] private GameObject _statsContainer;
     [SerializeField] private GameObject _nextLevelButton;
     [SerializeField] private GameObject _restartLevelButton;
     [SerializeField] private GameObject _goToCampButton;
+    [SerializeField] private GameObject _cancelSkillButton;
+
+    [Header("Hero stats")]
+    [SerializeField] private GameObject _statsContainer;
+    [SerializeField] private TextMeshProUGUI _hpValue;
+    [SerializeField] private TextMeshProUGUI _damageValue;
+
     [SerializeField] private GameObject _damageDealt;
 
     public void Awake()
@@ -69,5 +74,10 @@ public class UIManager : MonoBehaviour
 
         reference.transform.Rotate(0, 0, rot);
         reference.GetComponent<DamageText>().SetText(damage);
+    }
+
+    public void DisplayCancelSkill(bool cond)
+    {
+        _cancelSkillButton.SetActive(cond);
     }
 }

@@ -4,25 +4,11 @@ using UnityEngine;
 
 public class MoveTile : Tile
 {
-    private GameManager _gameManager;
-    private TileManager _tileManager;
-    private HeroManager _heroManager;
-    private TurnManager _turnManager;
-    private UIManager _uiManager;
     private bool _attackTile;
     private bool _healTile;
 
     [SerializeField] private Sprite _attackTileSprite;
     [SerializeField] private Sprite _healTileSprite;
-
-    public void Awake()
-    {
-        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        _gameManager.SetManager(ref _turnManager);
-        _gameManager.SetManager(ref _heroManager);
-        _gameManager.SetManager(ref _tileManager);
-        _gameManager.SetManager(ref _uiManager);
-    }
 
     public void Start()
     {

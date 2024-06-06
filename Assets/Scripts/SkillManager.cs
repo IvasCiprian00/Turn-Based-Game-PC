@@ -1,19 +1,25 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    [SerializeField] private TileManager _tileManager;
     [SerializeField] private GameManager _gameManager;
+    [SerializeField] private TileManager _tileManager;
+    private HeroManager _heroManager;
+    private UIManager _uiManager;
+
+    private HeroScript _heroScript;
+    [SerializeField] private List<GameObject> _skillTiles;
 
     [SerializeField] private GameObject _timerTile;
+    [SerializeField] private GameObject _healTile;
 
     public void Start()
     {
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager.SetManager(ref _tileManager);
+        _gameManager.SetManager(ref _heroManager);
+        _gameManager.SetManager(ref _uiManager);
     }
 
     public void SlimeSlamAttack(int range, int xPos, int yPos)
@@ -35,5 +41,43 @@ public class SkillManager : MonoBehaviour
                 reference.GetComponent<TimerTile>().SetTimer(2);
             }
         }
+    }
+
+    [ContextMenu("Heal Test")]
+    public void HealingWord()
+    {
+        CancelSkill();
+
+        _tileManager.DisableMoveTiles();
+
+        int xPos;
+        int yPos;
+        GameObject reference;
+
+        foreach (GameObject hero in _heroManager.heroesAlive)
+        {
+            _heroScript = hero.GetComponent<HeroScript>();
+
+            xPos = _heroScript.GetXPos();
+            yPos = _heroScript.GetYPos();
+
+            reference = _tileManager.SpawnTile(_healTile, xPos, yPos);
+            _skillTiles.Add(reference);
+        }
+
+        _uiManager.DisplayCancelSkill(true);
+    }
+
+    [ContextMenu("Cancel Skill Test")]
+    public void CancelSkill()
+    {
+        foreach(GameObject tile in _skillTiles)
+        {
+            Destroy(tile);
+        }
+
+        _skillTiles.Clear();
+
+        _tileManager.EnableMoveTiles();
     }
 }

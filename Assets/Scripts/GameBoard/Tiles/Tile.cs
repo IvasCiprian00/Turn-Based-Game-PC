@@ -4,8 +4,29 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+
+    protected GameManager _gameManager;
+    protected TileManager _tileManager;
+    protected HeroManager _heroManager;
+    protected TurnManager _turnManager;
+    protected UIManager _uiManager;
+
     protected int _xPos;
     protected int _yPos;
+
+    virtual public void Awake()
+    {
+        SetManagers();
+    }
+
+    public void SetManagers()
+    {
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager.SetManager(ref _turnManager);
+        _gameManager.SetManager(ref _heroManager);
+        _gameManager.SetManager(ref _tileManager);
+        _gameManager.SetManager(ref _uiManager);
+    }
 
     public void SetCoords(int x, int y)
     {

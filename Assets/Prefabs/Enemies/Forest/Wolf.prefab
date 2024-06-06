@@ -160,6 +160,8 @@ MonoBehaviour:
   _maxHp: 1
   _evasion: 0
   _damage: 1
+  _lowerDamage: 1
+  _upperDamage: 2
   _speed: 2
   _attackCount: 1
   _waitDuration: 0.3

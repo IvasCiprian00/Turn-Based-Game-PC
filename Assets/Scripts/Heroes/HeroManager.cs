@@ -107,7 +107,6 @@ public class HeroManager : MonoBehaviour
         {
             if(campManager.GetSelectedHeroAtIndex(i) == null)
             {
-                Debug.Log(i);
                 continue;
             }
 

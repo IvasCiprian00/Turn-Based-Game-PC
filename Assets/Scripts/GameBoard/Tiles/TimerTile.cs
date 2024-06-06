@@ -5,7 +5,6 @@ using UnityEngine;
 public class TimerTile : Tile
 {
     private int _timer;
-    private TileManager _tileManager;
     [SerializeField] private Sprite _finalTick;
 
     public void SetTimer(int timer)
@@ -25,8 +24,6 @@ public class TimerTile : Tile
         {
             return;
         }
-
-        _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
 
         if (_tileManager.gameBoard[_xPos, _yPos] == null )
         {
