@@ -16,10 +16,18 @@ public class BasicEnemy : Enemy
 
     public IEnumerator TakeTurn()
     {
+        TickStatusEffects();
+
+        if (_stunned)
+        {
+            EndTurn();
+            yield break;
+        }
+
         int speedLeft = _speed;
         int attacksLeft = _attackCount;
 
-        while(speedLeft > 0 || attacksLeft > 0)
+        while (speedLeft > 0 || attacksLeft > 0)
         {
             FindTarget();
 

@@ -156,6 +156,16 @@ MonoBehaviour:
   _healthbarScript: {fileID: 0}
   _targetType: 0
   _animator: {fileID: 1284396858281712183}
+  _statusList:
+  - statusType: 0
+    duration: 4
+  - statusType: 0
+    duration: 2
+  - statusType: 0
+    duration: 1
+  - statusType: 0
+    duration: 5
+  _stunned: 0
   _hp: 1
   _maxHp: 1
   _evasion: 0

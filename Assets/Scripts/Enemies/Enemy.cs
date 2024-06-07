@@ -24,6 +24,10 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected TargetType _targetType;
     [SerializeField] protected Animator _animator;
 
+    [Header("Status Section")]
+    [SerializeField] protected List<Status> _statusList;
+    [SerializeField] protected bool _stunned;
+
     [Header("Enemy Stats")]
     [SerializeField] protected int _hp;
     [SerializeField] protected int _maxHp;
@@ -368,6 +372,43 @@ abstract public class Enemy : MonoBehaviour
 
     abstract public void StartTurn();
 
+    public void TickStatusEffects()
+    {
+        ResetStatuses();
+
+        for (int i = 0; i < _statusList.Count; i++)
+        {
+            if (_statusList[i] == null)
+            {
+                continue;
+            }
+
+            _statusList[i].duration--;
+
+            if (_statusList[i].duration < 0)
+            {
+                _statusList.Remove(_statusList[i]);
+                i--;
+                continue;
+            }
+
+            switch (_statusList[i].type)
+            {
+                case Type.Stun:
+                    _stunned = true;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    public void ResetStatuses()
+    {
+        _stunned = false;
+    }
+
     public void EndTurn()
     {
         _turnManager.NextEnemy();
@@ -393,4 +434,5 @@ abstract public class Enemy : MonoBehaviour
     public void SetEvasion(int evasion) {  _evasion = evasion; }
 
     public int GetDamage() { return UnityEngine.Random.Range(_lowerDamage, _upperDamage); }
+    public void SetIsStunned(bool stunned) { _stunned = stunned; }
 }
