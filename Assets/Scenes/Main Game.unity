@@ -907,9 +907,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 0}
   _tileManager: {fileID: 0}
+  _turnManager: {fileID: 0}
   _skillTiles: []
+  _rangeTile: {fileID: 1361772927564775215, guid: 6acea4877f84d8747a6eae07ef9363ca, type: 3}
   _timerTile: {fileID: 5889569964943716457, guid: 458358bbfeb006e4a999757c1ae5618f, type: 3}
   _healTile: {fileID: 1361772927564775215, guid: d2cd36824d1eaba4e95f9bd080bbc303, type: 3}
+  _interactTile: {fileID: 1361772927564775215, guid: cae9224778bb4684c953c81b0dfa71df, type: 3}
 --- !u!4 &980300443
 Transform:
   m_ObjectHideFlags: 0
@@ -1128,7 +1131,8 @@ MonoBehaviour:
   _turnManager: {fileID: 0}
   _tile: {fileID: 6569301912543951891, guid: 7c1f064f02e4c5140b3cd7d9b68e1c9c, type: 3}
   _moveTile: {fileID: 1361772927564775215, guid: 6036ca591bc3fdd42874afef6a56b91d, type: 3}
-  _interactTile: {fileID: 1361772927564775215, guid: d2cd36824d1eaba4e95f9bd080bbc303, type: 3}
+  _healTile: {fileID: 1361772927564775215, guid: d2cd36824d1eaba4e95f9bd080bbc303, type: 3}
+  _interactTile: {fileID: 1361772927564775215, guid: cae9224778bb4684c953c81b0dfa71df, type: 3}
 --- !u!4 &1114362192
 Transform:
   m_ObjectHideFlags: 0

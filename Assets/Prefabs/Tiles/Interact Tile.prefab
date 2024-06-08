@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5710232065612910695}
   - component: {fileID: -6883259509152259206}
   m_Layer: 0
-  m_Name: Direct Heal Tile
+  m_Name: Interact Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 1151336709
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 72ad0ed079900b745a5710ec0e735d08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37bab6d5ecd26e446a9b5e64a3c0e104, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

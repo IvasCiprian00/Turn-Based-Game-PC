@@ -392,9 +392,9 @@ abstract public class Enemy : MonoBehaviour
                 continue;
             }
 
-            switch (_statusList[i].type)
+            switch (_statusList[i].statusType)
             {
-                case Type.Stun:
+                case StatusType.Stun:
                     _stunned = true;
                     break;
 
@@ -402,6 +402,11 @@ abstract public class Enemy : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void ApplyStatus(StatusType statusType, int duration)
+    {
+        _statusList.Add(new Status(statusType, duration));
     }
 
     public void ResetStatuses()

@@ -13,6 +13,7 @@ public class TileManager : MonoBehaviour
     [Header("Tile types")]
     [SerializeField] private GameObject _tile;
     [SerializeField] private GameObject _moveTile;
+    [SerializeField] private GameObject _healTile;
     [SerializeField] private GameObject _interactTile;
     private List<GameObject> _moveTileList;
 

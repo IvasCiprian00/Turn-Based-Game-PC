@@ -17,7 +17,8 @@ public class MoveTile : Tile
 
     public void OnMouseUp()
     {
-        HeroScript heroScript = _heroManager.heroesAlive[_turnManager.GetCurrentHero()].GetComponent<HeroScript>();
+        HeroScript heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
+        //HeroScript heroScript = _heroManager.heroesAlive[_turnManager.GetCurrentHero()].GetComponent<HeroScript>();
         int pastXPos = heroScript.GetXPos();
         int pastYPos = heroScript.GetYPos();
 
@@ -59,7 +60,7 @@ public class MoveTile : Tile
 
         heroScript.MoveTo(gameObject);
 
-        _tileManager.gameBoard[_xPos, _yPos] = _heroManager.heroesAlive[_turnManager.GetCurrentHero()];
+        _tileManager.gameBoard[_xPos, _yPos] = _turnManager.GetCurrentHero();
         _tileManager.GenerateMoveTiles(heroScript);
 
     }

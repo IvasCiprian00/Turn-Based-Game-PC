@@ -1,13 +1,19 @@
 using System;
 
-public enum Type
+public enum StatusType
 {
     Stun
 }
 [Serializable] public class Status
 {
-    public Type type;
+    public StatusType statusType;
     public int duration;
 
-    public string GetStatus() { return type.ToString(); }
+    public Status(StatusType statusType, int duration)
+    {
+        this.statusType = statusType;
+        this.duration = duration;
+    }
+
+    public string GetStatus() { return statusType.ToString(); }
 }

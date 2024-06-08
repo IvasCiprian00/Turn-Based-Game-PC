@@ -109,7 +109,6 @@ public class TurnManager : MonoBehaviour
         //later implement this with character initiative
     }
 
-    public int GetCurrentHero() { return _currentHero; }
 
     public void NextEnemy()
     {
@@ -168,6 +167,9 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+
+    public int GetCurrentHeroIndex() { return _currentHero; }
+    public GameObject GetCurrentHero() { return _heroManager.heroesAlive[_currentHero]; }
     public int GetCurrentEnemy() { return _currentEnemy; }
     public int GetActionsLeft() {  return _actionsLeft; }
     public void DecreaseActionsLeft() { _actionsLeft--; }
