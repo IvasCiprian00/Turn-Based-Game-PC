@@ -27,6 +27,8 @@ abstract public class Enemy : MonoBehaviour
     [Header("Status Section")]
     [SerializeField] protected List<Status> _statusList;
     [SerializeField] protected bool _stunned;
+    [SerializeField] protected bool _bleeding;
+    [SerializeField] protected int _bleedingDamage;
 
     [Header("Enemy Stats")]
     [SerializeField] protected int _hp;
@@ -338,10 +340,34 @@ abstract public class Enemy : MonoBehaviour
 
     public void MoveTowardsTarget()
     {
+        if (_bleeding)
+        {
+            TakeUndodgeableDamage(_bleedingDamage);
+        }
+
         int pastXPos = _xPos;
         int pastYPos = _yPos;
 
         UpdatePosition(pastXPos, pastYPos);
+    }
+
+    public virtual void TakeUndodgeableDamage(int damage)
+    {
+        _hp -= damage;
+        _uiManager.DisplayDamage(gameObject, damage);
+
+        UpdateHealthbar();
+
+        if (_hp <= 0)
+        {
+            _enemyManager.EnemyDeath(gameObject);
+            Destroy(gameObject);
+        }
+
+        if (_animator != null)
+        {
+            _animator.SetTrigger("take_damage");
+        }
     }
 
     public virtual void TakeDamage(int damage)
@@ -398,20 +424,34 @@ abstract public class Enemy : MonoBehaviour
                     _stunned = true;
                     break;
 
+                case StatusType.Burn:
+                    TakeDamage(_statusList[i].damage);
+                    break;
+
+                case StatusType.Bleed:
+                    _bleeding = true;
+                    if(_bleedingDamage < _statusList[i].damage)
+                    {
+                        _bleedingDamage = _statusList[i].damage;
+                    }
+                    break;
+
                 default:
                     break;
             }
         }
     }
 
-    public void ApplyStatus(StatusType statusType, int duration)
+    public void ApplyStatus(StatusType statusType, int duration, int damage)
     {
-        _statusList.Add(new Status(statusType, duration));
+        _statusList.Add(new Status(statusType, duration, damage));
     }
 
     public void ResetStatuses()
     {
         _stunned = false;
+        _bleeding = false;
+        _bleedingDamage = 0;
     }
 
     public void EndTurn()

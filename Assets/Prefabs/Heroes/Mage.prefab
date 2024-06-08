@@ -165,7 +165,8 @@ MonoBehaviour:
   _speed: 1
   _nrOfActions: 1
   _range: 3
-  skills: []
+  skills:
+  - {fileID: 3627879995096899543, guid: 59a74e10de6c6a94ea4d37e63a26cca6, type: 3}
   _movementType: 0
   _attackType: 1
 --- !u!1 &8581179276476738501

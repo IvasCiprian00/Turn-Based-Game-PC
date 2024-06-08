@@ -12,8 +12,11 @@ public class DirectInteractTile : Tile
     [SerializeField] private SkillManager _skillManager;
     [SerializeField] private int _interactValue;
     [SerializeField] private TileType _tileType;
+
+    [Header("Status Section")]
     [SerializeField] private StatusType _statusType;
     [SerializeField] private int _statusDuration;
+    [SerializeField] private int _statusDamage;
 
     override public void Awake()
     {
@@ -38,7 +41,7 @@ public class DirectInteractTile : Tile
                 break;
 
             case TileType.Debuff:
-                _tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().ApplyStatus(_statusType, _statusDuration);
+                _tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().ApplyStatus(_statusType, _statusDuration, _statusDamage);
                 break;
 
             default:
@@ -51,4 +54,5 @@ public class DirectInteractTile : Tile
     public void SetTileType(TileType tileType) { _tileType = tileType; }
     public void SetStatusType(StatusType statusType) { _statusType = statusType; }
     public void SetStatusDuration(int duration) { _statusDuration = duration; }
+    public void SetStatusDamage(int damage) {  _statusDamage = damage; }
 }

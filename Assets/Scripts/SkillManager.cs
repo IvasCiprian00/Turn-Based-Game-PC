@@ -49,7 +49,7 @@ public class SkillManager : MonoBehaviour
 
     public void HealingWord()
     {
-        ResetSkil();
+        ResetSkill();
 
         int xPos;
         int yPos;
@@ -67,10 +67,9 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Pommel Strike")]
     public void PommelStrike()
     {
-        ResetSkil();
+        ResetSkill();
 
         _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
         int xPos = _heroScript.GetXPos();
@@ -86,11 +85,6 @@ public class SkillManager : MonoBehaviour
                 yPos = _heroScript.GetYPos() + j;
 
                 if (!_tileManager.PositionIsValid(xPos, yPos))
-                {
-                    continue;
-                }
-
-                if(i == 0 && j == 0)
                 {
                     continue;
                 }
@@ -112,14 +106,110 @@ public class SkillManager : MonoBehaviour
                     tile.SetStatusDuration(1);
                     _skillTiles.Add(reference);
                 }
-                //spawnam tile de range
-                //daca un inamic este in range spawnam tile de interact
             }
         }
 
     }
 
-    public void ResetSkil()
+    public void Ignite()
+    {
+        ResetSkill();
+
+        _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
+        int startXPos = _heroScript.GetXPos();
+        int startYPos = _heroScript.GetYPos();
+        int xPos;
+        int yPos;
+
+        GameObject reference;
+
+        for(int i = -3; i <= 3; i++)
+        {
+            for(int j = -3; j <= 3; j++)
+            {
+                xPos = _heroScript.GetXPos() + i;
+                yPos = _heroScript.GetYPos() + j;
+                
+                if (Mathf.Abs(xPos - startXPos) + Mathf.Abs(yPos - startYPos) > 2)
+                {
+                    continue;
+                }
+
+
+                if (!_tileManager.PositionIsValid(xPos, yPos))
+                {
+                    continue;
+                }
+
+                if (_tileManager.gameBoard[xPos, yPos] == null)
+                {
+                    reference = _tileManager.SpawnTile(_rangeTile, xPos, yPos);
+
+                    _skillTiles.Add(reference);
+                    continue;
+                }
+
+                if (_tileManager.gameBoard[xPos, yPos].tag == "Enemy")
+                {
+                    reference = _tileManager.SpawnTile(_interactTile, xPos, yPos);
+                    DirectInteractTile tile = reference.GetComponent<DirectInteractTile>();
+                    tile.SetTileType(TileType.Debuff);
+                    tile.SetStatusType(StatusType.Burn);
+                    tile.SetStatusDamage(2);
+                    tile.SetStatusDuration(2);
+                    _skillTiles.Add(reference);
+                }
+            }
+        }
+    }
+
+
+    public void Bleed()
+    {
+        ResetSkill();
+
+        _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
+        int xPos = _heroScript.GetXPos();
+        int yPos = _heroScript.GetYPos();
+
+        GameObject reference;
+
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                xPos = _heroScript.GetXPos() + i;
+                yPos = _heroScript.GetYPos() + j;
+
+                if (!_tileManager.PositionIsValid(xPos, yPos))
+                {
+                    continue;
+                }
+
+                if (_tileManager.gameBoard[xPos, yPos] == null)
+                {
+                    reference = _tileManager.SpawnTile(_rangeTile, xPos, yPos);
+
+                    _skillTiles.Add(reference);
+                    continue;
+                }
+
+                if (_tileManager.gameBoard[xPos, yPos].tag == "Enemy")
+                {
+                    reference = _tileManager.SpawnTile(_interactTile, xPos, yPos);
+                    DirectInteractTile tile = reference.GetComponent<DirectInteractTile>();
+                    tile.SetTileType(TileType.Debuff);
+                    tile.SetStatusType(StatusType.Bleed);
+                    tile.SetStatusDuration(3);
+                    tile.SetStatusDamage(1);
+                    _skillTiles.Add(reference);
+                }
+            }
+        }
+
+    }
+
+    public void ResetSkill()
     {
         CancelSkill();
         _tileManager.DisableMoveTiles();
