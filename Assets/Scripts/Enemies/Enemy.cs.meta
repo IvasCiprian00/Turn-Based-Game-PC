@@ -3,7 +3,13 @@ guid: 662ba77ad3ad88d47addb497dfc0072e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _healthbarScript: {instanceID: 0}
+  - _animator: {instanceID: 0}
+  - _statusIconsParent: {instanceID: 0}
+  - _stunIcon: {instanceID: 0}
+  - _bleedIcon: {instanceID: 0}
+  - _burnIcon: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

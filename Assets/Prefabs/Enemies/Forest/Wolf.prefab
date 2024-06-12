@@ -160,6 +160,11 @@ MonoBehaviour:
   _stunned: 0
   _bleeding: 0
   _bleedingDamage: 0
+  _statusIcons: []
+  _statusIconsParent: {fileID: 5268956395601627761}
+  _stunIcon: {fileID: 7125423034206075634, guid: 18a5fac422e191444b6738685ee0acd2, type: 3}
+  _bleedIcon: {fileID: 880543540225458252, guid: 472e99b9dcf72c14d94389ee3d4614ed, type: 3}
+  _burnIcon: {fileID: 51374675846686010, guid: fd4d6b2342e522e439bfade1d4360f91, type: 3}
   _hp: 1
   _maxHp: 1
   _evasion: 0
@@ -262,10 +267,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 759441042426397254}
     m_Modifications:
-    - target: {fileID: 1225805781093089983, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3094622463373965070, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -354,10 +355,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7467112852816263717, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1890100179
-      objectReference: {fileID: 0}
     - target: {fileID: 8249423884094740605, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
       propertyPath: m_Name
       value: Healthbar
@@ -370,5 +367,10 @@ PrefabInstance:
 --- !u!224 &4156656822697204568 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6656916332049436562, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
+  m_PrefabInstance: {fileID: 7335650730392392906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5268956395601627761 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3229750079426666171, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
   m_PrefabInstance: {fileID: 7335650730392392906}
   m_PrefabAsset: {fileID: 0}

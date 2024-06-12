@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -29,6 +30,11 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected bool _stunned;
     [SerializeField] protected bool _bleeding;
     [SerializeField] protected int _bleedingDamage;
+    [SerializeField] protected List<TextMeshProUGUI> _statusIcons;
+    [SerializeField] protected Transform _statusIconsParent;
+    [SerializeField] protected GameObject _stunIcon;
+    [SerializeField] protected GameObject _bleedIcon;
+    [SerializeField] protected GameObject _burnIcon;
 
     [Header("Enemy Stats")]
     [SerializeField] protected int _hp;
@@ -338,6 +344,56 @@ abstract public class Enemy : MonoBehaviour
         _isMoving = true;
     }
 
+    public IEnumerator AttackAndMove()
+    {
+        int speedLeft = _speed;
+        int attacksLeft = _attackCount;
+
+        while (speedLeft > 0 || attacksLeft > 0)
+        {
+            FindTarget();
+
+            if (CanAttack(_heroScript) && attacksLeft == 0)
+            {
+                break;
+            }
+
+            if (!CanAttack(_heroScript) && speedLeft == 0)
+            {
+                break;
+            }
+
+            if (CanAttack(_heroScript))
+            {
+                _heroScript.TakeDamage(GetDamage());
+                attacksLeft--;
+            }
+            else if (speedLeft > 0)
+            {
+                MoveTowardsTarget();
+                speedLeft--;
+            }
+        }
+
+        yield return new WaitForSeconds(0.2f);
+    }
+
+
+    public IEnumerator TakeBasicTurn()
+    {
+        TickStatusEffects();
+
+        if (_stunned)
+        {
+            EndTurn();
+            yield break;
+        }
+
+        StartCoroutine(AttackAndMove());
+
+        EndTurn();
+    }
+
     public void MoveTowardsTarget()
     {
         if (_bleeding)
@@ -414,6 +470,8 @@ abstract public class Enemy : MonoBehaviour
             if (_statusList[i].duration < 0)
             {
                 _statusList.Remove(_statusList[i]);
+                Destroy(_statusIcons[i].transform.parent.gameObject);
+                _statusIcons.Remove(_statusIcons[i]);
                 i--;
                 continue;
             }
@@ -445,6 +503,24 @@ abstract public class Enemy : MonoBehaviour
     public void ApplyStatus(StatusType statusType, int duration, int damage)
     {
         _statusList.Add(new Status(statusType, duration, damage));
+
+        GameObject reference;
+        switch(statusType)
+        {
+            case StatusType.Stun:
+                reference = Instantiate(_stunIcon, _statusIconsParent);
+                break;
+            case StatusType.Bleed:
+                reference = Instantiate(_bleedIcon, _statusIconsParent);
+                break;
+            case StatusType.Burn:
+                reference = Instantiate(_burnIcon, _statusIconsParent);
+                break;
+            default: return;
+        }
+
+        _statusIcons.Add(reference.GetComponentInChildren<TextMeshProUGUI>());
+        //_statusIcons[_statusIcons.Count - 1].text = duration.ToString();
     }
 
     public void ResetStatuses()

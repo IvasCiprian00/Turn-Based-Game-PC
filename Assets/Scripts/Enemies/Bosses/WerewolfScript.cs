@@ -26,6 +26,14 @@ public class WerewolfScript : Enemy
 
     public IEnumerator TakeTurn()
     {
+        TickStatusEffects();
+
+        if (_stunned)
+        {
+            EndTurn();
+            yield break;
+        }
+
         int speedLeft = _speed;
         int attacksLeft = _attackCount;
 
