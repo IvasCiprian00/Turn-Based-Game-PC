@@ -54,7 +54,7 @@ public class SoundManager : MonoBehaviour
         int timer;
         while (true)
         {
-            timer = Random.Range(10, 24);
+            timer = Random.Range(20, 40);
             yield return new WaitForSeconds(timer);
             if(Random.Range(0, 2) == 0)
             {

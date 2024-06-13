@@ -325,7 +325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5147600488552359778}
-  _icon: {fileID: 0}
+  positionSprites:
+  - {fileID: 28631362, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: -928047265, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: 1385808214, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: 1458897053, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   _hp: 0
   _maxHp: 5
   _evasion: 0
@@ -340,8 +344,6 @@ MonoBehaviour:
   _movementType: 0
   _attackType: 0
   _audioSource: {fileID: 51051124936562112}
-  _attackSound: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
-  _moveSound: {fileID: 8300000, guid: df7087e4d8a8bb546bc08ce68632903f, type: 3}
   _healAmount: 1
 --- !u!61 &6866279520593705484
 BoxCollider2D:

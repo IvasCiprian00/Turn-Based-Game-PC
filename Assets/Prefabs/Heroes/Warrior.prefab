@@ -240,7 +240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8085765146414373935}
-  _icon: {fileID: 0}
+  positionSprites:
+  - {fileID: -302684860, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: -427428578, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: 1287403876, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: -264459839, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   _hp: 0
   _maxHp: 6
   _evasion: 10
@@ -255,8 +259,6 @@ MonoBehaviour:
   _movementType: 0
   _attackType: 0
   _audioSource: {fileID: 5724818030874929586}
-  _attackSound: {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
-  _moveSound: {fileID: 8300000, guid: df7087e4d8a8bb546bc08ce68632903f, type: 3}
 --- !u!82 &5724818030874929586
 AudioSource:
   m_ObjectHideFlags: 0

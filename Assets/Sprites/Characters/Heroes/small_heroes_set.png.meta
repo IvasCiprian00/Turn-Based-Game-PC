@@ -153,7 +153,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 75
+        y: 125
         width: 25
         height: 25
       alignment: 7
@@ -174,7 +174,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 25
-        y: 75
+        y: 125
         width: 25
         height: 25
       alignment: 7
@@ -191,95 +191,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: warrior_1
+      name: mage_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 75
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50f2719666f58544c8d50ba91af51288
-      internalID: -1775726294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ranger_1
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 75
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd325107bd9106e42bd0a3f7d6b40b64
-      internalID: -1048975517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rogue_1
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 75
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 047c8b81f8b3efb4c9c61759496f9456
-      internalID: -335660537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: healer_1
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 75
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f63826142b91a54390778b9f662ed4f
-      internalID: 151437339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: small_heroes_set_6
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 50
+        x: 150
+        y: 125
         width: 25
         height: 25
       alignment: 7
@@ -296,95 +212,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: warrior_2
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 50
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0465006fd3e03d4f84d67c98370df12
-      internalID: -1639121750
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ranger_2
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 50
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82fd3a726e5a3ba47be8be3e94e77cb4
-      internalID: 741910244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: rogue_2
       rect:
         serializedVersion: 2
         x: 100
-        y: 50
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d2132c433c143fe4ca735dece4779684
-      internalID: 1981883160
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: healer_2
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 50
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab1816c116074d64ea652f20ebccaff6
-      internalID: 358849595
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: small_heroes_set_11
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 25
+        y: 100
         width: 25
         height: 25
       alignment: 7
@@ -401,95 +233,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: warrior_3
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 25
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 079822d13f009934395f0db352edc4c6
-      internalID: -264459839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ranger_3
+      name: archer_3
       rect:
         serializedVersion: 2
         x: 75
-        y: 25
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d2c40e17e8371fb43ab96f28fe2322c1
-      internalID: -746326345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rogue_3
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 25
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2ccee6dd239dd54aadb12602366efe2
-      internalID: -466976921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: healer_3
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 25
-        width: 25
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18c5df6ee2c69514fb1ba5d050356078
-      internalID: 1458897053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: small_heroes_set_16
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
+        y: 75
         width: 25
         height: 25
       alignment: 7
@@ -506,7 +254,553 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: warrior_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 125
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d12bf6c60018a74db8c6842d168b24c
+      internalID: -1775726294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 125
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7fab1656fe2dbe459abbc66c210fbfc
+      internalID: 627129367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rogue_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 125
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9568c1432f9ef644904345cb6da7643
+      internalID: -335660537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healer_1
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 125
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada634b382c0a2b46bdaa1e8137daf40
+      internalID: 151437339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_heroes_set_7
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 125
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c3d12f6c6d30124d85cf61d46814c7f
+      internalID: -165515533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_heroes_set_8
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 100
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ab6318fce416e46a39c565dcee246b
+      internalID: 263360776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 100
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8d8ea9086b2a24c9de016a697b8da0
+      internalID: -1639121750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 100
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23eac126e32135043a5f582494fc66f0
+      internalID: -1954647790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healer_2
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 100
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f32d2f9a064b10a4d90cf808b130b53a
+      internalID: 358849595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mage_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 100
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889c87c58fb75ae40ba151b4f9add45a
+      internalID: 1003069567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_heroes_set_14
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 75
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61351794355d4e346ba70ace0e46cc64
+      internalID: -1271903693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 75
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a559193a00e434ab9cbf541aa45dc9
+      internalID: -264459839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rogue_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 75
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c81a69fbfe241884ab7ecb4b1db9b342
+      internalID: -466976921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healer_3
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 75
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1565c30b82bdbe14d8fede3c29b2bd93
+      internalID: 1458897053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mage_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 75
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b9263ae4dd40d845889956b2260e3bb
+      internalID: 1195918268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_heroes_set_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fd52dfee7e1a6242909d3cfdf8dd656
+      internalID: -360725865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: warrior_4
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 50
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64062f996f654c64eaf32cec1a82f1ef
+      internalID: -302684860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_4
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 50
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a9e7a64a9942142aa3fd1e7d453a53
+      internalID: 686246093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rogue_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 50
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6995b4f64481f764aad6fd04e6054e48
+      internalID: 828067795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healer_4
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 50
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d514f8d800c15ae4b9506e00523c36d2
+      internalID: 28631362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mage_4
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 50
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72a6a399e0c57b40b52913c2b426a4d
+      internalID: 475949512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_5
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 25
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d2f7e41a2ac9964f8a963fe2eb5161c
+      internalID: -427428578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_5
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 25
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b98f2b8c0dd51714a954211ba3c92d35
+      internalID: -1281628865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rogue_5
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 25
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c99628d534fbafe49b00fb2b126567a2
+      internalID: -1902763981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healer_5
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 25
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ad49200ee69a9c45a77456ee354ebb1
+      internalID: -928047265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mage_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 25
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d428973d2457e2468599785cb6a71ac
+      internalID: -402963714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_6
       rect:
         serializedVersion: 2
         x: 50
@@ -520,14 +814,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f0d7c71aa8934143adf098c2fffe97b
-      internalID: -302684860
+      spriteID: b407378ee2bb9d945b6b3c7ec98dbeb7
+      internalID: 1287403876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_4
+      name: archer_6
       rect:
         serializedVersion: 2
         x: 75
@@ -541,14 +835,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 454f8983a53207747811f96c037d6f5a
-      internalID: 517763261
+      spriteID: fa2197e94cfa90f4b9acb45f1374bdd7
+      internalID: -722308655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rogue_4
+      name: rogue_6
       rect:
         serializedVersion: 2
         x: 100
@@ -562,14 +856,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac123ea92b3f80c48bb562cfb375587b
-      internalID: 828067795
+      spriteID: 44098aa12577eb44f8e61baa5401dde3
+      internalID: -1911239640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healer_4
+      name: healer_6
       rect:
         serializedVersion: 2
         x: 125
@@ -583,8 +877,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0566463794558a4686f5668462614a4
-      internalID: 28631362
+      spriteID: a6b8cb371a9351741b1ed0b588927219
+      internalID: 1385808214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mage_6
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 25
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59a8babe85dd764b8e8373ad95411bb
+      internalID: 1099939607
       vertices: []
       indices: 
       edges: []
@@ -600,27 +915,42 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      archer_1: 627129367
+      archer_2: -1954647790
+      archer_3: -86223176
+      archer_4: 686246093
+      archer_5: -1281628865
+      archer_6: -722308655
       healer_1: 151437339
       healer_2: 358849595
       healer_3: 1458897053
       healer_4: 28631362
-      ranger_1: -1048975517
-      ranger_2: 741910244
-      ranger_3: -746326345
-      ranger_4: 517763261
+      healer_5: -928047265
+      healer_6: 1385808214
+      mage_1: 1864296954
+      mage_2: 1003069567
+      mage_3: 1195918268
+      mage_4: 475949512
+      mage_5: -402963714
+      mage_6: 1099939607
       rogue_1: -335660537
-      rogue_2: 1981883160
+      rogue_2: -103025827
       rogue_3: -466976921
       rogue_4: 828067795
+      rogue_5: -1902763981
+      rogue_6: -1911239640
       small_heroes_set_0: -288134902
       small_heroes_set_1: -1667932655
-      small_heroes_set_11: -103025827
-      small_heroes_set_16: -86223176
-      small_heroes_set_6: 1864296954
+      small_heroes_set_14: -1271903693
+      small_heroes_set_20: -360725865
+      small_heroes_set_7: -165515533
+      small_heroes_set_8: 263360776
       warrior_1: -1775726294
       warrior_2: -1639121750
       warrior_3: -264459839
       warrior_4: -302684860
+      warrior_5: -427428578
+      warrior_6: 1287403876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

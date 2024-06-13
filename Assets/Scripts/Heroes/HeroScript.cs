@@ -30,7 +30,8 @@ public class HeroScript : MonoBehaviour
     private int _yPos;
     [SerializeField] Animator _animator;
 
-    [SerializeField] private GameObject _icon;
+    [Header("Camp Positions")]
+    [SerializeField] private Sprite[] positionSprites;
 
     [Header("Hero Attributes")]
     [SerializeField] private int _hp;
@@ -184,6 +185,7 @@ public class HeroScript : MonoBehaviour
         }
     }
 
+    public Sprite GetCampPosition(int index) { return positionSprites[index]; }
     public int GetXPos() { return _xPos; }
     public int GetYPos() { return _yPos; }
     public string GetMovementType() { return _movementType.ToString().ToLower(); }

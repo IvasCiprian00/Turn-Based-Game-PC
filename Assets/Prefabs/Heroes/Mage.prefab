@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 1151336709
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1048975517, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  m_Sprite: {fileID: 1864296954, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.63, y: 0.72}
+  m_Size: {x: 0.25, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -156,7 +156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1233810341953722105}
-  _icon: {fileID: 0}
+  positionSprites:
+  - {fileID: 475949512, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: -402963714, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: 1099939607, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
+  - {fileID: 1195918268, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   _hp: 0
   _maxHp: 3
   _evasion: 0
@@ -171,8 +175,6 @@ MonoBehaviour:
   _movementType: 0
   _attackType: 1
   _audioSource: {fileID: -4222534024090439352}
-  _attackSound: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
-  _moveSound: {fileID: 8300000, guid: df7087e4d8a8bb546bc08ce68632903f, type: 3}
 --- !u!82 &-4222534024090439352
 AudioSource:
   m_ObjectHideFlags: 0

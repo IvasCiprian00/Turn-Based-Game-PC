@@ -78,8 +78,10 @@ public class CampManager : MonoBehaviour
                 continue;
             }
 
-            _slots[i].sprite = _heroList[i].GetComponentInChildren<SpriteRenderer>().sprite;
-            _slots[i].color = new Color(1, 1, 1, 1);
+            _slotIndex = i;
+            AddHeroToCamp(_heroList[i]);
+            //_slots[i].sprite = _heroList[i].GetComponentInChildren<SpriteRenderer>().sprite;
+            //_slots[i].color = new Color(1, 1, 1, 1);
         }
     }
 
@@ -87,7 +89,7 @@ public class CampManager : MonoBehaviour
     {
         _heroList[_slotIndex] = hero;
 
-        _slots[_slotIndex].sprite = hero.GetComponentInChildren<SpriteRenderer>().sprite;
+        _slots[_slotIndex].sprite = hero.GetComponent<HeroScript>().GetCampPosition(_slotIndex);
         _slots[_slotIndex].color = new Color(1, 1, 1, 1);
     }
 
@@ -142,6 +144,11 @@ public class CampManager : MonoBehaviour
 
     public void DeleteHero()
     {
+        _animator.SetTrigger("exit slide");
+
+        _heroList[_slotIndex] = null;
+        _slots[_slotIndex].sprite = null;
+        _slots[_slotIndex].color = new Color(1, 1, 1, 0);
     }
 
     public GameObject GetSelectedHeroAtIndex(int i)
