@@ -44,6 +44,8 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private int _nrOfActions;
     [SerializeField] private int _range;
     public GameObject[] skills;
+    private string _skillPrefName;
+    [SerializeField] private int _skillUsages;
 
     [SerializeField] private MovementType _movementType;
     [SerializeField] private AttackType _attackType;
@@ -69,6 +71,12 @@ public class HeroScript : MonoBehaviour
     {
         _prefName = gameObject.name + "Hp";
         _hp = PlayerPrefs.GetInt(_prefName, _maxHp);
+
+        _skillPrefName = skills[0].name;
+        if (!PlayerPrefs.HasKey(_skillPrefName))
+        {
+            PlayerPrefs.SetInt(_skillPrefName, _skillUsages);
+        }
 
         if (_healthbarScript != null)
         {
@@ -184,6 +192,20 @@ public class HeroScript : MonoBehaviour
             Debug.Log("YEY");
         }
     }
+
+    public void ResetPlayerPrefs()
+    {
+        PlayerPrefs.SetInt(_prefName, GetMaxHp());
+        PlayerPrefs.SetInt(_skillPrefName, _skillUsages);
+    }
+
+    public void DecreaseSkillUsages() 
+    { 
+        int remaining = PlayerPrefs.GetInt(_skillPrefName);
+        PlayerPrefs.SetInt(_skillPrefName, remaining - 1); 
+    }
+
+    public int GetUsagesLeft() { return PlayerPrefs.GetInt(_skillPrefName); }
 
     public Sprite GetCampPosition(int index) { return positionSprites[index]; }
     public int GetXPos() { return _xPos; }

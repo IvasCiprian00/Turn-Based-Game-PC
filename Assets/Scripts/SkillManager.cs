@@ -18,6 +18,8 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private GameObject _healTile;
     [SerializeField] private GameObject _interactTile;
 
+    private bool _canCast;
+
     public void Start()
     {
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -52,6 +54,10 @@ public class SkillManager : MonoBehaviour
     public void HealingWord()
     {
         ResetSkill();
+        if (!_canCast)
+        {
+            return;
+        }
 
         int xPos;
         int yPos;
@@ -64,7 +70,10 @@ public class SkillManager : MonoBehaviour
             xPos = _heroScript.GetXPos();
             yPos = _heroScript.GetYPos();
 
-            reference = _tileManager.SpawnTile(_healTile, xPos, yPos);
+            reference = _tileManager.SpawnTile(_interactTile, xPos, yPos);
+            DirectInteractTile tile = reference.GetComponent<DirectInteractTile>();
+            tile.SetTileType(TileType.Heal);
+            tile.SetInteractValue(Random.Range(2, 4));
             _skillTiles.Add(reference);
         }
 
@@ -75,6 +84,10 @@ public class SkillManager : MonoBehaviour
     {
         ResetSkill();
         _soundManager.PrepareSound(_soundManager.stun);
+        if (!_canCast)
+        {
+            return;
+        }
 
         _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
         int xPos = _heroScript.GetXPos();
@@ -118,8 +131,12 @@ public class SkillManager : MonoBehaviour
 
     public void Ignite()
     {
-        _soundManager.PrepareSound(_soundManager.burn);
         ResetSkill();
+        _soundManager.PrepareSound(_soundManager.burn);
+        if (!_canCast)
+        {
+            return;
+        }
 
         _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
         int startXPos = _heroScript.GetXPos();
@@ -172,8 +189,13 @@ public class SkillManager : MonoBehaviour
 
     public void Bleed()
     {
-        _soundManager.PrepareSound(_soundManager.bleed);
         ResetSkill();
+        _soundManager.PrepareSound(_soundManager.bleed);
+
+        if (!_canCast)
+        {
+            return;
+        }
 
         _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
         int xPos = _heroScript.GetXPos();
@@ -218,6 +240,12 @@ public class SkillManager : MonoBehaviour
 
     public void ResetSkill()
     {
+        _canCast = true;
+        if (_turnManager.GetCurrentHero().GetComponent<HeroScript>().GetUsagesLeft() <= 0)
+        {
+            _canCast = false;
+        }
+
         CancelSkill();
         _tileManager.DisableMoveTiles();
         _uiManager.DisplayCancelSkill(true);

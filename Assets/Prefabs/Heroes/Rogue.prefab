@@ -172,6 +172,7 @@ MonoBehaviour:
   _range: 2
   skills:
   - {fileID: 3627879995096899543, guid: 84a4ff6f580329740aa21eabdb0294cd, type: 3}
+  _skillUsages: 1
   _movementType: 0
   _attackType: 2
   _audioSource: {fileID: 72009283287007787}

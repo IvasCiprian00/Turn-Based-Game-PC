@@ -27,7 +27,6 @@ public class CampManager : MonoBehaviour
 
     public void Start()
     {
-        PlayerPrefs.DeleteAll();
         HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
         StartCoroutine(_soundManager.PlayCampSounds());
@@ -80,8 +79,6 @@ public class CampManager : MonoBehaviour
 
             _slotIndex = i;
             AddHeroToCamp(_heroList[i]);
-            //_slots[i].sprite = _heroList[i].GetComponentInChildren<SpriteRenderer>().sprite;
-            //_slots[i].color = new Color(1, 1, 1, 1);
         }
     }
 
@@ -149,6 +146,15 @@ public class CampManager : MonoBehaviour
         _heroList[_slotIndex] = null;
         _slots[_slotIndex].sprite = null;
         _slots[_slotIndex].color = new Color(1, 1, 1, 0);
+    }
+
+    public void RestHeroes()
+    {
+        _soundManager.PlaySound(_soundManager.rest);
+        for(int i = 0; i < _allHeroesList.Length; i++)
+        {
+            _allHeroesList[i].GetComponent<HeroScript>().ResetPlayerPrefs();
+        }
     }
 
     public GameObject GetSelectedHeroAtIndex(int i)

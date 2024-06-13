@@ -24,6 +24,7 @@ public class MoveTile : Tile
 
         if (_healTile)
         {
+            return;
             int healAmount = heroScript.GetHealAmount();
 
             _tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().Heal(healAmount);

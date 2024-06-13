@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip whoosh;
     public AudioClip owl;
     public AudioClip wolfHowl;
+    public AudioClip rest;
 
     [Header("Combat Sounds")]
     public AudioClip slash;

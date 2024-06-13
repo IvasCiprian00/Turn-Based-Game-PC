@@ -32,6 +32,9 @@ public class DirectInteractTile : Tile
     public void OnMouseUp()
     {
         _soundManager.PlayPreparedSound();
+        HeroScript heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
+        heroScript.DecreaseSkillUsages();
+
         switch (_tileType){
             case TileType.Heal:
                 _tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().Heal(_interactValue);
@@ -56,4 +59,5 @@ public class DirectInteractTile : Tile
     public void SetStatusType(StatusType statusType) { _statusType = statusType; }
     public void SetStatusDuration(int duration) { _statusDuration = duration; }
     public void SetStatusDamage(int damage) {  _statusDamage = damage; }
+    public void SetInteractValue(int value) { _interactValue = value; }
 }
