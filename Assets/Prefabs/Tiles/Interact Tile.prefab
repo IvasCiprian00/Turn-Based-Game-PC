@@ -148,3 +148,4 @@ MonoBehaviour:
   _tileType: 0
   _statusType: 0
   _statusDuration: 0
+  _statusDamage: 0

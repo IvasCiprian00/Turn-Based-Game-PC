@@ -40,6 +40,7 @@ public class MoveTile : Tile
 
         if (_attackTile)
         {
+            _soundManager.PlayAttackSound();
             int damageDealt = heroScript.GetDamage();
 
             _tileManager.gameBoard[_xPos, _yPos].GetComponent<Enemy>().TakeDamage(damageDealt);
@@ -53,6 +54,7 @@ public class MoveTile : Tile
             return;
         }
 
+        _soundManager.PlayMoveSound();
         int distance = Mathf.Abs(_xPos - pastXPos) + Mathf.Abs(_yPos - pastYPos);
         _turnManager.DecreaseSpeedLeft(distance);
 

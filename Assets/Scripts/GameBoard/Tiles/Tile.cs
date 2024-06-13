@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -9,6 +7,7 @@ public class Tile : MonoBehaviour
     protected TileManager _tileManager;
     protected HeroManager _heroManager;
     protected TurnManager _turnManager;
+    protected SoundManager _soundManager;
     protected UIManager _uiManager;
 
     protected int _xPos;
@@ -26,6 +25,7 @@ public class Tile : MonoBehaviour
         _gameManager.SetManager(ref _heroManager);
         _gameManager.SetManager(ref _tileManager);
         _gameManager.SetManager(ref _uiManager);
+        _gameManager.SetManager(ref _soundManager);
     }
 
     public void SetCoords(int x, int y)

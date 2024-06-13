@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    [SerializeField] private GameManager _gameManager;
-    [SerializeField] private TileManager _tileManager;
-    [SerializeField] private TurnManager _turnManager;
+    private GameManager _gameManager;
+    private TileManager _tileManager;
+    private TurnManager _turnManager;
+    private SoundManager _soundManager;
     private HeroManager _heroManager;
     private UIManager _uiManager;
 
@@ -24,6 +25,7 @@ public class SkillManager : MonoBehaviour
         _gameManager.SetManager(ref _heroManager);
         _gameManager.SetManager(ref _turnManager);
         _gameManager.SetManager(ref _uiManager);
+        _gameManager.SetManager(ref _soundManager);
     }
 
     public void SlimeSlamAttack(int range, int xPos, int yPos)
@@ -65,11 +67,14 @@ public class SkillManager : MonoBehaviour
             reference = _tileManager.SpawnTile(_healTile, xPos, yPos);
             _skillTiles.Add(reference);
         }
+
+        _soundManager.PrepareSound(_soundManager.heal);
     }
 
     public void PommelStrike()
     {
         ResetSkill();
+        _soundManager.PrepareSound(_soundManager.stun);
 
         _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
         int xPos = _heroScript.GetXPos();
@@ -113,6 +118,7 @@ public class SkillManager : MonoBehaviour
 
     public void Ignite()
     {
+        _soundManager.PrepareSound(_soundManager.burn);
         ResetSkill();
 
         _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();
@@ -166,6 +172,7 @@ public class SkillManager : MonoBehaviour
 
     public void Bleed()
     {
+        _soundManager.PrepareSound(_soundManager.bleed);
         ResetSkill();
 
         _heroScript = _turnManager.GetCurrentHero().GetComponent<HeroScript>();

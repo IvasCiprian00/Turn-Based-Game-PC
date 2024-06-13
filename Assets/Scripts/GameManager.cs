@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private HeroManager _heroManager;
     private EnemyManager _enemyManager;
+    private SoundManager _soundManager;
     private TileManager _tileManager;
     private TurnManager _turnManager;
     private EnvironmentManager _envManager;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
         SetManager(ref _heroManager);
         SetManager(ref _turnManager);
         SetManager(ref _uiManager);
+        SetManager(ref _soundManager);
         _cameraAnimator = GameObject.Find("Camera Parent").GetComponent<Animator>();
     }
 
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
     public void GoToNextLevel()
     {
         SceneManager.UnloadSceneAsync(_levelNumber);
+        _soundManager.PlaySound(_soundManager.whoosh);
 
         _cameraAnimator.SetTrigger("next level");
         _turnManager.ResetHeroes();
@@ -152,5 +155,9 @@ public class GameManager : MonoBehaviour
     public void SetManager(ref SkillManager manager)
     {
         manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
+    }
+    public void SetManager(ref SoundManager manager)
+    {
+        manager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
     }
 }

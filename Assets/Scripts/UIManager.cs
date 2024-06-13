@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     private GameManager _gameManager;
     private TurnManager _turnManager;
     private SkillManager _skillManager;
+    private SoundManager _soundManager;
 
     [SerializeField] private Transform[] _skillSlots;
 
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         _gameManager.SetManager(ref _turnManager);
         _gameManager.SetManager(ref _skillManager);
+        _gameManager.SetManager(ref _soundManager);
     }
 
     public void Update()

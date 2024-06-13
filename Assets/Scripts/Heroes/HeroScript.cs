@@ -47,6 +47,9 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private MovementType _movementType;
     [SerializeField] private AttackType _attackType;
 
+    [Header("Sounds")]
+    [SerializeField] protected AudioSource _audioSource;
+
     private string _prefName;
     private bool _isMoving;
     private GameObject _targetTile;
@@ -153,6 +156,7 @@ public class HeroScript : MonoBehaviour
             _animator.SetTrigger("begin_new_level");
         }
     }
+
 
     public void MoveTo(GameObject tile)
     {

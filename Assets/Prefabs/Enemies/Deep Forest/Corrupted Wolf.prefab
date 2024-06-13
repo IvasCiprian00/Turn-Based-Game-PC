@@ -156,6 +156,15 @@ MonoBehaviour:
   _healthbarScript: {fileID: 0}
   _targetType: 0
   _animator: {fileID: 1284396858281712183}
+  _statusList: []
+  _stunned: 0
+  _bleeding: 0
+  _bleedingDamage: 0
+  _statusIcons: []
+  _statusIconsParent: {fileID: 5268956395601627761}
+  _stunIcon: {fileID: 7125423034206075634, guid: 18a5fac422e191444b6738685ee0acd2, type: 3}
+  _bleedIcon: {fileID: 880543540225458252, guid: 472e99b9dcf72c14d94389ee3d4614ed, type: 3}
+  _burnIcon: {fileID: 51374675846686010, guid: fd4d6b2342e522e439bfade1d4360f91, type: 3}
   _hp: 4
   _maxHp: 5
   _evasion: 10
@@ -366,5 +375,10 @@ PrefabInstance:
 --- !u!224 &4156656822697204568 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6656916332049436562, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
+  m_PrefabInstance: {fileID: 7335650730392392906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5268956395601627761 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3229750079426666171, guid: e4472646deef94e4988bcea575cbebfd, type: 3}
   m_PrefabInstance: {fileID: 7335650730392392906}
   m_PrefabAsset: {fileID: 0}

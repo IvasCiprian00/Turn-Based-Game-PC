@@ -34,36 +34,7 @@ public class WerewolfScript : Enemy
             yield break;
         }
 
-        int speedLeft = _speed;
-        int attacksLeft = _attackCount;
-
-        while (speedLeft > 0 || attacksLeft > 0)
-        {
-            FindTarget();
-
-            if (CanAttack(_heroScript) && attacksLeft == 0)
-            {
-                break;
-            }
-
-            if (!CanAttack(_heroScript) && speedLeft == 0)
-            {
-                break;
-            }
-
-            if (CanAttack(_heroScript))
-            {
-                _heroScript.TakeDamage(GetDamage());
-                attacksLeft--;
-            }
-            else if (speedLeft > 0)
-            {
-                MoveTowardsTarget();
-                speedLeft--;
-            }
-
-            yield return new WaitForSeconds(0.2f);
-        }
+        StartCoroutine(AttackAndMove());
 
         EndTurn();
     }

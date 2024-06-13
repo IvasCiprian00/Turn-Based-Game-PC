@@ -5,7 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-abstract public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     protected enum TargetType
     {
@@ -20,6 +20,7 @@ abstract public class Enemy : MonoBehaviour
     protected TileManager _tileManager;
     protected TurnManager _turnManager;
     protected UIManager _uiManager;
+    protected SoundManager _soundManager;
 
     [SerializeField] protected HealthbarScript _healthbarScript;
     [SerializeField] protected TargetType _targetType;
@@ -109,6 +110,7 @@ abstract public class Enemy : MonoBehaviour
         _gameManager.SetManager(ref _heroManager);
         _gameManager.SetManager(ref _skillManager);
         _gameManager.SetManager(ref _uiManager);
+        _gameManager.SetManager(ref _soundManager);
     }
 
     public void SetHealthbar()
@@ -351,6 +353,10 @@ abstract public class Enemy : MonoBehaviour
 
         while (speedLeft > 0 || attacksLeft > 0)
         {
+            if(_hp <= 0)
+            {
+                yield break;
+            }
             FindTarget();
 
             if (CanAttack(_heroScript) && attacksLeft == 0)
@@ -365,11 +371,13 @@ abstract public class Enemy : MonoBehaviour
 
             if (CanAttack(_heroScript))
             {
+                _soundManager.PlaySound(_soundManager.bite);
                 _heroScript.TakeDamage(GetDamage());
                 attacksLeft--;
             }
             else if (speedLeft > 0)
             {
+                _soundManager.PlaySound(_soundManager.moveSound);
                 MoveTowardsTarget();
                 speedLeft--;
             }
@@ -388,7 +396,6 @@ abstract public class Enemy : MonoBehaviour
             EndTurn();
             yield break;
         }
-
         StartCoroutine(AttackAndMove());
 
         EndTurn();
@@ -417,6 +424,7 @@ abstract public class Enemy : MonoBehaviour
         if (_hp <= 0)
         {
             _enemyManager.EnemyDeath(gameObject);
+            StopAllCoroutines();
             Destroy(gameObject);
         }
 
@@ -435,24 +443,13 @@ abstract public class Enemy : MonoBehaviour
             damage = 0;
         }
 
-        _hp -= damage;
-        _uiManager.DisplayDamage(gameObject, damage);
-
-        UpdateHealthbar();
-
-        if (_hp <= 0)
-        {
-            _enemyManager.EnemyDeath(gameObject);
-            Destroy(gameObject);
-        }
-
-        if (_animator != null)
-        {
-            _animator.SetTrigger("take_damage");
-        }
+        TakeUndodgeableDamage(damage);
     }
 
-    abstract public void StartTurn();
+    virtual public void StartTurn()
+    {
+        StartCoroutine(TakeBasicTurn());
+    }
 
     public void TickStatusEffects()
     {
@@ -483,7 +480,7 @@ abstract public class Enemy : MonoBehaviour
                     break;
 
                 case StatusType.Burn:
-                    TakeDamage(_statusList[i].damage);
+                    TakeUndodgeableDamage(_statusList[i].damage);
                     break;
 
                 case StatusType.Bleed:

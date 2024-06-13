@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class CampManager : MonoBehaviour
 {
+    private SoundManager _soundManager;
     [SerializeField] private GameObject[] _allHeroesList;
     [SerializeField] private GameObject[] _heroList;
     [SerializeField] private Image[] _slots;
@@ -28,6 +29,10 @@ public class CampManager : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
+        _soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
+        StartCoroutine(_soundManager.PlayCampSounds());
+
+        _soundManager.PlayMusic(_soundManager.crickets);
 
         if(heroManager.heroList == null)
         {
@@ -97,6 +102,8 @@ public class CampManager : MonoBehaviour
             return;
         }
 
+        _soundManager.PlayMusic(_soundManager.forestSpooky);
+        _soundManager.PlaySound(_soundManager.whoosh);
         _animator.SetTrigger("exit camp");
     }
 

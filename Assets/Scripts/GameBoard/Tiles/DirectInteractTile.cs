@@ -31,6 +31,7 @@ public class DirectInteractTile : Tile
 
     public void OnMouseUp()
     {
+        _soundManager.PlayPreparedSound();
         switch (_tileType){
             case TileType.Heal:
                 _tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().Heal(_interactValue);
