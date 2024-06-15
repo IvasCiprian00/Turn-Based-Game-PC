@@ -1,119 +1,85 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    private string _path;
-    private StreamReader _reader;
     [SerializeField] private Animator _animator;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _chatterSound;
 
     [Header("Dialogue")]
-    [SerializeField] private TextMeshProUGUI _narratorText;
-    [SerializeField] private RectTransform _containerRect;
+    [SerializeField] private List<Dialogue> _dialogue;
     [SerializeField] private TextMeshProUGUI _dialogueText;
-    private string _dialogueLine;
-
-    [Header("Speakers")]
-    [SerializeField] private GameObject _hero;
-    [SerializeField] private GameObject _elder;
-    [SerializeField] private GameObject _elderSprite;
+    [SerializeField] private TextMeshProUGUI _speakerName;
+    [SerializeField] private Image _speakerSprite;
+    private int _dialogueIndex;
+    private float _initialPitch = 1f;
 
     private void Start()
     {
-        _path = "Assets/Dialogue/intro_dialogue.txt";
-        _reader = new StreamReader(_path);
-
-        _dialogueLine = _reader.ReadLine();
-        StartCoroutine(ReadDialogue(_narratorText));
-        //_narratorText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
+        _speakerSprite.sprite = _dialogue[_dialogueIndex].speaker;
+        _speakerName.text = _dialogue[_dialogueIndex].name;
+        if (_dialogue[_dialogueIndex].chatter != null)
+        {
+            _chatterSound = _dialogue[_dialogueIndex].chatter;
+        }
+        StartCoroutine(ReadDialogue(_dialogue[_dialogueIndex].line));
     }
 
     public void Update()
     {
-        _containerRect.sizeDelta = new Vector2(800, _dialogueText.preferredHeight);
-
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0) && _dialogueIndex < _dialogue.Count)
         {
-            GetDialogueLine();
+            UpdateDialogue();
         }
     }
 
-    public void SetElderPosition(float yPos)
+    public void UpdateDialogue()
     {
-        _elderSprite.transform.position = new Vector2(_elderSprite.transform.position.x, yPos);
+        _speakerSprite.enabled = true;
+        _speakerSprite.sprite = _dialogue[_dialogueIndex].speaker;
+        _speakerName.text = _dialogue[_dialogueIndex].name;
 
-        BeginDialogue();
-    }
 
-    public void BeginDialogue()
-    {
-        _containerRect.gameObject.SetActive(true);
-        GetDialogueLine();
-    }
-
-    public void GetDialogueLine()
-    {
-        if (_reader.EndOfStream)
-        {
-            _containerRect.gameObject.SetActive(false);
-            _animator.SetTrigger("exit intro");
-            return;
-        }
-
-        if (_dialogueText.text.Length != _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2).Length)
+        if (_dialogueText.text.Length < _dialogue[_dialogueIndex].line.Length)
         {
             StopAllCoroutines();
-            _dialogueText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2);
+            _dialogueText.text = _dialogue[_dialogueIndex].line;
             return;
         }
 
-        int maxIterations = 0;
-        while (true)
+        _dialogueIndex++;
+
+        if (_dialogue[_dialogueIndex].chatter != null)
         {
-            maxIterations++;
-            _dialogueLine = _reader.ReadLine();
-
-            if (maxIterations >= 5)
-            {
-                break;
-            }
-
-            if (_reader.EndOfStream)
-            {
-                _containerRect.gameObject.SetActive(false);
-                _animator.SetTrigger("exit intro");
-                break;
-            }
-
-            if(_dialogueLine.IndexOf("*begin cutscene*") != -1)
-            {
-                _animator.SetTrigger("begin cutscene");
-                _narratorText.gameObject.SetActive(false);
-                return;
-            }
-
-            if (_dialogueLine.IndexOf(":") != -1)
-            {
-                break;
-            }
-
+            _chatterSound = _dialogue[_dialogueIndex].chatter;
         }
 
-        if (_dialogueLine == null)
+        if (_dialogue[_dialogueIndex].trigger != "")
+        {
+            _animator.SetTrigger(_dialogue[_dialogueIndex].trigger);
+            ClearDialogueBox();
+            return;
+        }
+        if (_dialogueIndex >= _dialogue.Count)
         {
             return;
         }
 
-        SetSpeaker();
+        _speakerSprite.sprite = _dialogue[_dialogueIndex].speaker;
+        _speakerName.text = _dialogue[_dialogueIndex].name;
+        StartCoroutine(ReadDialogue(_dialogue[_dialogueIndex].line));
+    }
 
-        StartCoroutine(ReadDialogue(_dialogueText));
-        //_dialogueText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 1);
+    public void ClearDialogueBox()
+    {
+        _speakerSprite.enabled = false;
+        _speakerName.text = "";
+        _dialogueText.text = "";
     }
 
     public void ExitIntro()
@@ -121,40 +87,27 @@ public class DialogueManager : MonoBehaviour
         SceneManager.LoadScene("Camp Screen");
     }
 
-    public void SetSpeaker()
+    private IEnumerator ReadDialogue(string line)
     {
-        if(_dialogueLine.IndexOf("hero:") != -1)
+        _dialogueText.text = string.Empty;
+
+        for(int i = 0; i < line.Length; i++)
         {
-            //_containerRect.transform.position = new Vector2(_hero.transform.position.x, _hero.transform.position.y + 1);
-            _containerRect.transform.position = _hero.transform.position;
-
-        }
-
-        if(_dialogueLine.IndexOf("elder:") != -1)
-        {
-            //_containerRect.transform.position = new Vector2(_elder.transform.position.x, _elder.transform.position.y + 1);
-            _containerRect.transform.position = _elder.transform.position;
-        }
-
-        if(_dialogueLine.IndexOf("narrator:") != -1)
-        {
-            _narratorText.text = _dialogueLine.Substring(_dialogueLine.IndexOf(":") + 2);
-
-            StartCoroutine(ReadDialogue(_narratorText));
+            if(i % 3 == 0){
+                _audioSource.pitch = _initialPitch;
+                PlayChatterSound();
+            }
+            _dialogueText.text += line[i];
+            yield return new WaitForSeconds(0.04f);
         }
     }
 
-    
-
-    private IEnumerator ReadDialogue(TextMeshProUGUI field)
+    public void PlayChatterSound()
     {
-        field.text = string.Empty;
-        int index = _dialogueLine.IndexOf(":") + 1;
+        
+        float random = Random.Range(-0.1f, 0.1f);
 
-        for(int i = index; i < _dialogueLine.Length; i++)
-        {
-            field.text += _dialogueLine[i];
-            yield return new WaitForSeconds(0.05f);
-        }
+        _audioSource.pitch += random;
+        _audioSource.PlayOneShot(_chatterSound);
     }
 }
