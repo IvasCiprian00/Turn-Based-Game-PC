@@ -17,6 +17,9 @@ public class CampManager : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private GameObject _continueGameTrigger;
+    [SerializeField] private TextMeshProUGUI _daysPassedText;
+
+    const string _daysPassed = "Days_Passed";
 
     private float _timer;
 
@@ -27,6 +30,11 @@ public class CampManager : MonoBehaviour
 
     public void Start()
     {
+        if (!PlayerPrefs.HasKey(_daysPassed))
+        {
+            PlayerPrefs.SetInt(_daysPassed, 0);
+        }
+
         HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
         StartCoroutine(_soundManager.PlayCampSounds());
@@ -150,7 +158,13 @@ public class CampManager : MonoBehaviour
 
     public void RestHeroes()
     {
-        _soundManager.PlaySound(_soundManager.rest);
+        _animator.SetTrigger("rest");
+        _soundManager.PlaySound(_soundManager.sleep);
+
+        int x = (PlayerPrefs.GetInt(_daysPassed)) + 1;
+        PlayerPrefs.SetInt(_daysPassed, x);
+        _daysPassedText.text = x + " days passed";
+
         for(int i = 0; i < _allHeroesList.Length; i++)
         {
             _allHeroesList[i].GetComponent<HeroScript>().ResetPlayerPrefs();

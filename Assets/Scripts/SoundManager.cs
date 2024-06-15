@@ -18,6 +18,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip owl;
     public AudioClip wolfHowl;
     public AudioClip rest;
+    public AudioClip sleep;
+    public AudioClip wake;
 
     [Header("Combat Sounds")]
     public AudioClip slash;

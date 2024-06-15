@@ -22,23 +22,6 @@ public class MoveTile : Tile
         int pastXPos = heroScript.GetXPos();
         int pastYPos = heroScript.GetYPos();
 
-        if (_healTile)
-        {
-            return;
-            int healAmount = heroScript.GetHealAmount();
-
-            _tileManager.gameBoard[_xPos, _yPos].GetComponent<HeroScript>().Heal(healAmount);
-
-            _turnManager.DecreaseActionsLeft();
-
-            if (!_turnManager.IsGameOver())
-            {
-                _tileManager.GenerateMoveTiles(heroScript);
-            }
-
-            return;
-        }
-
         if (_attackTile)
         {
             _soundManager.PlayAttackSound();
