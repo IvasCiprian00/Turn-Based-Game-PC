@@ -44,7 +44,7 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private int _nrOfActions;
     [SerializeField] private int _range;
     public GameObject[] skills;
-    private string _skillPrefName;
+    [SerializeField] private string _skillPrefName;
     [SerializeField] private int _skillUsages;
 
     [SerializeField] private MovementType _movementType;
@@ -53,7 +53,7 @@ public class HeroScript : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] protected AudioSource _audioSource;
 
-    private string _prefName;
+    [SerializeField] private string _prefName;
     private bool _isMoving;
     private GameObject _targetTile;
 
@@ -69,10 +69,12 @@ public class HeroScript : MonoBehaviour
 
     public void Start()
     {
-        _prefName = gameObject.name + "Hp";
-        _hp = PlayerPrefs.GetInt(_prefName, _maxHp);
+        if (!PlayerPrefs.HasKey(_prefName))
+        {
+            PlayerPrefs.SetInt(_prefName, _maxHp);
+        }
+        _hp = PlayerPrefs.GetInt(_prefName);
 
-        _skillPrefName = skills[0].name;
         if (!PlayerPrefs.HasKey(_skillPrefName))
         {
             PlayerPrefs.SetInt(_skillPrefName, _skillUsages);
@@ -195,7 +197,7 @@ public class HeroScript : MonoBehaviour
 
     public void ResetPlayerPrefs()
     {
-        PlayerPrefs.SetInt(_prefName, GetMaxHp());
+        PlayerPrefs.SetInt(_prefName, _maxHp);
         PlayerPrefs.SetInt(_skillPrefName, _skillUsages);
     }
 

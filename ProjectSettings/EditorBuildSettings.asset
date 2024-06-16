@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Intro.unity
-    guid: 3c23a94ae51249b4685fde53278510a9
+    guid: f13566adcd87b45489cd500d41716ab5
   - enabled: 1
     path: Assets/Scenes/Camp Screen.unity
     guid: 9912acc0ed662d5408f9057cb526de43
@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Deep Woods Levels/Deep Woods Boss.unity
     guid: 3fdc53b5ec5d9014f9d26f97b8397053
+  - enabled: 1
+    path: Assets/Scenes/Werewolf Cutscene.unity
+    guid: 3c23a94ae51249b4685fde53278510a9
   - enabled: 1
     path: Assets/Scenes/Levels/Dark Levels/Dark 1.unity
     guid: 098deea339468db4d868e1f374764a7d

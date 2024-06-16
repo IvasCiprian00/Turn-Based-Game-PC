@@ -50,32 +50,6 @@ public class CampManager : MonoBehaviour
 
         SpawnHeroesAtCamp();
     }
-
-    public void Update()
-    {
-        if(_continueGameTrigger.activeSelf == true)
-        {
-            SceneManager.LoadScene("Main Game");
-        }
-
-        _timer += Time.deltaTime;
-
-        if(_timer <= 5)//change to >= when implementing finaly
-        {
-            return;
-        }
-
-        _timer = 0;
-
-        for(int i = 0; i < _allHeroesList.Length; i++)
-        {
-            HeroScript heroScript = _allHeroesList[i].GetComponent<HeroScript>();
-            string prefName = heroScript.GetPrefName();
-            int maxHp = heroScript.GetMaxHp();
-            PlayerPrefs.SetInt(prefName, PlayerPrefs.GetInt(prefName, maxHp));
-        }
-    }
-
     public void SpawnHeroesAtCamp()
     {
         for(int i = 0; i < 4; i++)

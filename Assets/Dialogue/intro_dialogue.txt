@@ -21,3 +21,48 @@ hero: However are you sure she might not already be...
 elder: I don't know. There was no blood... I think... I don't know just please find her...
 
 
+hero: Is it dead?
+
+werewolf: ...
+
+hero: Well... just to make sure.
+
+narrator: As the hero readies his weapon, he notices a weird object near the creature's neck.
+
+hero: What have we here?
+
+narrator: The hero bends down and looks at what appears to be a necklace.
+
+hero: Now why would a werewolf wear jewelry?
+hero: I wonder...
+hero: Bind this beast down and let's head back to the village.
+
+
+BACK IN THE VILLAGE
+
+elder: You've come back! But... where is Myrabella?
+elder: Don't tell me... Gods... please let it not be so!
+
+hero: I'm sorry, there was not trace of your daughter.
+hero: No signs of fighting, no blood and even the tracks we followed, they didn't make sense.
+
+elder: Speak man what do you mean "didn't make sense"?
+
+hero: There was only one set of footprints.
+
+elder: Well what do you expect the beast to be walking hand in hand with my daugther?
+
+hero: No. What I expected were tracks left from dragging something. There were none.
+hero: Almost as if the girl was riding the werewolf, like a steed of sorts.
+
+elder: This is no time for jests!
+elder: If there were no footprints from my daughter, that means she's still there, in the forest.
+
+hero: No, there were footprints. Up untill the treeline. Human footprints mixed with a wolf's.
+hero: I want you to look at something.
+
+narrator: The hero shows the werrewolf's necklace to the elder.
+
+elder: This can't be... It's Myrabella's amulet.
+
+hero: I didn't think it possible, but... Your daughter's turned into a werewolf.

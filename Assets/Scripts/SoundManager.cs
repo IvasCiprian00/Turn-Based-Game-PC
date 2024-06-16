@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Ambience")]
     public AudioClip crickets;
+    public AudioClip tavern;
 
     [Header("SFX")]
     public AudioClip whoosh;
@@ -106,5 +107,10 @@ public class SoundManager : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         _SFXSource.PlayOneShot(clip);
+    }
+
+    public void SetMusicVolume(int volume)
+    {
+        _musicSource.volume = volume;
     }
 }

@@ -38,6 +38,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+
     public void UpdateDialogue()
     {
         _speakerSprite.enabled = true;
@@ -102,6 +103,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void EnterTavern()
+    {
+        SoundManager soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
+        soundManager.PlayMusic(soundManager.tavern);
+        soundManager.SetMusicVolume(1);
+        UpdateDialogue();
+    }
     public void PlayChatterSound()
     {
         
