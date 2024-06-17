@@ -30,10 +30,8 @@ public class CampManager : MonoBehaviour
 
     public void Start()
     {
-        if (!PlayerPrefs.HasKey(_daysPassed))
-        {
-            PlayerPrefs.SetInt(_daysPassed, 0);
-        }
+        PlayerPrefs.GetInt(_daysPassed, 0);
+        SetPlayerPrefs();
 
         HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
@@ -50,6 +48,15 @@ public class CampManager : MonoBehaviour
 
         SpawnHeroesAtCamp();
     }
+
+    public void SetPlayerPrefs()
+    {
+        for (int i = 0; i < _allHeroesList.Length; i++)
+        {
+            _allHeroesList[i].GetComponent<HeroScript>().SetPlayerPrefs();
+        }
+    }
+
     public void SpawnHeroesAtCamp()
     {
         for(int i = 0; i < 4; i++)

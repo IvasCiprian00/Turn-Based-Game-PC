@@ -51,6 +51,12 @@ public class HeroManager : MonoBehaviour
                 continue;
             }
 
+            Debug.Log(heroList[i].hero.GetComponent<HeroScript>().IsDead());
+            if (heroList[i].hero.GetComponent<HeroScript>().IsDead())
+            {
+                continue;
+            }
+
             int linePos = heroList[i].startingXPos;
             int colPos = heroList[i].startingYPos;
 
