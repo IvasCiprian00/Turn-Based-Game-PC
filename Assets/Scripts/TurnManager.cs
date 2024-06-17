@@ -20,7 +20,6 @@ public class TurnManager : MonoBehaviour
     private int _currentHero;
     private int _currentEnemy;
 
-    private bool _heroesSpawned;
     private bool _gameOver;
 
     private void Awake()
@@ -176,7 +175,7 @@ public class TurnManager : MonoBehaviour
     public int GetSpeedLeft() {  return _speedLeft; }
     public void DecreaseSpeedLeft(int x) { _speedLeft -= x;  }
     public int GetCurrentHeroHp() { return _heroScript.GetHp(); }
-    public int GetCurrentHeroDamage() {  return _heroScript.GetDamage(); }
+    public string GetCurrentHeroDamage() {  return _heroScript.GetLowerDamage() + " - " + _heroScript.GetUpperDamage(); }
     public bool IsGameOver() {  return _gameOver; }
     public void SetGameOver(bool pp) { _gameOver = pp; }
 }

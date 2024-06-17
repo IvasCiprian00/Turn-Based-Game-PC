@@ -46,7 +46,6 @@ public class HeroScript : MonoBehaviour
     public GameObject[] skills;
     [SerializeField] private string _skillPrefName;
     [SerializeField] private int _skillUsages;
-    private bool _isDead;
 
     [SerializeField] private MovementType _movementType;
     [SerializeField] private AttackType _attackType;
@@ -148,7 +147,6 @@ public class HeroScript : MonoBehaviour
 
         if (_hp <= 0)
         {
-            _isDead = true;
             _heroManager.HeroDeath(gameObject);
             Destroy(gameObject);
         }
@@ -225,6 +223,8 @@ public class HeroScript : MonoBehaviour
         }
         return false;
     }
+    public int GetLowerDamage() { return _lowerDamage; }
+    public int GetUpperDamage() {  return _upperDamage; }
     public Sprite GetCampPosition(int index) { return positionSprites[index]; }
     public int GetXPos() { return _xPos; }
     public int GetYPos() { return _yPos; }

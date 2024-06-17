@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeroManager : MonoBehaviour
@@ -51,7 +52,6 @@ public class HeroManager : MonoBehaviour
                 continue;
             }
 
-            Debug.Log(heroList[i].hero.GetComponent<HeroScript>().IsDead());
             if (heroList[i].hero.GetComponent<HeroScript>().IsDead())
             {
                 continue;
@@ -116,6 +116,11 @@ public class HeroManager : MonoBehaviour
                 continue;
             }
 
+            if (campManager.GetSelectedHeroAtIndex(i).GetComponent<HeroScript>().IsDead())
+            {
+                continue;
+            }
+
             heroList[i].hero = campManager.GetSelectedHeroAtIndex(i);
             heroList[i].startingXPos = startingX[i];
             heroList[i].startingYPos = startingY[i];
@@ -125,6 +130,7 @@ public class HeroManager : MonoBehaviour
 
         _heroCount = heroCount;
     }
+
 
     public void GetHeroes(GameObject[] list)
     {

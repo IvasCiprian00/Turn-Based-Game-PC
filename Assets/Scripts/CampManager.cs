@@ -85,7 +85,7 @@ public class CampManager : MonoBehaviour
 
         heroManager.SetHeroList();
 
-        if(heroManager.heroList.Length <= 0)
+        if(heroManager.GetHeroCount() <= 0)
         {
             return;
         }

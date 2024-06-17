@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject _endTurnButton;
     [SerializeField] private GameObject _nextLevelButton;
-    [SerializeField] private GameObject _restartLevelButton;
     [SerializeField] private GameObject _goToCampButton;
     [SerializeField] private GameObject _cancelSkillButton;
 
@@ -44,10 +43,10 @@ public class UIManager : MonoBehaviour
         }
 
         int hp = _turnManager.GetCurrentHeroHp();
-        int damage = _turnManager.GetCurrentHeroDamage();
+        string damage = _turnManager.GetCurrentHeroDamage();
 
         _hpValue.text = hp.ToString();
-        _damageValue.text = damage.ToString();
+        _damageValue.text = damage;
     }
 
     public void DisplayUI(bool condition)
@@ -58,7 +57,8 @@ public class UIManager : MonoBehaviour
 
     public void DisplayEndOfLevelButtons(bool heroesWon)
     {
-        _restartLevelButton.SetActive(true);
+        DisplayUI(false);
+        DestroySkills();
         _goToCampButton.SetActive(true);
 
         if (heroesWon)
@@ -71,7 +71,6 @@ public class UIManager : MonoBehaviour
     public void HideEndOfLevelButtons()
     {
         _nextLevelButton.SetActive(false);
-        _restartLevelButton.SetActive(false);
         _goToCampButton.SetActive(false);
     }
 
