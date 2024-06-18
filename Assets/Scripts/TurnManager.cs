@@ -137,6 +137,7 @@ public class TurnManager : MonoBehaviour
         else if (_enemyManager.GetEnemyCount() <= 0)
         {
             _gameOver = true;
+            _gameManager.IncreaseLevelNumber();
 
             _tileManager.DestroyMoveTiles();
             //_uiManager.HideSkills();

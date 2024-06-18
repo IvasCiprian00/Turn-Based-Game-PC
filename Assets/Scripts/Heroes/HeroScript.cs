@@ -223,6 +223,7 @@ public class HeroScript : MonoBehaviour
         }
         return false;
     }
+    public string GetSkillPrefName() { return _skillPrefName; }
     public int GetLowerDamage() { return _lowerDamage; }
     public int GetUpperDamage() {  return _upperDamage; }
     public Sprite GetCampPosition(int index) { return positionSprites[index]; }

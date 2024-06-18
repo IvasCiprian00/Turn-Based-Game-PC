@@ -161,8 +161,8 @@ MonoBehaviour:
   - {fileID: -402963714, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   - {fileID: 1099939607, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   - {fileID: 1195918268, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
-  _hp: 0
-  _maxHp: 3
+  _hp: 1
+  _maxHp: 7
   _evasion: 0
   _damage: 2
   _lowerDamage: 2

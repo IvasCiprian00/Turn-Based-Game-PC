@@ -241,12 +241,14 @@ public class SkillManager : MonoBehaviour
     public void ResetSkill()
     {
         _canCast = true;
+        CancelSkill();
+
         if (_turnManager.GetCurrentHero().GetComponent<HeroScript>().GetUsagesLeft() <= 0)
         {
             _canCast = false;
+            return;
         }
 
-        CancelSkill();
         _tileManager.DisableMoveTiles();
         _uiManager.DisplayCancelSkill(true);
 

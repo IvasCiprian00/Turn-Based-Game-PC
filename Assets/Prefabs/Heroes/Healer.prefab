@@ -330,12 +330,12 @@ MonoBehaviour:
   - {fileID: -928047265, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   - {fileID: 1385808214, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   - {fileID: 1458897053, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
-  _hp: 0
-  _maxHp: 5
+  _hp: 5
+  _maxHp: 8
   _evasion: 0
   _damage: 1
-  _lowerDamage: 1
-  _upperDamage: 2
+  _lowerDamage: 2
+  _upperDamage: 3
   _speed: 1
   _nrOfActions: 1
   _range: 0

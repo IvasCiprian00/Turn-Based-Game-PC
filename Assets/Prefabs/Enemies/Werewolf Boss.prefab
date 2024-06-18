@@ -166,23 +166,23 @@ MonoBehaviour:
   _bleedIcon: {fileID: 880543540225458252, guid: 472e99b9dcf72c14d94389ee3d4614ed, type: 3}
   _burnIcon: {fileID: 51374675846686010, guid: fd4d6b2342e522e439bfade1d4360f91, type: 3}
   _hp: 0
-  _maxHp: 50
+  _maxHp: 60
   _evasion: 10
   _damage: 1
-  _lowerDamage: 0
-  _upperDamage: 0
+  _lowerDamage: 1
+  _upperDamage: 3
   _speed: 2
   _attackCount: 1
   _waitDuration: 0.3
   _actionSpeed: 10
   _hpThreshold:
   - speed: 2
-    lowerDamage: 0
-    upperDamage: 0
+    lowerDamage: 1
+    upperDamage: 3
     attackCount: 2
   - speed: 3
-    lowerDamage: 0
-    upperDamage: 0
+    lowerDamage: 2
+    upperDamage: 3
     attackCount: 2
 --- !u!1 &5286080166719966418
 GameObject:

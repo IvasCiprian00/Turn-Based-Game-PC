@@ -68,6 +68,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void LoadCutscene()
+    {
+        _gameManager.LoadCutscene();
+    }
+
     public void HideEndOfLevelButtons()
     {
         _nextLevelButton.SetActive(false);
@@ -93,15 +98,10 @@ public class UIManager : MonoBehaviour
     {
         DestroySkills();
 
-        GameObject reference;
-
         for (int i = 0; i < skills.Length; i++)
         {
-            reference = Instantiate(skills[i], _skillSlots[i].position, Quaternion.identity, gameObject.transform);
-
-            string skillName = GetSkillName(reference.name);
-
-            reference.GetComponent<Button>().onClick.AddListener(() => _skillManager.Invoke(skillName, 0));
+            GameObject reference = Instantiate(skills[i], _skillSlots[i].position, Quaternion.identity, gameObject.transform);
+            reference.GetComponent<SkillSelector>().SetPrefName(_turnManager.GetCurrentHero().GetComponent<HeroScript>().GetSkillPrefName());
         }
     }
 

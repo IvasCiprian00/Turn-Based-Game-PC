@@ -245,8 +245,8 @@ MonoBehaviour:
   - {fileID: -427428578, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   - {fileID: 1287403876, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
   - {fileID: -264459839, guid: 2b9b3a88a2dfb04408eea2d771764476, type: 3}
-  _hp: 0
-  _maxHp: 6
+  _hp: 6
+  _maxHp: 15
   _evasion: 10
   _damage: 3
   _lowerDamage: 2

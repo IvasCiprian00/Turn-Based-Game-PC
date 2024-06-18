@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WerewolfScript : Enemy
 {
@@ -39,9 +40,53 @@ public class WerewolfScript : Enemy
         EndTurn();
     }
 
-    public override void TakeDamage(int dmg)// tb sa aflu diferenta intre new si override
+    public override void TakeUndodgeableDamage(int damage)
     {
-        base.TakeDamage(dmg);
+        _hp -= damage;
+        _uiManager.DisplayDamage(gameObject, damage);
+
+        UpdateHealthbar();
+
+        if (_hp <= 0)
+        {
+            _enemyManager.EnemyDeath(gameObject);
+            StopAllCoroutines();
+            //Destroy(gameObject);
+            _gameManager.TriggerCutscene("Werewolf Cutscene");
+        }
+
+        if (_animator != null)
+        {
+            _animator.SetTrigger("take_damage");
+        }
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        int chance = UnityEngine.Random.Range(1, 100);
+
+        if (chance <= _evasion)
+        {
+            damage = 0;
+        }
+
+        _hp -= damage;
+        _uiManager.DisplayDamage(gameObject, damage);
+
+        UpdateHealthbar();
+
+        if (_hp <= 0)
+        {
+            _enemyManager.EnemyDeath(gameObject);
+            StopAllCoroutines();
+            //Destroy(gameObject);
+            _gameManager.TriggerCutscene("Werewolf Cutscene");
+        }
+
+        if (_animator != null)
+        {
+            _animator.SetTrigger("take_damage");
+        }
         
         if(_hp <= 0.3 * _maxHp)
         {

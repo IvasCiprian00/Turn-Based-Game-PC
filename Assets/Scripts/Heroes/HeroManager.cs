@@ -36,6 +36,12 @@ public class HeroManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Start()
+    {
+        //PlayerPrefs.DeleteAll();
+        //GameObject.Find("Camp Manager").GetComponent<CampManager>().RestHeroes();
+    }
+
     public void SpawnHeroes()
     {
         _tileManager = GameObject.Find("Tile Manager").GetComponent<TileManager>();
@@ -96,7 +102,6 @@ public class HeroManager : MonoBehaviour
         {
             heroesAlive[i] = heroesAlive[i + 1];
         }
-
     }
 
     public void SetHeroList()

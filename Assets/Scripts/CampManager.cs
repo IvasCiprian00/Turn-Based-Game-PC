@@ -18,6 +18,7 @@ public class CampManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private GameObject _continueGameTrigger;
     [SerializeField] private TextMeshProUGUI _daysPassedText;
+    [SerializeField] private GameObject _healAnimation;
 
     const string _daysPassed = "Days_Passed";
 
@@ -149,6 +150,15 @@ public class CampManager : MonoBehaviour
         for(int i = 0; i < _allHeroesList.Length; i++)
         {
             _allHeroesList[i].GetComponent<HeroScript>().ResetPlayerPrefs();
+        }
+    }
+
+    public void SpawnHealAnimation()
+    {
+        _soundManager.PlaySound(_soundManager.heal);
+        for(int i = 0; i < 4; i++)
+        {
+            Instantiate(_healAnimation, _slots[i].transform.position, Quaternion.identity);
         }
     }
 

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private DarknessManager _darknessManager;
     private UIManager _uiManager;
     private Animator _cameraAnimator;
+    private Animator _canvasAnimator;
+    private string _preparedScene;
     [SerializeField] private GameObject _cameraSlideTrigger;
 
     [SerializeField] private int _levelNumber;
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
     [Header("Game Board Section")]
     [SerializeField] private int _nrOfRows;
     [SerializeField] private int _nrOfColumns;
+
+    private const string _levelPref = "LevelNumber";
 
     private bool _levelLoaded;
 
@@ -32,22 +36,18 @@ public class GameManager : MonoBehaviour
         SetManager(ref _uiManager);
         SetManager(ref _soundManager);
         _cameraAnimator = GameObject.Find("Camera Parent").GetComponent<Animator>();
+        _canvasAnimator = GameObject.Find("Canvas").GetComponent<Animator>();
     }
 
     public void Start()
     {
-        _cameraAnimator.SetTrigger("slide up");
-        _levelNumber ++;
-        SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
-    }
-
-    public void Update()
-    {
-        if (_cameraSlideTrigger.activeSelf)
+        if (!PlayerPrefs.HasKey(_levelPref))
         {
-            _cameraAnimator.SetTrigger("slide trigger");
+            PlayerPrefs.SetInt(_levelPref, 3);
         }
-
+        _cameraAnimator.SetTrigger("slide up");
+        _levelNumber++;
+        SceneManager.LoadScene(PlayerPrefs.GetInt(_levelPref), LoadSceneMode.Additive);
     }
 
     public void InitializeGrid()
@@ -75,17 +75,33 @@ public class GameManager : MonoBehaviour
         _turnManager.StartHeroTurns();
     }
 
+    public void PrepareLevel()
+    {
+        _turnManager.ResetHeroes();
+
+        _levelNumber++;
+        SceneManager.LoadScene(PlayerPrefs.GetInt(_levelPref), LoadSceneMode.Additive);
+        _cameraAnimator.SetTrigger("slide trigger");
+    }
+
     public void GoToNextLevel()
     {
-        SceneManager.UnloadSceneAsync(_levelNumber);
+        SceneManager.UnloadSceneAsync(PlayerPrefs.GetInt(_levelPref) - 1);
         _soundManager.PlaySound(_soundManager.whoosh);
 
         _cameraAnimator.SetTrigger("next level");
-        _turnManager.ResetHeroes();
         _uiManager.HideEndOfLevelButtons();
+    }
 
-        _levelNumber++;
-        SceneManager.LoadScene(_levelNumber, LoadSceneMode.Additive);
+    public void TriggerCutscene(string scene)
+    {
+        _preparedScene = scene;
+        _canvasAnimator.SetTrigger("fade");
+    }
+
+    public void LoadCutscene()
+    {
+        SceneManager.LoadScene(_preparedScene);
     }
 
     public void RestartLevel()
@@ -109,6 +125,11 @@ public class GameManager : MonoBehaviour
         float x = center.x;
         float y = center.y;
         Camera.main.transform.position = new Vector3(x, y, Camera.main.transform.position.z);
+    }
+
+    public void IncreaseLevelNumber()
+    {
+        PlayerPrefs.SetInt(_levelPref, PlayerPrefs.GetInt(_levelPref) + 1);
     }
 
     public int GetNrOfRows() {  return _nrOfRows; }

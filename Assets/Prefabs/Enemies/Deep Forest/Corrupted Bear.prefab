@@ -166,11 +166,11 @@ MonoBehaviour:
   _bleedIcon: {fileID: 880543540225458252, guid: 472e99b9dcf72c14d94389ee3d4614ed, type: 3}
   _burnIcon: {fileID: 51374675846686010, guid: fd4d6b2342e522e439bfade1d4360f91, type: 3}
   _hp: 15
-  _maxHp: 13
+  _maxHp: 25
   _evasion: 0
   _damage: 3
-  _lowerDamage: 2
-  _upperDamage: 4
+  _lowerDamage: 3
+  _upperDamage: 5
   _speed: 1
   _attackCount: 1
   _waitDuration: 0.5

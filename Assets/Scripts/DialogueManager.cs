@@ -45,7 +45,6 @@ public class DialogueManager : MonoBehaviour
         _speakerSprite.sprite = _dialogue[_dialogueIndex].speaker;
         _speakerName.text = _dialogue[_dialogueIndex].name;
 
-
         if (_dialogueText.text.Length < _dialogue[_dialogueIndex].line.Length)
         {
             StopAllCoroutines();
@@ -54,6 +53,10 @@ public class DialogueManager : MonoBehaviour
         }
 
         _dialogueIndex++;
+        if(_dialogueIndex >= _dialogue.Count)
+        {
+            return;
+        }
 
         if (_dialogue[_dialogueIndex].chatter != null)
         {

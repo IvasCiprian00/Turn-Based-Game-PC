@@ -468,7 +468,7 @@ MonoBehaviour:
   _SFXSource: {fileID: 1391542340}
   forestSpooky: {fileID: 8300000, guid: 56ed5005fd00d440f8bd3ceaac24b1a4, type: 3}
   crickets: {fileID: 8300000, guid: 082f5d649c3e6ca42af673b12af5c510, type: 3}
-  tavern: {fileID: 0}
+  tavern: {fileID: 8300000, guid: 8c5a67c0dc45c0243889c1e4b1a15428, type: 3}
   whoosh: {fileID: 8300000, guid: 04c85e8a1a0861041bb72aacaf69a993, type: 3}
   owl: {fileID: 8300000, guid: eba610e062a66d04199696652c10f550, type: 3}
   wolfHowl: {fileID: 8300000, guid: 5fcaa98dd7328de4cb1a7758737d7071, type: 3}
@@ -944,6 +944,7 @@ MonoBehaviour:
   _levelText: {fileID: 0}
   _continueGameTrigger: {fileID: 0}
   _daysPassedText: {fileID: 436412602}
+  _healAnimation: {fileID: 5018656549280797990, guid: 0a8ae70f56b0a3c47a0581ac570cad30, type: 3}
 --- !u!4 &337701663
 Transform:
   m_ObjectHideFlags: 0
@@ -1031,7 +1032,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2045,6 +2046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6928d5443b62da4ca816b92dc606d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  campManager: {fileID: 337701662}
 --- !u!1 &694304489
 GameObject:
   m_ObjectHideFlags: 0

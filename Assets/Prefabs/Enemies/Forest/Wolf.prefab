@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthbarScript: {fileID: 0}
-  _targetType: 0
+  _targetType: 1
   _animator: {fileID: 1284396858281712183}
   _statusList: []
   _stunned: 0
@@ -166,11 +166,11 @@ MonoBehaviour:
   _bleedIcon: {fileID: 880543540225458252, guid: 472e99b9dcf72c14d94389ee3d4614ed, type: 3}
   _burnIcon: {fileID: 51374675846686010, guid: fd4d6b2342e522e439bfade1d4360f91, type: 3}
   _hp: 1
-  _maxHp: 1
-  _evasion: 0
+  _maxHp: 10
+  _evasion: 10
   _damage: 1
   _lowerDamage: 1
-  _upperDamage: 2
+  _upperDamage: 3
   _speed: 2
   _attackCount: 1
   _waitDuration: 0.3
