@@ -15,6 +15,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private GameObject _moveTile;
     [SerializeField] private GameObject _healTile;
     [SerializeField] private GameObject _interactTile;
+    [SerializeField] private GameObject _rangeTile;
     private List<GameObject> _moveTileList;
 
     public GameObject[,] tiles;
@@ -86,6 +87,31 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    public void GenerateRangeTiles()
+    {
+        int range = _heroScript.GetRange();
+        int xPos = _heroScript.GetXPos();
+        Debug.Log("YEY");
+        int yPos = _heroScript.GetYPos();
+        AttackType attackType = _heroScript.GetAttackType();
+        switch (attackType)
+        {
+            case AttackType.melee:
+                for(int i = 0; i < 4; i++)
+                {
+                    if (!PositionIsValid(xPos + lineDir[i], yPos + colDir[i]))
+                    {
+                        Debug.Log("YEY");
+                        continue;
+                    }
+
+                    SpawnTile(_rangeTile, xPos + lineDir[i], yPos + colDir[i]);
+                }
+                break;
+            default: break;
+        }
+    }
+
     public void DestroyMoveTiles()
     {
         GameObject[] moveTiles = GameObject.FindGameObjectsWithTag("Move Tile");
@@ -143,9 +169,9 @@ public class TileManager : MonoBehaviour
 
     public void CreateActionTiles()
     {
-        string attackType = _heroScript.GetAttackType();
+        AttackType attackType = _heroScript.GetAttackType();
 
-        if (attackType == "mixed")
+        if (attackType == AttackType.mixed)
         {
             int range = _heroScript.GetRange();
 
@@ -156,7 +182,7 @@ public class TileManager : MonoBehaviour
             }
         }
 
-        if (attackType == "melee")
+        if (attackType == AttackType.melee)
         {
             for(int i = 0; i < 4; i++)
             {
@@ -164,7 +190,7 @@ public class TileManager : MonoBehaviour
             }
         }
 
-        if(attackType == "ranged")
+        if(attackType == AttackType.ranged)
         {
             int range = _heroScript.GetRange();
 
@@ -196,15 +222,6 @@ public class TileManager : MonoBehaviour
                 continue;
             }
 
-            /*if (gameBoard[currentLine, currentCol].tag == "Hero")
-            {
-                if (_heroScript.IsHealer())
-                {
-                    GameObject reference = SpawnTile(_moveTile, currentLine, currentCol);
-                    reference.GetComponent<MoveTile>().SetHealing(true);
-                }
-            }*/
-
             if (gameBoard[currentLine, currentCol].tag == "Enemy")
             {
                 GameObject reference = SpawnTile(_moveTile, currentLine, currentCol);
@@ -217,11 +234,17 @@ public class TileManager : MonoBehaviour
     {
         int currentLine = _heroScript.GetXPos();
         int currentCol = _heroScript.GetYPos();
+        GameObject reference;
 
         for (int i = 0; i < n; i++)
         {
             currentLine += line;
             currentCol += col;
+
+            if (i == 0)
+            {
+                continue;
+            }
 
             if (!PositionIsValid(currentLine, currentCol))
             {
@@ -238,12 +261,7 @@ public class TileManager : MonoBehaviour
                 return;
             }
 
-            if(i == 0)
-            {
-                continue;
-            }
-
-            GameObject reference = SpawnTile(_moveTile, currentLine, currentCol);
+            reference = SpawnTile(_moveTile, currentLine, currentCol);
             reference.GetComponent<MoveTile>().SetAttacking(true);
         }
     }
@@ -268,7 +286,6 @@ public class TileManager : MonoBehaviour
         return false;
     }
 
-    [ContextMenu("Test disable")]
     public void DisableMoveTiles()
     {
         SetActiveMoveTiles();
@@ -279,7 +296,6 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Test enable")]
     public void EnableMoveTiles()
     {
         if(_moveTileList == null)

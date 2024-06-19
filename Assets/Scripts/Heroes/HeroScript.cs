@@ -1,26 +1,22 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
+public enum MovementType
+{
+    slow,
+    fast
+}
+
+public enum AttackType
+{
+    melee,
+    ranged,
+    mixed
+}
 public class HeroScript : MonoBehaviour
 {
-    public enum MovementType
-    {
-        slow,
-        fast
-    }
-
-    public enum AttackType
-    {
-        melee,
-        ranged,
-        mixed
-    }
 
     private TileManager _tileManager;
+    private TurnManager _turnManager;
     private HeroManager _heroManager;
     private HealthbarScript _healthbarScript;
     private GameManager _gameManager;
@@ -50,9 +46,6 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private MovementType _movementType;
     [SerializeField] private AttackType _attackType;
 
-    [Header("Sounds")]
-    [SerializeField] protected AudioSource _audioSource;
-
     [SerializeField] private string _prefName;
     private bool _isMoving;
     private GameObject _targetTile;
@@ -63,6 +56,7 @@ public class HeroScript : MonoBehaviour
         _gameManager.SetManager(ref _tileManager);
         _gameManager.SetManager(ref _heroManager);
         _gameManager.SetManager(ref _uiManager);
+        _gameManager.SetManager(ref _turnManager);
         _healthbarScript = GetComponentInChildren<HealthbarScript>();
         
     }
@@ -213,6 +207,12 @@ public class HeroScript : MonoBehaviour
         PlayerPrefs.SetInt(_skillPrefName, remaining - 1); 
     }
 
+    public void OnMouseUp()
+    {
+        Debug.Log("YEY");
+        //_tileManager.GenerateRangeTiles();
+    }
+
     public int GetUsagesLeft() { return PlayerPrefs.GetInt(_skillPrefName); }
 
     public bool IsDead() 
@@ -234,7 +234,7 @@ public class HeroScript : MonoBehaviour
     public int GetSpeed() { return _speed; }
     public int GetHp() { return _hp; }
     public int GetMaxHp() { return _maxHp; }
-    public string GetAttackType() { return _attackType.ToString(); }
+    public AttackType GetAttackType() {  return _attackType; }
     public int GetRange() { return _range; }
     public int GetNrOfActions() { return _nrOfActions; }
     virtual public bool IsHealer() { return false; }

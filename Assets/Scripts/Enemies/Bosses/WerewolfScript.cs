@@ -53,6 +53,7 @@ public class WerewolfScript : Enemy
             StopAllCoroutines();
             //Destroy(gameObject);
             _gameManager.TriggerCutscene("Werewolf Cutscene");
+            PlayerPrefs.DeleteAll();
         }
 
         if (_animator != null)
@@ -70,6 +71,7 @@ public class WerewolfScript : Enemy
             damage = 0;
         }
 
+        TakeUndodgeableDamage(damage);
         _hp -= damage;
         _uiManager.DisplayDamage(gameObject, damage);
 
@@ -81,6 +83,7 @@ public class WerewolfScript : Enemy
             StopAllCoroutines();
             //Destroy(gameObject);
             _gameManager.TriggerCutscene("Werewolf Cutscene");
+            PlayerPrefs.DeleteAll();
         }
 
         if (_animator != null)
