@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class CampManager : MonoBehaviour
 {
     private SoundManager _soundManager;
+    private TutorialManager _tutorialManager;
     [SerializeField] private GameObject[] _allHeroesList;
     [SerializeField] private GameObject[] _heroList;
     [SerializeField] private Image[] _slots;
@@ -27,12 +28,14 @@ public class CampManager : MonoBehaviour
     public void Awake()
     {
         _animator = GameObject.Find("Canvas").GetComponent<Animator>();
+        _tutorialManager = GameObject.Find("Tutorial Manager").GetComponent<TutorialManager>();
     }
 
     public void Start()
     {
         PlayerPrefs.GetInt(_daysPassed, 0);
         SetPlayerPrefs();
+        _tutorialManager.CampTutorial();
 
         HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
