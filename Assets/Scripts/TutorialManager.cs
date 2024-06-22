@@ -29,6 +29,10 @@ public class TutorialManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Start()
+    {
+        //PlayerPrefs.DeleteAll();
+    }
     public void CampTutorial()
     {
         if (!VerifyTutorial("CampTutorial"))
