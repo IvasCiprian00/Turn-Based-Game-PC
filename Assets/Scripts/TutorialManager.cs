@@ -10,6 +10,10 @@ public class TutorialManager : MonoBehaviour
     [Header("Tutorial Windows")]
     [SerializeField] private GameObject _campTutorial;
     [SerializeField] private GameObject _combatBasicsTutorial;
+    [SerializeField] private GameObject _attackTutorial;
+    [SerializeField] private GameObject _skillsTutorial;
+    [SerializeField] private GameObject _statusEffectsTutorial;
+    [SerializeField] private GameObject _heroDeathTutorial;
 
     private string _prefName;
     public void Awake()
@@ -23,11 +27,6 @@ public class TutorialManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(gameObject);
-    }
-
-    public void Start()
-    {
-        PlayerPrefs.DeleteAll();
     }
 
     public void CampTutorial()
@@ -60,47 +59,47 @@ public class TutorialManager : MonoBehaviour
         {
             return;
         }
+
+        _attackTutorial.SetActive(true);
+        _currentTutorial = _attackTutorial;
         //Tutorial which is triggered at the first attack tile instantiation
     }
 
     public void SkillsTutorial()
     {
-        _prefName = "SkillsTutorial";
-        if (PlayerPrefs.HasKey(_prefName))
+        if (!VerifyTutorial("SkillsTutorial"))
         {
             return;
         }
 
-        PlayerPrefs.SetInt(_prefName, 1);
-        Debug.Log("YEY");
+        _skillsTutorial.SetActive(true);
+        _currentTutorial = _skillsTutorial;
         //Tutorial explaining skills and introduction to status effects
         //Is triggered when a player clicks a skill
     }
 
     public void StatusEffectsTutorial()
     {
-        _prefName = "StatusEffectsTutorial";
-        if (PlayerPrefs.HasKey(_prefName))
+        if (!VerifyTutorial("StatusEffectsTutorial"))
         {
             return;
         }
 
-        PlayerPrefs.SetInt(_prefName, 1);
-        Debug.Log("YEY");
+        _statusEffectsTutorial.SetActive(true);
+        _currentTutorial = _statusEffectsTutorial;
         //Tutorial explaining status effects
         //Triggered when a status effect is first applied
     }
 
     public void HeroDeathTutorial()
     {
-        _prefName = "HeroDeathEffectsTutorial";
-        if (PlayerPrefs.HasKey(_prefName))
+        if (!VerifyTutorial("HeroDeathEffectsTutorial"))
         {
             return;
         }
 
-        PlayerPrefs.SetInt(_prefName, 1);
-        Debug.Log("YEY");
+        _heroDeathTutorial.SetActive(true);
+        _currentTutorial = _heroDeathTutorial;
 
         //Short tutorial triggered when a hero dies
         //It suggests returning to camp to rest

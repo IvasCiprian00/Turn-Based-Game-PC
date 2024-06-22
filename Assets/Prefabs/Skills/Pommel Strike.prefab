@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 7383167767073458684}
   - component: {fileID: -7250872418695240160}
   m_Layer: 5
-  m_Name: PommelStrike
+  m_Name: Pommel Strike
   m_TagString: Skill Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,7 +424,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hit
+  m_text: 'Stun
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3ee8343f752ecb4eb889b0c7a388045, type: 2}
   m_sharedMaterial: {fileID: -5911322136513319694, guid: e3ee8343f752ecb4eb889b0c7a388045, type: 2}

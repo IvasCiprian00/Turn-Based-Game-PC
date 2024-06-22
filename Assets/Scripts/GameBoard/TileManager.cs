@@ -9,6 +9,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private HeroScript _heroScript;
     [SerializeField] private TurnManager _turnManager;
+    private TutorialManager _tutorialManager;
 
     [Header("Tile types")]
     [SerializeField] private GameObject _tile;
@@ -30,10 +31,15 @@ public class TileManager : MonoBehaviour
     int[] diagonalLineDir = { -1, -1, 1, 1 };
     int[] diagonalColDir = { -1, 1, 1, -1 };
 
-    public void Start()
+    public void Awake()
     {
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         _gameManager.SetManager(ref _turnManager);
+        _gameManager.SetManager(ref _tutorialManager);
+    }
+    public void Start()
+    {
+        _tutorialManager.CombatBasicsTutorial();
     }
 
     public void GenerateGameBoard(int sizeX, int sizeY)

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private EnvironmentManager _envManager;
     private DarknessManager _darknessManager;
     private UIManager _uiManager;
+    private TutorialManager _tutorialManager;
     private Animator _cameraAnimator;
     private Animator _canvasAnimator;
     private string _preparedScene;
@@ -180,5 +181,9 @@ public class GameManager : MonoBehaviour
     public void SetManager(ref SoundManager manager)
     {
         manager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
+    }
+    public void SetManager(ref TutorialManager manager)
+    {
+        manager = GameObject.Find("Tutorial Manager").GetComponent<TutorialManager>();
     }
 }

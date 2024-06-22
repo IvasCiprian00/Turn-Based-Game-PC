@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7383167767073458684}
   - component: {fileID: 6245061441584383890}
   m_Layer: 5
-  m_Name: HealingWord
+  m_Name: Healing Word
   m_TagString: Skill Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

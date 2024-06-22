@@ -60,6 +60,7 @@ public class MoveTile : Tile
     {
         if (attacking)
         {
+            GameObject.Find("Tutorial Manager").GetComponent<TutorialManager>().AttackTutorial();
             GetComponent<SpriteRenderer>().sprite = _attackTileSprite;
         }
 

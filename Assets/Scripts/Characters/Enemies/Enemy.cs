@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     protected TurnManager _turnManager;
     protected UIManager _uiManager;
     protected SoundManager _soundManager;
+    protected TutorialManager _tutorialManager;
 
     [SerializeField] protected HealthbarScript _healthbarScript;
     [SerializeField] protected TargetType _targetType;
@@ -111,6 +112,7 @@ public class Enemy : MonoBehaviour
         _gameManager.SetManager(ref _skillManager);
         _gameManager.SetManager(ref _uiManager);
         _gameManager.SetManager(ref _soundManager);
+        _gameManager.SetManager(ref _tutorialManager);
     }
 
     public void SetHealthbar()
@@ -499,6 +501,7 @@ public class Enemy : MonoBehaviour
 
     public void ApplyStatus(StatusType statusType, int duration, int damage)
     {
+        _tutorialManager.StatusEffectsTutorial();
         _statusList.Add(new Status(statusType, duration, damage));
 
         GameObject reference;

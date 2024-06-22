@@ -35,7 +35,7 @@ public class CampManager : MonoBehaviour
     {
         PlayerPrefs.GetInt(_daysPassed, 0);
         SetPlayerPrefs();
-        _tutorialManager.CombatBasicsTutorial();
+        _tutorialManager.CampTutorial();
 
         HeroManager heroManager = GameObject.Find("Hero Manager").GetComponent<HeroManager>();
         _soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();

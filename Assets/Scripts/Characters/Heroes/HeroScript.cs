@@ -21,6 +21,7 @@ public class HeroScript : MonoBehaviour
     private HealthbarScript _healthbarScript;
     private GameManager _gameManager;
     private UIManager _uiManager;
+    private TutorialManager _tutorialManager;
 
     private int _xPos;
     private int _yPos;
@@ -57,6 +58,7 @@ public class HeroScript : MonoBehaviour
         _gameManager.SetManager(ref _heroManager);
         _gameManager.SetManager(ref _uiManager);
         _gameManager.SetManager(ref _turnManager);
+        _gameManager.SetManager(ref _tutorialManager);
         _healthbarScript = GetComponentInChildren<HealthbarScript>();
         
     }
@@ -141,6 +143,7 @@ public class HeroScript : MonoBehaviour
 
         if (_hp <= 0)
         {
+            _tutorialManager.HeroDeathTutorial();
             _heroManager.HeroDeath(gameObject);
             Destroy(gameObject);
         }
@@ -191,8 +194,16 @@ public class HeroScript : MonoBehaviour
 
     public void SetPlayerPrefs()
     {
-        _hp = PlayerPrefs.GetInt(_prefName, _maxHp);
-        PlayerPrefs.GetInt(_skillPrefName, _skillUsages);
+        if (!PlayerPrefs.HasKey(_prefName))
+        {
+            PlayerPrefs.SetInt(_prefName, _maxHp);
+            _hp = _maxHp;
+        }
+        //_hp = PlayerPrefs.GetInt(_prefName, _maxHp);
+        if (!PlayerPrefs.HasKey(_skillPrefName))
+        {
+            PlayerPrefs.SetInt(_skillPrefName, _skillUsages);
+        }
     }
 
     public void ResetPlayerPrefs()
@@ -219,6 +230,7 @@ public class HeroScript : MonoBehaviour
     { 
         if(PlayerPrefs.GetInt(_prefName) <= 0)
         {
+            Debug.Log(PlayerPrefs.GetInt(_prefName));
             return true;
         }
         return false;
